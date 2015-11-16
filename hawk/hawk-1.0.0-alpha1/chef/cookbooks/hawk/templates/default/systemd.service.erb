@@ -1,0 +1,31 @@
+[Unit]
+Description=HA Web Konsole Development
+After=network.target
+
+[Service]
+Type=simple
+KillMode=none
+TimeoutSec=300
+
+User=vagrant
+Group=users
+
+WorkingDirectory=/vagrant/hawk
+
+Environment="HAWK_ENV=development"
+Environment="HAWK_THREADS=2"
+Environment="HAWK_WORKERS=2"
+Environment="HAWK_LISTEN=0.0.0.0"
+Environment="HAWK_PORT=3000"
+Environment="HAWK_KEY=/vagrant/hawk/tmp/hawk.pem"
+Environment="HAWK_CERT=/vagrant/hawk/tmp/hawk.key"
+
+# Run ExecStartPre with root-permissions
+PermissionsStartOnly=true
+ExecStartPre=/srv/www/hawk/bin/generate-ssl-cert
+ExecStart=/usr/bin/puma -C /vagrant/hawk/config/puma.rb
+ExecStop=/usr/bin/pumactl -S /vagrant/hawk/tmp/pids/puma.state stop
+ExecReload=/usr/bin/pumactl -S /vagrant/hawk/tmp/pids/puma.state restart
+
+[Install]
+WantedBy=multi-user.target

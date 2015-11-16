@@ -1,0 +1,19 @@
+= About =
+
+== Authors ==
+
+include::../../AUTHORS[]
+
+== Site ==
+
+This site was generated from http://asciidoc.org[AsciiDoc] sources.
+
+The CSS for this site started as a clone of the +bare+ theme by https://github.com/rtomayko/adoc-themes[Ryan Tomayko].
+
+Fonts used are https://www.google.com/fonts/specimen/Open+Sans[Open Sans] and http://fontawesome.io[Font Awesome].
+
+== License ==
+
+`crmsh` is licensed under the GNU General Public License (GPL).
+
+For more information, see https://gnu.org/licenses/gpl.html

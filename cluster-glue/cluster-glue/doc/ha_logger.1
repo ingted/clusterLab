@@ -1,0 +1,86 @@
+'\" t
+.\"     Title: ha_logger
+.\"    Author: Alan Robertson <alanr@unix.sh>
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: December 8, 2009
+.\"    Manual: User commands
+.\"    Source: cluster-glue 1.0.12
+.\"  Language: English
+.\"
+.TH "HA_LOGGER" "1" "December 8, 2009" "cluster-glue 1.0.12" "User commands"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+ha_logger \- Log a message to files and/or syslog through the HA Logging Daemon
+.SH "SYNOPSIS"
+.HP \w'\fBha_logger\fR\ 'u
+\fBha_logger\fR [\fB\-D\fR\ [ha\-log]\ |\ [ha\-debug]] [\fB\-t\fR\ \fItag\fR] \fImessage\fR...
+.SH "DESCRIPTION"
+.PP
+\fBha_logger\fR
+is used to log a message to files/syslog through the HA Logging Daemon\&.
+.SH "OPTIONS"
+.PP
+The following options are supported:
+.PP
+\fB\-D\fR ha\-log|ha\-debug
+.RS 4
+Log the message to different files\&.
+ha\-log
+will log the message to the log file and the debug file, while
+ha\-debug
+will log the message to the debug file only\&.
+.RE
+.PP
+\fB\-t\fR \fItag\fR
+.RS 4
+Mark every line in the log with the specified
+\fItag\fR\&.
+.RE
+.PP
+\fImessage\fR
+.RS 4
+The message that should be logged\&.
+.RE
+.SH "SEE ALSO"
+.PP
+\fBheartbeat\fR(8),
+\fBha_logd\fR(8)
+.SH "AUTHORS"
+.PP
+\fBAlan Robertson\fR <\&alanr@unix\&.sh\&>
+.RS 4
+ha_logd
+.RE
+.PP
+\fBGuochun Shi\fR <\&gshi@ncsa\&.uiuc\&.edu\&>
+.RS 4
+ha_logd
+.RE
+.PP
+\fBMarowsky\-Bree Lars\fR <\&lmb@suse\&.de\&>
+.RS 4
+ha_logd
+.RE
+.PP
+\fBFlorian Haas\fR <\&florian\&.haas@linbit\&.com\&>
+.RS 4
+man page
+.RE

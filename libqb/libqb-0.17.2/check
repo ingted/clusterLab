@@ -1,0 +1,334 @@
+#!/bin/bash
+
+export CFLAGS="$CFLAGS"
+export MAKEFLAGS="$MAKEFLAGS --no-print-directory"
+
+help_all() {
+	echo 
+	echo "Usage: check <command>"
+	echo 
+	echo "Commands:"
+	echo 
+	echo "  ansi            Check using ansi compiler option"
+	echo "  sysv            Check using sys-v semaphores"
+	echo "  nosection       Check without gcc __attribute__(section)"
+	echo "  noepoll         Check using poll (not epoll)"
+	echo "  nogettime       Check without gettime()"
+	echo "  bsd             Check with a bsd-like config"
+	echo "  mac             Check with a mac/darwin-like config"
+	echo "  dist            do make distcheck"
+	echo "  rpm             Run rpmlint"
+	echo "  mock            Test doing a mock build"
+	echo "  coverity        Run coverity"
+	echo "  clang           Run clang-analyze"
+	echo "  abi             Check abi compatibility"
+	echo "  api_sanity      api sanity test"
+	echo 
+	echo "  help            This help"
+	echo 
+	exit 1
+}
+
+if [ $# -lt 1 ]
+then
+    help_all
+fi
+
+command=$1
+shift
+args="$@"
+
+if [ -n "$(git rev-parse)" ] ; then
+        perror "Must be inside a git repository to work"
+        exit 1
+fi
+
+up=$(git rev-parse --show-cdup)
+if [ "x$up" == "x" ] ; then
+	up="."
+fi
+cd $up
+
+set -e
+if [ ! -e build-aux/install-sh ]
+then
+	./autogen.sh
+fi
+if [ ! -e Makefile ]
+then
+	./configure --quiet
+fi
+
+check() {
+	options="$1 --enable-debug --enable-slow-tests --enable-fatal-warnings --quiet"
+	echo "./configure $options"
+	echo "ENV CFLAGS=\"$CFLAGS\""
+	echo "ENV MAKEFLAGS=\"$MAKEFLAGS\""
+	( ./configure $options )
+	make check
+	if [ $? -ne 0 ]
+	then
+		echo "======================"
+		echo failed: $1
+		echo "======================"
+		if [ -f tests/test-suite.log ]
+		then
+			cat tests/test-suite.log
+		fi
+		exit 1
+	fi
+}
+
+check_ansi() {
+	echo "checking ansi"
+	echo "==============="
+	check "--enable-ansi"
+}
+
+check_nosection() {
+	echo "checking nosection"
+	echo "======================="
+	# no __attribute__((section))
+	check "ac_cv_link_attribute_section=no"
+}
+
+check_sysv() {
+	# use sys-v semaphores
+	echo "checking sysv"
+	echo "======================="
+	ORIG_CFLAGS=$CFLAGS
+	export CFLAGS="$CFLAGS -DDISABLE_POSIX_THREAD_PROCESS_SHARED"
+	check
+	export CFLAGS=$ORIG_CFLAGS
+}
+
+check_nogettime() {
+	# no clock_gettime
+	echo "checking nogettime"
+	echo "======================="
+	check "ac_cv_func_clock_gettime=no"
+}
+
+check_noepoll() {
+	# no epoll
+	echo "checking noepoll"
+	echo "======================="
+	check "ac_cv_func_epoll_create1=no ac_cv_func_epoll_create=no"
+}
+
+check_bsd() {
+	# bsd-like
+	echo "checking bsd"
+	echo "======================="
+	ORIG_CFLAGS=$CFLAGS
+	check "ac_cv_func_sem_timedwait=no ac_cv_func_clock_gettime=no ac_cv_func_epoll_create1=no ac_cv_func_epoll_create=no"
+	export CFLAGS=$ORIG_CFLAGS
+}
+
+check_mac() {
+	# mac-like
+	echo "checking mac"
+	echo "======================="
+	ORIG_CFLAGS=$CFLAGS
+	export CFLAGS="$CFLAGS -DDISABLE_POSIX_THREAD_PROCESS_SHARED"
+	check "ac_cv_func_clock_gettime=no ac_cv_func_epoll_create1=no ac_cv_func_epoll_create=no ac_cv_link_attribute_section=no"
+	export CFLAGS=$ORIG_CFLAGS
+}
+
+check_dist() {
+	# normal configure with distcheck
+	echo "checking dist"
+	echo "======================"
+	set +e
+	./configure --quiet
+	make distcheck
+	set -e
+}
+
+check_rpm() {
+	echo "checking rpm building"
+	echo "======================"
+	set +e
+	make maintainer-clean
+	./autogen.sh
+	./configure --quiet
+	make rpm
+	echo
+	sudo rpm -Uvf --force libqb-*.rpm
+	echo rpmlint libqb
+	rpmlint libqb
+	echo rpmlint libqb-debuginfo
+	rpmlint libqb-debuginfo
+	echo rpmlint libqb-devel
+	rpmlint libqb-devel
+	set -e
+}
+
+
+check_mock() {
+	echo "checking mock building"
+	echo "======================"
+	set +e
+	make maintainer-clean
+	rm -f *.rpm
+	./autogen.sh
+	./configure --quiet
+	make srpm
+	mock --no-clean --rebuild *.src.rpm
+}
+
+check_coverity() {
+	echo "checking coverity"
+	echo "======================"
+	make clean
+	cov-build --dir=cov make
+	cov-analyze --dir cov \
+		--concurrency \
+		--all \
+		--aggressiveness-level high \
+		--security \
+		--wait-for-license
+	cov-format-errors --dir cov
+}
+
+check_clang() {
+	if [ ! -f /usr/libexec/clang-analyzer/scan-build/ccc-analyzer ]
+	then
+		echo try installing clang-analyze
+		exit 1
+	fi
+	echo "checking clang"
+	echo "===================="
+	make clean
+
+	./configure \
+		CC=/usr/libexec/clang-analyzer/scan-build/ccc-analyzer \
+		CXX=/usr/libexec/clang-analyzer/scan-build/c++-analyzer
+	make check
+}
+
+check_abi() {
+	ver1=$1
+	ver2=$2
+	if [ -z "$ver1" ] ; then
+		echo need two versions.
+		exit 1
+	fi
+	if [ -z "$ver2" ] ; then
+		echo need two versions.
+		exit 1
+	fi
+
+	TMPL=build-aux/abi-check-templ.xml
+	checker=abi-compliance-checker
+
+	mkdir -p abi_dumps/libqb
+	for v in $ver1 $ver2
+	do
+		p=$(pwd)_inst_$v
+		sed -e "s|@PREFIX@|$p|" -e "s|@VERSION@|$v|" $TMPL > abi_dumps/libqb/$v.xml
+	done
+	for v in $ver1 $ver2
+	do
+		p=$(pwd)_inst_$v
+		t=v$v
+		b=api-check-$v
+		echo "== Version $v =="
+		if [ ! -f abi_dumps/libqb/libqb_$v.abi.tar.gz ]
+		then
+			git checkout -B $b $t
+			./autogen.sh
+			./configure
+			make
+			make install DESTDIR=$p
+			$checker -l libqb -dump_abi abi_dumps/libqb/$v.xml
+		fi
+	done
+
+	$checker -l libqb \
+	   -d1 abi_dumps/libqb/libqb_$ver1.abi.tar.gz \
+	   -d2 abi_dumps/libqb/libqb_$ver2.abi.tar.gz
+
+	google-chrome compat_reports/libqb/$ver1\_to_$ver2/abi_compat_report.html
+
+	echo mv compat_reports/libqb/$ver1\_to_$ver2/abi_compat_report.html abi_compat_report_$ver1\_to_$ver2.html
+	echo scp abi_compat_report_$ver1\_to_$ver2.html fedorahosted.org:quarterback
+	git checkout master
+}
+
+check_api_sanity() {
+	make
+	export CFLAGS="-Wall -ggdb2"
+	api-sanity-checker -l libqb -d build-aux/api-auto-test.xml -gen -build -run
+	google-chrome test_results/libqb/master/test_results.html
+	google-chrome test_results/libqb/master/test_results.html
+}
+
+check_all() {
+	check_ansi
+	check_nosection
+	check_sysv
+	check_noepoll
+	check_nogettime
+	check_bsd
+	check_dist
+	check_rpm
+}
+
+
+case $command in
+	help)
+	help_all $args
+	;;
+	ansi)
+		check_ansi
+	;;
+	nosection)
+		check_nosection
+	;;
+	sysv)
+		check_sysv
+	;;
+	noepoll)
+		check_noepoll
+	;;
+	nogettime)
+		check_nogettime
+	;;
+	bsd)
+		check_bsd
+	;;
+	mac)
+		check_mac
+	;;
+	rpm)
+		check_rpm
+	;;
+	mock)
+		check_mock
+	;;
+	dist)
+		check_dist
+	;;
+	coverity)
+		check_coverity
+	;;
+	clang)
+		check_clang
+	;;
+	abi)
+		check_abi $args
+	;;
+	api_sanity)
+		check_api_sanity
+	;;
+	all)
+		check_all
+	;;
+	*)
+		help_all
+	;;
+esac
+cd -
+exit 0
+

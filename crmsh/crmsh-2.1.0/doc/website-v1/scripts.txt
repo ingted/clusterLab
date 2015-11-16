@@ -1,0 +1,445 @@
+= Cluster Scripts =
+:source-highlighter: pygments
+
+.Version information
+NOTE: This section applies to `crmsh 2.0+` only.
+
+== Introduction ==
+
+A big part of the configuration and management of a cluster is
+collecting information about all cluster nodes and deploying changes
+to those nodes. Often, just performing the same procedure on all nodes
+will encounter problems, due to subtle differences in the
+configuration.
+
+For example, when configuring a cluster for the first time, the
+software needs to be installed and configured on all nodes before the
+cluster software can be launched and configured using `crmsh`. This
+process is cumbersome and error-prone, and the goal is for scripts to
+make this process easier.
+
+Another important function of scripts is collecting information and
+reporting potential issues with the cluster. For example, software
+versions may differ between nodes, causing byzantine errors or random
+failure. `crmsh` comes packaged with a `health` script which will
+detect and warn about many of these types of problems.
+
+There are many tools for managing a collection of nodes, and scripts
+are not intended to replace these tools. Rather, they provide an
+integrated way to perform tasks across the cluster that would
+otherwise be tedious, repetitive and error-prone. The scripts
+functionality in the crm shell is mainly inspired by Ansible, a
+light-weight and efficient configuration management tool.
+
+Scripts are implemented using the `parallel-ssh` package which
+provides a thin wrapper on top of SSH. This allows the scripts to
+function through the usual SSH channels used for system maintenance,
+requiring no additional software to be installed or maintained.
+
+== Usage ==
+
+Scripts are available through the `cluster` sub-level in the crm
+shell. Some scripts have custom commands linked to them for
+convenience, such as the `init`, `join` and `remove` commands for
+creating new clusters, introducing new nodes into the cluster and for
+removing nodes from a running cluster.
+
+Other scripts can be accessed through the `script` sub-level inside
+`cluster`.
+
+=== List available scripts ===
+
+To list the available scripts, use the following command:
+
+.........
+# crm script
+list
+.........
+
+The available scripts are listed along with a short description.
+
+=== Script description ===
+
+To get more details about a script, run the `describe` command. For
+example, to get more information about what the `health` script does
+and what parameters it accepts, use the following command:
+
+.........
+# crm script
+describe health
+.........
+
+`describe` will print a longer explanation for the script, along with
+a list of parameters, each parameter having a description, a note
+saying if it is an optional or required parameter, and if optional,
+what the default value is.
+
+=== Running a script ===
+
+To run a script, all required parameters and any optional parameters
+that should have values other than the default should be provided as
+`key=value` pairs on the command line. The following example shows how 
+to call the `health` script with verbose output enabled:
+
+........
+# crm script
+run health verbose=true
+........
+
+
+==== Single-stepping a script ====
+
+It is possible to run a script step-by-step, with manual intervention
+between steps. First of all, list the steps of the script to run:
+
+........
+crm script steps health
+........
+
+To execute a single step, two things need to be provided:
+
+1. The name of the step to execute (printed by `steps`)
+2. a file in which `crmsh` stores the state of execution.
+
+Note that it is entirely possible to run steps out-of-order, however
+this is unlikely to work in practice since steps often rely on the
+output of previous steps.
+
+The following command will execute the first step of the `health`
+script and store the output in a temporary file named `health.json`:
+
+........
+crm script run health \
+    step='Collect cluster information' \
+    statefile='health.json'
+........
+
+The statefile contains the script parameters and the output of
+previous steps, encoded as `json` data.
+
+To continue executing the next step in sequence, replace the step name
+with the next step:
+
+........
+crm script run health \
+    step='Report cluster state' \
+    statefile='health.json'
+........
+
+Note that the `dry_run` flag that can be used to do partial execution
+of scripts is not taken into consideration when single-stepping
+through a script.
+
+== Creating a script ==
+
+This section will describe how to create a new script, where to put
+the script to allow `crmsh` to find it, and how to test that the
+script works as intended.
+
+=== How scripts work, in detail ===
+
+When the script runs, the steps defined in `main.yml` as described
+below are executed one at a time. Each step describes an action that
+is applied to the cluster, either by calling out and running scripts
+on each of the cluster nodes, or by running a script locally on the
+node from which the command was executed.
+
+=== Actions ===
+
+Scripts perform actions that are classified into a few basic
+types. Each action is performed by calling out to a shell script,
+but the arguments and location of that script varies depending on the
+type.
+
+Here are the types of script actions that can be performed:
+
+Collect::
+  * Runs on all cluster nodes
+  * Gathers information about the nodes, both general information and
+    information specific to the script.
+
+Validate::
+  * Runs on the local node
+  * Validate parameter values and node state based on collected
+    information. Can modify default values and report issues that
+    would prevent the script from applying successfully.
+
+Apply::
+  * Runs on all or any cluster nodes
+  * Applies changes, returning information about the applied changes
+    to the local node.
+
+Apply-Local::
+  * Runs on the local node
+  * Applies changes to the cluster, where an action taken on a single
+    node affect the entire cluster. This includes updating the CIB in
+    Pacemaker, and also reloading the configuration for Corosync.
+
+Report::
+  * Runs on the local node
+  * This is similar to the _Apply-Local_ action, with the difference
+    that the output of a Report action is not interpreted as JSON data
+    to be passed to the next action. Instead, the output is printed to
+    the screen.
+
+
+=== Basic structure ===
+
+The crm shell looks for scripts in two primary locations: Included
+scripts  are installed in the system-wide shared folder, usually
+`/usr/share/crmsh/scripts/`. Local and custom scripts are loaded from
+the user-local XDG_CONFIG folder, usually found at
+`~/.local/crm/scripts/`. These locations may differ depending on how
+the crm shell was installed and which system is used, but these are
+the locations used on most distributions.
+
+To create a new script, make a new folder in the user-local scripts
+folder and give it a unique name. In this example, we will call our
+new script `check-uptime`.
+
+........
+mkdir -p ~/.local/crm/scripts/check-uptime
+........
+
+In this directory, create a file called `main.yml`. This is a YAML
+document which describes the script, which parameters it requires, and
+what actions it will perform.
+
+YAML is a human-readable markup language which is designed to be easy
+to read and modify, while at the same time be compatible with JSON. To
+learn more, see http:://yaml.org/[yaml.org].
+
+Here is an example `main.yml` file, heavily commented to explain what
+each section means.
+
+[source,yaml]
+----
+---
+# The triple-dash indicates that this is a yaml document.
+# All yaml documents should begin with this line.
+- name: Check uptime of nodes
+  description: >
+    This script will fetch the uptime of
+    all nodes and report which node has been
+    up the longest.
+  parameters:
+    # Parameters must have a name and description.
+    # If a default value is provided, the parameter
+    # is considered optional. Parameters without a
+    # default value must be provided when running the
+    # script.
+    - name: show_all
+      description: Show all uptimes
+      default: false
+  steps:
+    # Steps consist of a descriptive name and an action which
+    # calls a script to do its work. The script should be an
+    # executable file located in the same folder as main.yml.
+    #
+    # Script files can be written in any language, as long as
+    # the cluster nodes know how to execute them.
+    #
+    # These are the valid actions:
+    # collect:
+    #     Runs on all nodes. Should not perform changes, only
+    #     gather and return information.
+    # validate:
+    #     Runs on the local node only. Should report problems
+    #     that would prevent further progress. If validate returns
+    #     a map of values, matching script parameters are updated
+    #     to reflect those values.
+    # apply:
+    #     Runs on all nodes. Applies changes.
+    #     If the dry_run flag is set, script execution stops
+    #     before the first apply action.
+    #
+    # apply_local:
+    #     Runs on the local node only. Otherwise same as apply.
+    #
+    # report:
+    #     Runs on the local node only. Output from this step is
+    #     printed, not saved as input to the following steps.
+    #     This output does not have to be in JSON format.
+    - name: Fetch uptime
+      collect: fetch.py
+    - name: Report uptime
+      report: report.py
+----
+
+The actions must not be Python scripts. They can be plain bash scripts
+or any other executable script as long as the nodes have the necessary
+dependencies installed. However, see below why implementing scripts in
+Python is easier.
+
+Actions report their progress either by returning JSON on standard
+output, or by returning a non-zero return value and printing an error
+message to standard error.
+
+Any JSON returned by an action will be available to the following
+steps in the script. When the script executes, it does so in a
+temporary folder created for that purpose. In that folder is a file
+named `script.input`, containing a JSON array with the output produced
+by previous steps.
+
+The first element in the array (the zeroth element, to be precise) is
+a dict containing the parameter values. 
+
+The following elements are dicts with the hostname of each node as key
+and the output of the action generated by that node as value.
+
+In most cases, only local actions (`validate` and `apply_local`) will
+use the information in previous steps, but scripts are not limited in
+what they can do.
+
+With this knowledge, we can implement `fetch.py` and `report.py`.
+
+`fetch.py`:
+
+[source,python]
+----
+#!/usr/bin/env python
+import crm_script as crm
+try:
+    uptime = open('/proc/uptime').read().split()[0]
+    crm.exit_ok(uptime)
+except:
+    crm.exit_fail("Couldn't open /proc/uptime")
+----
+
+`report.py`:
+
+[source,python]
+----
+#!/usr/bin/env python
+import crm_script as crm
+show_all = crm.is_true(crm.param('show_all'))
+uptimes = crm.output(1).items()
+max_uptime = 0, ''
+for host, uptime in uptimes:
+    if uptime > max_uptime[0]:
+        max_uptime = uptime, host
+if show_all:
+    print "Uptimes: %s" % (', '.join("%s: %s" % v for v in uptimes))
+print "Longest uptime is %s seconds on host %s" % max_uptime
+----
+
+See below for more details on the helper library `crm_script`.
+
+Save the scripts as executable files in the same directory as the
+`main.yml` file.
+
+Before running the script, it is possible to verify that the files are
+in a valid format and in the right location. Run the following
+command:
+
+........
+crm script verify check-uptime
+........
+
+If the verification is successful, try executing the script with the
+following command:
+
+........
+crm script run check-uptime
+........
+
+Example output:
+
+[source,bash]
+----
+# crm script run check-uptime
+INFO: Check uptime of nodes
+INFO: Nodes: ha-three, ha-one
+OK: Fetch uptimes
+OK: Report uptime
+Longest uptime is 161054.04 seconds on host ha-one
+----
+
+To see if the `show_all` parameter works as intended, run the
+following:
+
+........
+crm script run check-uptime show_all=yes
+........
+
+Example output:
+
+[source,bash]
+----
+# crm script run check-uptime show_all=yes
+INFO: Check uptime of nodes
+INFO: Nodes: ha-three, ha-one
+OK: Fetch uptimes
+OK: Report uptime
+Uptimes: ha-one: 161069.83, ha-three: 159950.38
+Longest uptime is 161069.83 seconds on host ha-one
+----
+
+=== Remote permissions ===
+
+Some scripts may require super-user access to remote or local
+nodes. It is recommended that this is handled through SSH certificates
+and agents, to facilitate password-less access to nodes.
+
+=== Running scripts without a cluster ===
+
+All cluster scripts can optionally take a `nodes` argument, which
+determines the nodes that the script will run on. This node list is
+not limited to nodes already in the cluster. It is even possible to
+execute cluster scripts before a cluster is set up, such as the
+`health` and `init` scripts used by the `cluster` sub-level.
+
+........
+crm script run health nodes=example1,example2
+........
+
+The list of nodes can be comma- or space-separated, but if the list
+contains spaces, the whole argument will have to be quoted:
+
+........
+crm script run health nodes="example1 example2"
+........
+
+=== Running in validate mode ===
+
+It may be desirable to do a dry-run of a script, to see if any
+problems are present that would make the script fail before trying to
+apply it. To do this, add the argument `dry_run=yes` to the invocation:
+
+.........
+crm script run health dry_run=yes
+.........
+
+The script execution will stop at the first `apply` action. Note that
+non-modifying steps that happen after the first `apply` action will
+not be performed in a dry run.
+
+=== Helper library ===
+
+When the script data is copied to each node, a small helper library is
+also passed along with the script. This library can be found in
+`utils/crm_script.py` in the source repository. This library helps
+with producing output in the correct format, parsing the
+`script.input` data provided to scripts, and more.
+
+.`crm_script` API
+`host()`::
+    Returns hostname of current node
+`get_input()`::
+    Returns the input data list. The first element in the list
+    is a dict of the script parameters. The rest are the output
+    from previous steps.
+`parameters()`::
+    Returns the script parameters as a dict.
+`param(name)`::
+    Returns the value of the named script parameter.
+`output(step_idx)`::
+    Returns the output of the given step, with the first step being step 1.
+`exit_ok(data)`::
+    Exits the step returning `data` as output.
+`exit_fail(msg)`::
+    Exits the step returning `msg` as error message.
+`is_true(value)`::
+    Converts a truth value from string to boolean.
+`call(cmd, shell=False)`::
+    Perform a system call. Returns `(rc, stdout, stderr)`.

@@ -1,0 +1,39 @@
+// Copyright (c) 2009-2015 Tim Serong <tserong@suse.com>
+// See COPYING for license.
+
+.nav {
+  &.nav-topspace {
+    margin-top: 10px;
+  }
+
+  &.nav-bighelp {
+    li {
+      a {
+        font-size: 20px;
+        line-height: 40px;
+        margin-bottom: 20px;
+        padding: 20px;
+        color: #000;
+        text-align: left;
+
+        & > i {
+          padding-right: 10px;
+        }
+
+        .pull-right {
+          font-size: 40px;
+        }
+
+        &:hover {
+          .pull-right {
+            color: #00b268;
+          }
+        }
+      }
+
+      &:last-child a {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

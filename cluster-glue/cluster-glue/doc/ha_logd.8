@@ -1,0 +1,126 @@
+'\" t
+.\"     Title: ha_logd
+.\"    Author: Alan Robertson <alanr@unix.sh>
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: December 8, 2009
+.\"    Manual: System administration utilities
+.\"    Source: cluster-glue 1.0.12
+.\"  Language: English
+.\"
+.TH "HA_LOGD" "8" "December 8, 2009" "cluster-glue 1.0.12" "System administration utilitie"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+ha_logd \- Logging Daemon for High\-Availability Linux
+.SH "SYNOPSIS"
+.HP \w'\fBha_logd\fR\ 'u
+\fBha_logd\fR [\fB\-s\fR] [\fB\-k\fR] [\fB\-d\fR] [\fB\-h\fR] [\fB\-c\fR\ \fIfile\fR]
+.SH "DESCRIPTION"
+.PP
+\fBha_logd\fR
+is a logging daemon for Linux\-HA\&. It receives messages from a local domain socket
+/usr/var/lib/heartbeat/log_daemon, and writes them to appropriate files and syslog if enabled\&. The reason for utilizing this logging daemon is that occasionally Heartbeat suffers from disk I/O delays\&. By sending log messages to a logging daemon, heartbeat can avoid such I/O delays\&.
+.SH "OPTIONS"
+.PP
+The following options are supported:
+.PP
+\fB\-s\fR
+.RS 4
+Show
+\fBha_logd\fR
+status (either
+running
+or
+stopped)
+.RE
+.PP
+\fB\-k\fR
+.RS 4
+Stop (kill) the daemon
+.RE
+.PP
+\fB\-d\fR
+.RS 4
+Daemonize (without this option,
+\fBha_logd\fR
+will run in the foreground)
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Show a brief usage message
+.RE
+.PP
+\fB\-c\fR \fIfile\fR
+.RS 4
+Configuration file\&. You may configure a regular log file, debug log file, log facility, and entity\&. For details, see the example
+ha_logd\&.cf
+file found in the documentation\&.
+.RE
+.SH "FILES"
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+/usr/var/run/ha_logd\&.pid
+\(en PID file
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+ha_logd\&.cf
+\(en example configuration file
+.RE
+.SH "SEE ALSO"
+.PP
+\fBheartbeat\fR(8),
+\fBha_logger\fR(1)
+.SH "AUTHORS"
+.PP
+\fBAlan Robertson\fR <\&alanr@unix\&.sh\&>
+.RS 4
+ha_logd
+.RE
+.PP
+\fBGuochun Shi\fR <\&gshi@ncsa\&.uiuc\&.edu\&>
+.RS 4
+ha_logd
+.RE
+.PP
+\fBMarowsky\-Bree Lars\fR <\&lmb@suse\&.de\&>
+.RS 4
+ha_logd
+.RE
+.PP
+\fBFlorian Haas\fR <\&florian\&.haas@linbit\&.com\&>
+.RS 4
+man page
+.RE

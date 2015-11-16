@@ -1,0 +1,1121 @@
+# Copyright (C) 2006-2015 SUSE Linux GmbH, Nuernberg
+# This file is distributed under the same license as the package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hawk\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2014-07-15 11:31\n"
+"Last-Translator: Novell language <language@novell.com>\n"
+"Language-Team: Novell language <language@novell.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Any changes will be lost - do you wish to proceed?"
+msgstr "Alla ändringar går förlorade. Vill du fortsätta?"
+
+msgid "Connection to server aborted - will retry every 15 seconds."
+msgstr "Anslutning till server avbruten - försöker igen var 15 sekund."
+
+#, fuzzy
+msgid "Connection to server failed - will retry every 15 seconds."
+msgstr "Anslutning till server avbruten - försöker igen var 15 sekund."
+
+msgid "Connection to server timed out - will retry every 15 seconds."
+msgstr ""
+"Tidsgränsen överskreds för anslutning till server - försöker igen var 15 sekun"
+"d."
+
+#, fuzzy
+msgid "State"
+msgstr "Delstat:"
+
+msgid "Name"
+msgstr ""
+
+msgid "Maintenance"
+msgstr "Underhåll"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nej"
+
+msgid "Standby"
+msgstr "Vänteläge"
+
+msgid "Operations"
+msgstr "Åtgärder"
+
+msgid "Online"
+msgstr "Online"
+
+msgid "Ready"
+msgstr "Klar"
+
+msgid "Fence"
+msgstr ""
+
+msgid "Details"
+msgstr "Detaljer"
+
+msgid "Events"
+msgstr ""
+
+msgid "Role ID"
+msgstr "Roll-ID"
+
+msgid "User ID"
+msgstr "Användar-ID"
+
+msgid "Unable to create shadow CIB"
+msgstr "Det går inte att skapa skugg-CIB"
+
+msgid "1 node configured"
+msgid_plural "%{num} nodes configured"
+msgstr[0] "1 nod har konfigurerats"
+msgstr[1] "%{num} noder har konfigurerats"
+
+msgid "1 resource configured"
+msgid_plural "%{num} resources configured"
+msgstr[0] "1 resurs har konfigurerats"
+msgstr[1] "%{num} resurser har konfigurerats"
+
+msgid "Edit Clone"
+msgstr "Redigera klon"
+
+msgid "Create Clone"
+msgstr "Skapa klon"
+
+msgid "Clone created successfully"
+msgstr "Klonen har skapats"
+
+msgid "Clone updated successfully"
+msgstr "Klonen har uppdaterats"
+
+msgid "Edit Colocation Constraint"
+msgstr "Redigera colocationbegränsning"
+
+msgid "Create Colocation Constraint"
+msgstr "Skapa colocationbegränsning"
+
+msgid "Constraint created successfully"
+msgstr "Begränsningen har skapats"
+
+msgid "Constraint updated successfully"
+msgstr "Begränsningen uppdaterades"
+
+msgid "Constraints"
+msgstr "Begränsningar"
+
+msgid "Cluster Configuration"
+msgstr "Klusterinställningar"
+
+msgid "Your changes have been saved"
+msgstr "Ändringarna har sparats"
+
+msgid "Unable to apply changes: %{msg}"
+msgstr "Det går inte att verkställa ändringarna: %{msg}"
+
+msgid ""
+"Can't set property %{p}, because the value contains both single and double quo"
+"tes"
+msgstr ""
+"Det går inte att ställa in egenskapen %{p} eftersom värdet innehåller både enk"
+"la och dubbla citattecken"
+
+msgid "Cluster Dashboard"
+msgstr "Klusterinstrumentpanel"
+
+msgid "Dashboard"
+msgstr "Instrumentpanel"
+
+msgid "History Explorer"
+msgstr "Historikutforskare"
+
+msgid "PE Input created by different Pacemaker version (%{version})"
+msgstr "PE-indata skapade av en annan Pacemaker-version (%{version})"
+
+msgid "Pacemaker version not present in PE Input"
+msgstr "Pacemaker-versionen finns inte i PE-indata"
+
+msgid "Required parameters \"basename\" and \"node\" not specified"
+msgstr "De begärda parametrarna \"basename\" och \"node\" har inte angetts"
+
+msgid "No details available"
+msgstr "Inga detaljer tillgängliga"
+
+msgid "Error:"
+msgstr "Fel:"
+
+msgid "Required parameters \"left\" and \"right\" not specified"
+msgstr "De begärda parametrarna \"left\" och \"right\" har inte angetts"
+
+msgid "Edit Group"
+msgstr "Redigera grupp"
+
+msgid "Create Group"
+msgstr "Skapa grupp"
+
+msgid "Group created successfully"
+msgstr "Gruppen har skapats"
+
+msgid "Group updated successfully"
+msgstr "Gruppen har uppdaterats"
+
+msgid "Edit Location Constraint"
+msgstr "Redigera platsbegränsning"
+
+msgid "Create Location Constraint"
+msgstr "Skapa platsbegränsning"
+
+msgid "%{cmd} failed (status: %{status})"
+msgstr "%{cmd} misslyckades (status: %{status})"
+
+msgid "Cluster Status"
+msgstr "Klusterstatus"
+
+msgid "Required parameter \"node\" not specified"
+msgstr "Den begärda parametern \"node\" har inte angetts"
+
+msgid "Required parameter \"resource\" not specified"
+msgstr "Den begärda parametern \"resource\" har inte angetts"
+
+msgid "Required parameters \"resource\" and \"node\" not specified"
+msgstr "De begärda parametrarna \"resource\" och \"node\" har inte angetts"
+
+msgid "Error deleting resource"
+msgstr "Fel vid borttagning av resurs"
+
+msgid "Required parameters \"ticket\" and \"site\" not specified"
+msgstr "De begärda parametrarna \"ticket\" och \"site\" har inte angetts"
+
+msgid "Required parameter \"ticket\" not specified"
+msgstr "Den begärda parametern \"ticket\" har inte angetts"
+
+msgid "Error invoking %{cmd}: %{msg}"
+msgstr "Fel vid anrop av %{cmd}: %{msg}"
+
+msgid "Edit Master/Slave"
+msgstr "Redigera master/slav"
+
+msgid "Create Master/Slave"
+msgstr "Skapa master/slav"
+
+msgid "Master/Slave created successfully"
+msgstr "Master/slav skapades"
+
+msgid "Master/Slave updated successfully"
+msgstr "Master/slav uppdaterades"
+
+#, fuzzy
+msgid "Nodes"
+msgstr "Nod"
+
+msgid "Edit Order Constraint"
+msgstr "Redigera ordningsbegränsning"
+
+msgid "Create Order Constraint"
+msgstr "Skapa ordningsbegränsning"
+
+msgid "Welcome"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "Create Resource"
+msgstr "Skapa resurs"
+
+msgid "Resource created successfully"
+msgstr "Resursen har skapats"
+
+msgid "Resource updated successfully"
+msgstr "Resursen uppdaterades"
+
+#, fuzzy
+msgid "Primitives"
+msgstr "Primitiv"
+
+msgid "Resources"
+msgstr "Resurser"
+
+msgid "Create Role"
+msgstr "Skapa roll"
+
+msgid "Role created successfully"
+msgstr "Rollen har skapats"
+
+msgid "Edit Role"
+msgstr "Redigera roll"
+
+msgid "Role updated successfully"
+msgstr "Rollen har uppdaterats"
+
+#, fuzzy
+msgid "Role deleted successfully"
+msgstr "Rollen har skapats"
+
+#, fuzzy
+msgid "Error deleting %s"
+msgstr "Fel vid borttagning av resurs"
+
+msgid "Roles"
+msgstr "Roller"
+
+msgid "The role does not exist"
+msgstr ""
+
+msgid "To enable ACLs, set 'enable-acl' in the CRM Configuration"
+msgstr "Aktivera ACL-listor genom att ange enable-acl i CRM-konfigurationen"
+
+msgid "Permission denied for user %{user}"
+msgstr "Tillstånd nekades för användaren %{user}"
+
+msgid "You have been logged out"
+msgstr "Du är utloggad"
+
+msgid "Log In"
+msgstr "Logga in"
+
+#, fuzzy
+msgid "Preferences updated successfully"
+msgstr "Resursen uppdaterades"
+
+msgid "Preferences"
+msgstr "Inställningar"
+
+msgid "Edit Template"
+msgstr "Redigera mall"
+
+msgid "Create Template"
+msgstr "Skapa mall"
+
+msgid "Template created successfully"
+msgstr "Mallen har skapats"
+
+msgid "Template updated successfully"
+msgstr "Mallen har uppdaterats"
+
+msgid "Edit Ticket Constraint"
+msgstr "Redigera biljettbegränsning"
+
+msgid "Create Ticket Constraint"
+msgstr "Skapa biljettbegränsning"
+
+msgid "Create User"
+msgstr "Skapa användare"
+
+msgid "User created successfully"
+msgstr "Användaren har skapats"
+
+msgid "Edit User"
+msgstr "Redigera användare"
+
+msgid "User updated successfully"
+msgstr "Användaren har uppdaterats"
+
+#, fuzzy
+msgid "User deleted successfully"
+msgstr "Användaren har skapats"
+
+#, fuzzy
+msgid "Users"
+msgstr "Användare"
+
+msgid "The user does not exist"
+msgstr ""
+
+msgid "Cluster Setup Wizard"
+msgstr "Klusterinställningsguide"
+
+msgid "Invalid password"
+msgstr "Ogiltigt lösenord"
+
+msgid "Root Password"
+msgstr "Root-lösenord"
+
+msgid ""
+"The root password is required in order for this wizard template to make config"
+"uration changes."
+msgstr ""
+"Rotlösenordet måste anges för att det ska gå att göra konfigurationsändringar "
+"med den här guidemallen."
+
+msgid "The root password for this system"
+msgstr "Rotlösenordet för det här systemet."
+
+msgid "\"Error: #{result}\""
+msgstr "\"Fel: #{result}\""
+
+msgid "Parameters"
+msgstr "Parametrar"
+
+msgid "Confirm"
+msgstr "Bekräfta"
+
+msgid "Done"
+msgstr "Klar"
+
+msgid "Required parameter \"%{param}\" not specified"
+msgstr "Den begärda parametern \"%{param}\" har inte angetts"
+
+msgid "Permission denied - you do not have write access to the CIB."
+msgstr "Åtkomst nekad - du har inte skrivbehörighet för CIB:n."
+
+msgid "Wizard templates and/or workflows are missing"
+msgstr "Mallar och/eller arbetsflöden för guiden saknas"
+
+msgid "Workflow \"%s\" not found"
+msgstr "Arbetsflödet \"%s\" hittades inte"
+
+msgid "Error parsing template \"%s\""
+msgstr "Fel vid tolkning av mallen \"%s\""
+
+msgid "Error parsing workflow \"%s\""
+msgstr "Fel vid tolkning av arbetsflödet \"%s\""
+
+msgid "Data collection in progress (%{from_time} to %{to_time})..."
+msgstr "Datainsamling pågår (%{from_time} till %{to_time})..."
+
+#, fuzzy
+msgid "Revert"
+msgstr "Återställ"
+
+msgid "Apply"
+msgstr ""
+
+#, fuzzy
+msgid "Create"
+msgstr "Skapa roll"
+
+#, fuzzy
+msgid "Read"
+msgstr "Klar"
+
+msgid "Write"
+msgstr ""
+
+msgid "Deny"
+msgstr ""
+
+msgid "CIB file \"%{path}\" not found"
+msgstr "CIB-filen \"%{path}\" hittades inte"
+
+msgid "Unable to parse CIB file \"%{path}\""
+msgstr "Det går inte att analysera CIB-filen \"%{path}\""
+
+msgid "Pacemaker does not appear to be installed (%{cmd} not found)"
+msgstr "Pacemaker verkar inte vara installerat (%{cmd} hittades inte)"
+
+msgid "Unable to execute %{cmd}"
+msgstr "Det gick inte att köra %{cmd}"
+
+msgid "Error invoking %{cmd}"
+msgstr "Fel vid anrop av %{cmd}"
+
+msgid "Unknown"
+msgstr "Okänd"
+
+msgid ""
+"Failed op: node=%{node}, resource=%{resource}, call-id=%{call_id}, operation=%"
+"{op}, rc-code=%{rc_code}, exit-reason=%{exit_reason}"
+msgstr ""
+
+msgid "Invalid Resource ID \"%{id}\""
+msgstr "Ogiltigt resurs-ID \"%{id}\""
+
+msgid "Unable to parse cibadmin output"
+msgstr "Det går inte att analysera cibadmin-utdata"
+
+msgid "No clone child specified"
+msgstr "Ingen underordnad för klon har angetts"
+
+msgid ""
+"Can't set meta attribute %{p}, because the value contains both single and doub"
+"le quotes"
+msgstr ""
+"Det går inte att ställa in metaattributet %{p} eftersom värdet innehåller både"
+" enkla och dubbla citattecken"
+
+msgid "The ID \"%{id}\" is already in use"
+msgstr "ID \"%{id}\" används redan"
+
+msgid "Unable to create clone: %{msg}"
+msgstr "Det går inte att skapa klon: %{msg}"
+
+msgid "Clone ID \"%{id}\" does not exist"
+msgstr "Klon-ID \"%{id}\" finns inte"
+
+msgid "Invalid score"
+msgstr "Ogiltig poäng"
+
+msgid "Constraint must consist of at least two separate resources"
+msgstr "Begränsningen måste bestå av minst två separata resurser"
+
+msgid "Unable to create constraint: %{msg}"
+msgstr "Det går inte att skapa begränsning: %{msg}"
+
+msgid "Constraint ID \"%{id}\" does not exist"
+msgstr "Begränsnings-ID \"%{id}\" finns inte"
+
+msgid "Unable to update constraint: %{msg}"
+msgstr "Det går inte att uppdatera begränsningen: %{msg}"
+
+msgid "No group children specified"
+msgstr "Inga underordnade till gruppen har specificerats"
+
+msgid "Unable to create group: %{msg}"
+msgstr "Det går inte att skapa grupp: %{msg}"
+
+msgid "Group ID \"%{id}\" does not exist"
+msgstr "Grupp-ID \"%{id}\" existerar inte"
+
+msgid "Constraint is too complex - it contains nested rules"
+msgstr "Begränsningen är för komplex - den innehåller kapslade regler"
+
+msgid "No rules specified"
+msgstr "Inga regler har angetts"
+
+msgid "No resource specified"
+msgstr "Ingen resurs angiven"
+
+msgid "Invalid score \"%{score}\""
+msgstr "Ogiltig poäng \"%{score}\""
+
+msgid "No expressions specified"
+msgstr "Inga uttryck har angetts"
+
+msgid "Attribute contains both single and double quotes"
+msgstr "Attributet innehåller både enkla och dubbla citattecken"
+
+msgid "Value contains both single and double quotes"
+msgstr "Värdet innehåller både enkla och dubbla citattecken"
+
+msgid "No Master/Slave child specified"
+msgstr "Ingen underordnad till master/slav angiven"
+
+msgid "Unable to create master/slave: %{msg}"
+msgstr "Det går inte att skapa master/slav: %{msg}"
+
+msgid "Master/Slave ID \"%{id}\" does not exist"
+msgstr "Master/slav-ID \"%{id}\" finns inte"
+
+msgid ""
+"Can't set parameter %{p}, because the value contains both single and double qu"
+"otes"
+msgstr ""
+"Det går inte att ställa in parametern %{p} eftersom värdet innehåller både enk"
+"la och dubbla citattecken"
+
+msgid ""
+"Can't set op %{o} attribute {%a}, because the value contains both single and d"
+"ouble quotes"
+msgstr ""
+"Det går inte att ställa in op %{o} attribut {%a} eftersom värdet innehåller bå"
+"de enkla och dubbla citattecken"
+
+msgid "Unable to create resource: %{msg}"
+msgstr "Det går inte att skapa resurs: %{msg}"
+
+msgid "Resource ID \"%{id}\" does not exist"
+msgstr "Resurs-ID:t \"%{id}\" finns inte"
+
+#, fuzzy
+msgid "Unable to create: %{msg}"
+msgstr "Det går inte att skapa roll: %{msg}"
+
+#, fuzzy
+msgid "The ID \"%{id}\" does not exist"
+msgstr "Roll-ID \"%{id}\" finns inte"
+
+#, fuzzy
+msgid "Unable to update: %{msg}"
+msgstr "Det går inte att uppdatera rollen: %{msg}"
+
+msgid "Role ID is required"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid Role ID"
+msgstr "Ogiltigt biljett-ID"
+
+msgid "Username not specified"
+msgstr "Användarnamnet har inte angetts"
+
+msgid "Invalid username"
+msgstr "Ogiltigt användarnamn"
+
+msgid "Password not specified"
+msgstr "Inget lösenord har angetts"
+
+msgid "%s is not installed"
+msgstr "%s har inte installerats"
+
+#, fuzzy
+msgid "%s is not executable"
+msgstr "%s har inte installerats"
+
+msgid "Invalid username or password"
+msgstr "Fel användarnamn eller lösenord"
+
+msgid "Language is required"
+msgstr ""
+
+msgid "Invalid Ticket ID"
+msgstr "Ogiltigt biljett-ID"
+
+msgid "No resources specified"
+msgstr "Inga resurser angivna"
+
+msgid "User ID is required"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid User ID"
+msgstr "Ogiltigt biljett-ID"
+
+msgid "Meta Attributes"
+msgstr "Metaattribut"
+
+msgid "Add"
+msgstr "Lägg till"
+
+msgid "Remove"
+msgstr "Ta bort"
+
+msgid "You must enter a value"
+msgstr "Du måste ange ett värde"
+
+msgid "Clone ID"
+msgstr "Klon-ID"
+
+msgid "Child Resource"
+msgstr "Underordnad resurs"
+
+msgid "Revert Changes"
+msgstr "Återställ ändringar"
+
+msgid "Back"
+msgstr "Tillbaka"
+
+msgid "Apply Changes"
+msgstr "Verkställ ändringar"
+
+msgid "Link set"
+msgstr "Länkuppsättning"
+
+msgid "Break set"
+msgstr "Splittra uppsättning"
+
+msgid "Swap resources"
+msgstr "Byt resurser"
+
+msgid "Add resource to constraint"
+msgstr "Lägg till resurs i begränsning"
+
+msgid "Constraint ID"
+msgstr "Begränsnings-ID"
+
+msgid "Score"
+msgstr "Poäng"
+
+msgid "Create Constraint"
+msgstr "Skapa begränsning"
+
+msgid "Edit Constraint"
+msgstr "Redigera begränsning"
+
+msgid "Delete Constraint"
+msgstr "Ta bort begränsning"
+
+msgid "Are you sure you wish to delete %s?"
+msgstr "Är du säker på att du vill ta bort %s?"
+
+msgid "New Constraint"
+msgstr "Ny begränsning"
+
+msgid "Location"
+msgstr "Plats"
+
+msgid "Colocation"
+msgstr "Colocation"
+
+msgid "Order"
+msgstr "Ordning"
+
+msgid "Ticket"
+msgstr "Biljett"
+
+msgid "(No location constraints defined)"
+msgstr "(Inga platsbegränsningar definierade)"
+
+msgid "[Constraint is too complex to display]"
+msgstr "[Begränsningen är för komplex att visa]"
+
+msgid "(No colocation constraints defined)"
+msgstr "(Inga colocationbegränsningar definierade)"
+
+msgid "(No order constraints defined)"
+msgstr "(Inga ordningsbegränsningar definierade)"
+
+msgid "(No ticket constraints defined)"
+msgstr "(Inga biljettbegränsningar definierade)"
+
+msgid "CRM Configuration"
+msgstr "CRM-konfigurering"
+
+msgid "Resource Defaults"
+msgstr "Resursstandard"
+
+msgid "Operation Defaults"
+msgstr "Åtgärdsstandard"
+
+msgid "No cluster properties set in %{group}"
+msgstr "Inga klusteregenskaper angivna i %{group}"
+
+msgid "Edit"
+msgstr "Redigera"
+
+msgid "Username:"
+msgstr "Användarnamn:"
+
+msgid "Password:"
+msgstr "Lösenord:"
+
+msgid "Cluster has errors - click for details"
+msgstr "Klustret har fel - klicka för information"
+
+msgid "Timeout: Please try again"
+msgstr "Tidsgränsen överskreds: försök igen"
+
+msgid "Permission denied. Please log in to %{node}"
+msgstr "Tillstånd nekades. Logga in på %{node}"
+
+#, fuzzy
+msgid "Geo Site %{ip}"
+msgstr "Klonuppsättning: %{id}"
+
+msgid "Site: %{ip}"
+msgstr ""
+
+msgid "Arbitrator: %{ip}"
+msgstr ""
+
+msgid "Can't contact Hawk on %{node}. Retrying every 5 seconds."
+msgstr "Det går inte att kontakta Hawk på %{node}. Försöker igen var 5 sekund."
+
+msgid "Cluster Name:"
+msgstr "Klusternamn:"
+
+msgid "Host Name:"
+msgstr "Värddatornamn:"
+
+msgid ""
+"(Specify any host name in the cluster.  Other nodes will be found automaticall"
+"y)"
+msgstr "(Ange valfritt värdnamn i klustret. Andra noder hittas automatiskt.)"
+
+msgid "Add Cluster"
+msgstr "Lägg till kluster"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "A cluster with that name already exists"
+msgstr "Det finns redan ett kluster med det här namnet"
+
+msgid "The host %{h} is already present in cluster %{c}"
+msgstr "Värden %{h} finns redan i klustret %{c}"
+
+msgid ""
+"Unable to connect to %{host}. Try opening %{url} in your web browser to ensure"
+" Hawk is accessible."
+msgstr ""
+"Det går inte att ansluta till %{host}. Försök öppna %{url} i webbläsaren för a"
+"tt kontrollera att det går att komma åt Hawk."
+
+msgid "Cancel"
+msgstr "Avbryt"
+
+#, fuzzy
+msgid "Cluster"
+msgstr "Lägg till kluster"
+
+msgid "STONITH Enabled"
+msgstr "STONITH aktiverat"
+
+msgid "No Quorum Policy"
+msgstr "Inget kvorum-policy"
+
+msgid "Symmetric Cluster"
+msgstr "Symmetriskt kluster"
+
+msgid "Resource Stickiness"
+msgstr "Resursens varaktighet"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "No transitions found for the specified time period."
+msgstr "Inga överföringar hittades för den angivna tidsperioden."
+
+msgid "Time"
+msgstr "Tid"
+
+msgid "PE Input"
+msgstr "PE-indata"
+
+msgid "Node"
+msgstr "Nod"
+
+msgid "(full log)"
+msgstr "(full logg)"
+
+msgid "Graph"
+msgstr "Graf"
+
+msgid "Diff"
+msgstr "Diff"
+
+msgid "Delete this history archive?"
+msgstr "Ta bort det här historikarkivet?"
+
+msgid "Start Time:"
+msgstr "Starttid:"
+
+msgid "End Time:"
+msgstr "Sluttid:"
+
+msgid "Exploring %{path}"
+msgstr "Utforska %{path}"
+
+msgid "Display"
+msgstr "Skärm"
+
+msgid "Upload hb_report tarball"
+msgstr "Överför hb_report-TAR-fil"
+
+msgid "Explore"
+msgstr "Utforska"
+
+msgid "Error: Permission denied for user '%s'."
+msgstr "Fel: Nekad behörighet för användaren %s."
+
+msgid "Group ID"
+msgstr "Grupp-ID"
+
+msgid "Group Children"
+msgstr "Gruppera underordnade"
+
+msgid "Available Primitives"
+msgstr "Tillgängliga primitiver"
+
+msgid "Start Time not specified"
+msgstr "Starttid har inte angetts"
+
+msgid "Generate"
+msgstr "Generera"
+
+msgid "hb_report generation in progress..."
+msgstr "hb_report genereras..."
+
+msgid "Download hb_report"
+msgstr "Ladda ner hb_report"
+
+#, fuzzy
+msgid "Please ensure Javascript is enabled"
+msgstr "Se till att JavaScript är aktiverat"
+
+msgid "SUSE, LLC"
+msgstr ""
+
+msgid "High Availability Web Konsole"
+msgstr ""
+
+msgid "Role"
+msgstr "Roll"
+
+msgid "Boolean Op"
+msgstr "Boolesk op"
+
+msgid "Expression"
+msgstr "Uttryck"
+
+msgid "Add Rule"
+msgstr "Lägg till regel"
+
+msgid "Remove Rule"
+msgstr "Ta bort regel"
+
+msgid "Show Rule Editor"
+msgstr "Visa regelredigerare"
+
+msgid "Resource"
+msgstr "Resurs"
+
+msgid "Fence Node"
+msgstr "Staketnod"
+
+msgid "View Details..."
+msgstr "Visa detaljer..."
+
+msgid "View Recent Events..."
+msgstr "Visa senaste händelser..."
+
+msgid "Start"
+msgstr "Början"
+
+msgid "Stop"
+msgstr "Stopp"
+
+msgid "Move..."
+msgstr "Flytta..."
+
+msgid "Drop Relocation Rule"
+msgstr "Hoppa över flyttregel"
+
+msgid "Promote"
+msgstr "Höj"
+
+msgid "Demote"
+msgstr "Sänk"
+
+msgid "Clean Up"
+msgstr "Städa upp"
+
+msgid "Grant"
+msgstr "Bevilja"
+
+msgid "Revoke"
+msgstr "Återkalla"
+
+msgid "Master/Slave ID"
+msgstr "Master/slav-ID"
+
+msgid "Getting recent events (last hour)..."
+msgstr "Hämtar senaste händelser (senaste timmen)..."
+
+msgid "Another \"crm history\" operation is in progress..."
+msgstr "En annan \"crm history\"-åtgärd pågår..."
+
+msgid "No events found in last hour."
+msgstr "Inga händelser hittades den senaste timmen."
+
+msgid "Utilization"
+msgstr "Användning"
+
+msgid "No utilization defined"
+msgstr "Ingen användning definierad"
+
+msgid "Attributes"
+msgstr "Attribut"
+
+msgid "No attributes defined"
+msgstr "Inga attribut definierade"
+
+msgid "Symmetrical"
+msgstr "Symmetrisk"
+
+msgid "Close"
+msgstr "Stäng"
+
+msgid "HTML"
+msgstr ""
+
+msgid "PDF"
+msgstr ""
+
+msgid "There is already a monitor op with this interval."
+msgstr "Det finns redan en övervakningsop med det här intervallet."
+
+msgid "Resource ID"
+msgstr "Resurs-ID"
+
+msgid "Template ID"
+msgstr "Mall-ID"
+
+msgid "Class"
+msgstr "Klass"
+
+msgid "Provider"
+msgstr "Leverantör"
+
+msgid "Type"
+msgstr "Typ"
+
+msgid "Use Template"
+msgstr "Använd mall"
+
+msgid "Edit Resource"
+msgstr "Redigera resurs"
+
+msgid "Delete Resource"
+msgstr "Ta bort resurs"
+
+msgid "New Resource"
+msgstr "Ny resurs"
+
+msgid "Primitive"
+msgstr "Primitiv"
+
+msgid "New Template"
+msgstr "Ny mall"
+
+msgid "Template"
+msgstr "Mall"
+
+msgid "New Group"
+msgstr "Ny grupp"
+
+msgid "Group"
+msgstr "Grupp"
+
+msgid "New Clone"
+msgstr "Ny klon"
+
+msgid "Clone"
+msgstr "Klon"
+
+msgid "New Master/Slave"
+msgstr "Ny master/slav"
+
+msgid "Master/Slave"
+msgstr "Master/slav"
+
+msgid "(No primitive resources defined)"
+msgstr "(Inga primitivresurser definierade)"
+
+msgid "(No templates defined)"
+msgstr "(Inga mallar definierade)"
+
+msgid "(No groups defined)"
+msgstr "(Inga grupper definierade)"
+
+msgid "(No clones defined)"
+msgstr "(Inga kloner har angetts)"
+
+msgid "(No master/slave resources defined)"
+msgstr "(Inga master-/slavresurser definierade)"
+
+msgid "Fail Count"
+msgstr "Felräkning"
+
+msgid "Last Failure"
+msgstr "Senaste fel"
+
+#, fuzzy
+msgid "Rule"
+msgstr "Roll"
+
+msgid "Add a rule below"
+msgstr ""
+
+#, fuzzy
+msgid "Remove this rule"
+msgstr "Ta bort regel"
+
+#, fuzzy
+msgid "Move rule up"
+msgstr "Flytta resursen %s"
+
+msgid "Move rule down"
+msgstr ""
+
+msgid "Right"
+msgstr "Höger"
+
+msgid "XPath"
+msgstr "XPath"
+
+msgid "Tag"
+msgstr "Tagg"
+
+msgid "Ref"
+msgstr "Ref"
+
+msgid "Attribute"
+msgstr "Attribut"
+
+#, fuzzy
+msgid "Delete role"
+msgstr "Ta bort resurs"
+
+#, fuzzy
+msgid "Add role"
+msgstr "Lägg till regel"
+
+msgid ""
+"ACL support requires CIB schema version 2.0, available in Pacemaker 1.1.12 and"
+" up. For older versions of Pacemaker, use Hawk version 0.6."
+msgstr ""
+
+#, fuzzy
+msgid "Username"
+msgstr "Användarnamn:"
+
+#, fuzzy
+msgid "Password"
+msgstr "Lösenord:"
+
+#, fuzzy
+msgid "Login"
+msgstr "Logga in"
+
+msgid "Loss Policy"
+msgstr "Förlustprincip"
+
+#, fuzzy
+msgid "Delete user"
+msgstr "Ta bort resurs"
+
+#, fuzzy
+msgid "Add user"
+msgstr "Lägg till kluster"
+
+msgid "%{workflow}: %{step}"
+msgstr "%{workflow}: %{step}"
+
+msgid "The configuration has been applied."
+msgstr "Konfigurationen har verkställts."
+
+msgid "The following configuration will be applied to the cluster:"
+msgstr "Följande konfiguration används för klustret:"
+
+msgid "Error applying configuration:"
+msgstr "Det inträffade ett fel när konfigurationen verkställdes:"
+
+msgid "< Back"
+msgstr "< Tillbaka"
+
+msgid "Next >"
+msgstr "Nästa >"
+
+msgid "No workflow descriptions found"
+msgstr "Inga arbetsflödesbeskrivningar hittades"
+
+msgid "Choose Configuration"
+msgstr "Välj konfiguration"
+
+msgid ""
+"This wizard will guide you through the steps necessary to add one of the follo"
+"wing configurations to the cluster."
+msgstr ""
+"Den här guiden vägleder dig genom de steg som krävs för att lägga till någon a"
+"v följande konfigurationer i klustret."
+
+msgid "The object/attribute does not exist (cibadmin %{cmd})"
+msgstr "Objektet/attributet finns inte (cibadmin %{cmd})"
+
+msgid "Error invoking cibadmin %{cmd}: %{msg}"
+msgstr "Fel vid anrop av cibadmin %{cmd}: %{msg}"
+
+msgid "The object/attribute does not exist: %{msg}"
+msgstr "Objektet/attributet finns inte: %{msg}"
+
+msgid "Error invoking cibadmin --replace: %{msg}"
+msgstr "Fel vid anrop av cibadmin --replace: %{msg}"

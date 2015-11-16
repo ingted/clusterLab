@@ -1,0 +1,19 @@
+// Copyright (c) 2009-2015 Tim Serong <tserong@suse.com>
+// See COPYING for license.
+
+.dl-inline {
+  margin: 0;
+
+  dt, dd {
+    display: inline-block;
+    margin: 0;
+  }
+
+  dt {
+    margin: 0 5px;
+  }
+}
+
+.list-group-item {
+  padding: 8px 15px 7px 15px;
+}

@@ -1,0 +1,10 @@
+language: c
+compiler:
+  - gcc
+addons:
+        apt:
+                packages:
+                  - check
+                  - splint
+script: ./autogen.sh && ./configure && make check && make distcheck
+sudo: false

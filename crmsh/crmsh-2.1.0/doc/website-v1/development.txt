@@ -1,0 +1,62 @@
+= Development =
+
+`crmsh` is a free software project, and is open to contributors.
+Patches, comments, documentation, testing and so on are
+all very much welcome!
+
+== Tools ==
+
+++++
+<ul class="nav">
+<li><a href="https://github.com/crmsh/crmsh"><i class="fa fa-archive fa-3x fa-fw"></i> Source Repository</a></li>
+<li><a href="http://lists.linux-ha.org/mailman/listinfo/linux-ha"><i class="fa fa-envelope fa-3x fa-fw"></i> Mailing List</a></li>
+<li><a href="https://github.com/crmsh/crmsh/issues"><i class="fa fa-bug fa-3x fa-fw"></i> Issue Tracker</a></li>
+<li><a href="irc://freenode.net/#linux-ha"><i class="fa fa-comments fa-3x fa-fw"></i> IRC: #linux-ha on Freenode</a></li>
+<li><a href="https://github.com/crmsh/crmsh/commits/master.atom"><i class="fa fa-rss fa-3x fa-fw"></i> Atom feed</a></li>
+</ul>
+++++
+
+== Get the source ==
+
+The source code for `crmsh` is kept in a
+http://git-scm.com/[git] repository
+hosted at https://github.com[github]. Use +git+ to get a working copy:
+
+----
+git clone https://github.com/crmsh/crmsh.git
+----
+
+`crmsh` needs the development headers for link:http://hg.linux-ha.org/glue[cluster-glue] and 
+link:https://github.com/ClusterLabs/pacemaker[pacemaker] when
+installing. On openSUSE, these are packaged as `libglue-devel` and
+`libpacemaker-devel`.
+
+.Building
+----
+./autogen.sh
+./configure
+make
+make install
+----
+
+=== Tests ===
+
+The unit tests for `crmsh` require +nose+ to run. On most distributions, this can be installed
+by installing the package +python-nose+, or using +pip+.
+
+To run the unit test suite, go to the source code directory of `crmsh`
+and call:
+
+----
+./test/unit-tests.sh
+----
+
+`crmsh` also comes with a comprehensive regression test suite. The regression tests need
+to run after installation, on a system which has both crmsh and pacemaker installed.
+
+To execute the tests, call:
+
+----
+/usr/share/crmsh/tests/regression.sh
+cat crmtestout/regression.out
+----

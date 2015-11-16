@@ -1,0 +1,1128 @@
+# Copyright (C) 2006-2015 SUSE Linux GmbH, Nuernberg
+# This file is distributed under the same license as the package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hawk\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2014-07-15 11:31\n"
+"Last-Translator: Novell language <language@novell.com>\n"
+"Language-Team: Novell language <language@novell.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid "Any changes will be lost - do you wish to proceed?"
+msgstr "Все изменения будут утеряны. Продолжить?"
+
+msgid "Connection to server aborted - will retry every 15 seconds."
+msgstr "Прерывание соединения с сервером - попытки будут повторяться каждые 15 секунд."
+
+#, fuzzy
+msgid "Connection to server failed - will retry every 15 seconds."
+msgstr "Прерывание соединения с сервером - попытки будут повторяться каждые 15 секунд."
+
+msgid "Connection to server timed out - will retry every 15 seconds."
+msgstr "Тайм-аут соединения с сервером - попытки будут повторяться каждые 15 секунд."
+
+#, fuzzy
+msgid "State"
+msgstr "Область:"
+
+msgid "Name"
+msgstr ""
+
+msgid "Maintenance"
+msgstr "Обслуживание"
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "No"
+msgstr "Нет"
+
+msgid "Standby"
+msgstr "Режим ожидания"
+
+msgid "Operations"
+msgstr "Операции"
+
+msgid "Online"
+msgstr "В Интернете"
+
+msgid "Ready"
+msgstr "Готово"
+
+msgid "Fence"
+msgstr ""
+
+msgid "Details"
+msgstr "Подробности"
+
+msgid "Events"
+msgstr ""
+
+msgid "Role ID"
+msgstr "ИД роли"
+
+msgid "User ID"
+msgstr "ID пользователя"
+
+msgid "Unable to create shadow CIB"
+msgstr "Не удалось создать теневую базу сведений о кластере (CIB)"
+
+msgid "1 node configured"
+msgid_plural "%{num} nodes configured"
+msgstr[0] "1 узел сконфигурирован"
+msgstr[1] "Сконфигурировано узлов: %{num}"
+msgstr[2] "Сконфигурировано узлов: %{num}"
+
+msgid "1 resource configured"
+msgid_plural "%{num} resources configured"
+msgstr[0] "1 ресурс сконфигурирован"
+msgstr[1] "Сконфигурировано ресурсов: %{num}"
+msgstr[2] "Сконфигурировано ресурсов: %{num}"
+
+msgid "Edit Clone"
+msgstr "Редактировать клон"
+
+msgid "Create Clone"
+msgstr "Создать клон"
+
+msgid "Clone created successfully"
+msgstr "Клон успешно создан"
+
+msgid "Clone updated successfully"
+msgstr "Клон успешно изменен"
+
+msgid "Edit Colocation Constraint"
+msgstr "Изменить ограничение совместного расположения"
+
+msgid "Create Colocation Constraint"
+msgstr "Создать ограничение совместного расположения"
+
+msgid "Constraint created successfully"
+msgstr "Ограничение успешно создано"
+
+msgid "Constraint updated successfully"
+msgstr "Ограничение успешно обновлено"
+
+msgid "Constraints"
+msgstr "Ограничения"
+
+msgid "Cluster Configuration"
+msgstr "Конфигурация кластера"
+
+msgid "Your changes have been saved"
+msgstr "Изменения сохранены"
+
+msgid "Unable to apply changes: %{msg}"
+msgstr "Не удалось применить изменения: %{msg}"
+
+msgid ""
+"Can't set property %{p}, because the value contains both single and double quo"
+"tes"
+msgstr ""
+"Невозможно задать свойство %{p}, поскольку значение содержит и одиночные, и дв"
+"ойные кавычки"
+
+msgid "Cluster Dashboard"
+msgstr "Панель управления кластером"
+
+msgid "Dashboard"
+msgstr "Панель управления"
+
+msgid "History Explorer"
+msgstr "Проводник журнала"
+
+msgid "PE Input created by different Pacemaker version (%{version})"
+msgstr "Файл PE Input создан в другой версии Pacemaker (%{version})"
+
+msgid "Pacemaker version not present in PE Input"
+msgstr "В файле PE Input не указана версия Pacemaker"
+
+msgid "Required parameters \"basename\" and \"node\" not specified"
+msgstr "Не указаны обязательные параметры \"basename\" и \"node\""
+
+msgid "No details available"
+msgstr "Описание отсутствует"
+
+msgid "Error:"
+msgstr "Ошибка:"
+
+msgid "Required parameters \"left\" and \"right\" not specified"
+msgstr "Не указаны обязательные параметры \"правый\" и \"левый\""
+
+msgid "Edit Group"
+msgstr "Редактировать группу"
+
+msgid "Create Group"
+msgstr "Создать группу"
+
+msgid "Group created successfully"
+msgstr "Группа успешно создана"
+
+msgid "Group updated successfully"
+msgstr "Группа успешно обновлена"
+
+msgid "Edit Location Constraint"
+msgstr "Изменить ограничение на расположение"
+
+msgid "Create Location Constraint"
+msgstr "Создать ограничение на расположение"
+
+msgid "%{cmd} failed (status: %{status})"
+msgstr "Сбой %{cmd} (состояние: %{status})"
+
+msgid "Cluster Status"
+msgstr "Состояние кластера"
+
+msgid "Required parameter \"node\" not specified"
+msgstr "Обязательный параметр \"node\" не задан"
+
+msgid "Required parameter \"resource\" not specified"
+msgstr "Обязательный параметр \"resource\" не задан"
+
+msgid "Required parameters \"resource\" and \"node\" not specified"
+msgstr "Обязательные параметры \"resource\" и \"node\" не заданы"
+
+msgid "Error deleting resource"
+msgstr "Ошибка при удалении ресурса"
+
+msgid "Required parameters \"ticket\" and \"site\" not specified"
+msgstr "Не указаны обязательные параметры \"билет\" и \"сайт\""
+
+msgid "Required parameter \"ticket\" not specified"
+msgstr "Не указан обязательный параметр \"билет\""
+
+msgid "Error invoking %{cmd}: %{msg}"
+msgstr "Ошибка вызова команды %{cmd}: %{msg}"
+
+msgid "Edit Master/Slave"
+msgstr "Редактировать подчинение"
+
+msgid "Create Master/Slave"
+msgstr "Создать подчинение"
+
+msgid "Master/Slave created successfully"
+msgstr "Подчинение успешно создано"
+
+msgid "Master/Slave updated successfully"
+msgstr "Подчинение успешно обновлено"
+
+#, fuzzy
+msgid "Nodes"
+msgstr "Узел"
+
+msgid "Edit Order Constraint"
+msgstr "Изменить ограничение на порядок"
+
+msgid "Create Order Constraint"
+msgstr "Создать ограничение на порядок"
+
+msgid "Welcome"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "Create Resource"
+msgstr "Создать ресурс"
+
+msgid "Resource created successfully"
+msgstr "Ресурс успешно создан"
+
+msgid "Resource updated successfully"
+msgstr "Ресурс успешно обновлен"
+
+#, fuzzy
+msgid "Primitives"
+msgstr "Примитив"
+
+msgid "Resources"
+msgstr "Ресурсы"
+
+msgid "Create Role"
+msgstr "Создать роль"
+
+msgid "Role created successfully"
+msgstr "Роль успешно создана"
+
+msgid "Edit Role"
+msgstr "Изменить роль"
+
+msgid "Role updated successfully"
+msgstr "Роль успешно обновлена"
+
+#, fuzzy
+msgid "Role deleted successfully"
+msgstr "Роль успешно создана"
+
+#, fuzzy
+msgid "Error deleting %s"
+msgstr "Ошибка при удалении ресурса"
+
+msgid "Roles"
+msgstr "Роли"
+
+msgid "The role does not exist"
+msgstr ""
+
+msgid "To enable ACLs, set 'enable-acl' in the CRM Configuration"
+msgstr ""
+"Чтобы включить списки управления доступом, укажите enable-acl в конфигурации C"
+"RM"
+
+msgid "Permission denied for user %{user}"
+msgstr "Доступ пользователя %{user} запрещен"
+
+msgid "You have been logged out"
+msgstr "Вы вышли из системы"
+
+msgid "Log In"
+msgstr "Войти в систему"
+
+#, fuzzy
+msgid "Preferences updated successfully"
+msgstr "Ресурс успешно обновлен"
+
+msgid "Preferences"
+msgstr "Настройки"
+
+msgid "Edit Template"
+msgstr "Редактировать шаблон"
+
+msgid "Create Template"
+msgstr "Создать шаблон"
+
+msgid "Template created successfully"
+msgstr "Шаблон создан успешно"
+
+msgid "Template updated successfully"
+msgstr "Шаблон изменен успешно"
+
+msgid "Edit Ticket Constraint"
+msgstr "Изменить ограничение билета"
+
+msgid "Create Ticket Constraint"
+msgstr "Создать ограничение билета"
+
+msgid "Create User"
+msgstr "Создать пользователя"
+
+msgid "User created successfully"
+msgstr "Пользователь успешно создан"
+
+msgid "Edit User"
+msgstr "Изменение пользователя"
+
+msgid "User updated successfully"
+msgstr "Пользователь успешно обновлен"
+
+#, fuzzy
+msgid "User deleted successfully"
+msgstr "Пользователь успешно создан"
+
+#, fuzzy
+msgid "Users"
+msgstr "Пользователь"
+
+msgid "The user does not exist"
+msgstr ""
+
+msgid "Cluster Setup Wizard"
+msgstr "Мастер установки кластера"
+
+msgid "Invalid password"
+msgstr "Неверный пароль"
+
+msgid "Root Password"
+msgstr "Пароль администратора"
+
+msgid ""
+"The root password is required in order for this wizard template to make config"
+"uration changes."
+msgstr ""
+"Чтобы внести изменения в конфигурацию с помощью этого шаблона мастера, необход"
+"им пароль пользователя root."
+
+msgid "The root password for this system"
+msgstr "Пароль пользователя root для этой системы"
+
+msgid "\"Error: #{result}\""
+msgstr "\"Ошибка: #{result}\""
+
+msgid "Parameters"
+msgstr "Параметры"
+
+msgid "Confirm"
+msgstr "Подтвердить"
+
+msgid "Done"
+msgstr "Готово"
+
+msgid "Required parameter \"%{param}\" not specified"
+msgstr "Не указан обязательный параметр \"%{param}\""
+
+msgid "Permission denied - you do not have write access to the CIB."
+msgstr "Доступ отклонен: у вас нет прав на запись в CIB."
+
+msgid "Wizard templates and/or workflows are missing"
+msgstr "Отсутствуют шаблоны и(или) рабочие процессы мастера"
+
+msgid "Workflow \"%s\" not found"
+msgstr "Рабочий процесс \"%s\" не найден"
+
+msgid "Error parsing template \"%s\""
+msgstr "Ошибка при анализе шаблона \"%s\""
+
+msgid "Error parsing workflow \"%s\""
+msgstr "Ошибка при анализе рабочего процесса \"%s\""
+
+msgid "Data collection in progress (%{from_time} to %{to_time})..."
+msgstr "Выполняется сбор данных (с %{from_time} по %{to_time})..."
+
+#, fuzzy
+msgid "Revert"
+msgstr "Сбросить"
+
+msgid "Apply"
+msgstr ""
+
+#, fuzzy
+msgid "Create"
+msgstr "Создать роль"
+
+#, fuzzy
+msgid "Read"
+msgstr "Готово"
+
+msgid "Write"
+msgstr ""
+
+msgid "Deny"
+msgstr ""
+
+msgid "CIB file \"%{path}\" not found"
+msgstr "CIB-файл \"%{path}\" не найден"
+
+msgid "Unable to parse CIB file \"%{path}\""
+msgstr "Не удалось проанализировать CIB-файл \"%{path}\""
+
+msgid "Pacemaker does not appear to be installed (%{cmd} not found)"
+msgstr "Пейсмейкер не установлен (не найдена команда %{cmd})"
+
+msgid "Unable to execute %{cmd}"
+msgstr "Не удается выполнить %{cmd}"
+
+msgid "Error invoking %{cmd}"
+msgstr "Ошибка вызова команды %{cmd}"
+
+msgid "Unknown"
+msgstr "Неизвестный"
+
+msgid ""
+"Failed op: node=%{node}, resource=%{resource}, call-id=%{call_id}, operation=%"
+"{op}, rc-code=%{rc_code}, exit-reason=%{exit_reason}"
+msgstr ""
+
+msgid "Invalid Resource ID \"%{id}\""
+msgstr "Недопустимый ИД ресурса \"%{id}\""
+
+msgid "Unable to parse cibadmin output"
+msgstr "Не удалось проанализировать вывод cibadmin"
+
+msgid "No clone child specified"
+msgstr "Не указан клон потомка"
+
+msgid ""
+"Can't set meta attribute %{p}, because the value contains both single and doub"
+"le quotes"
+msgstr ""
+"Невозможно задать метаатрибут %{p}, поскольку значение содержит и одиночные, и"
+" двойные кавычки"
+
+msgid "The ID \"%{id}\" is already in use"
+msgstr "ИД \"%{id}\" уже используется"
+
+msgid "Unable to create clone: %{msg}"
+msgstr "Не удалось создать клон: %{msg}"
+
+msgid "Clone ID \"%{id}\" does not exist"
+msgstr "Клон с ИД \"%{id}\" не существует"
+
+msgid "Invalid score"
+msgstr "Недопустимая оценка"
+
+msgid "Constraint must consist of at least two separate resources"
+msgstr "Ограничение должно состоять как минимум из двух отдельных ресурсов"
+
+msgid "Unable to create constraint: %{msg}"
+msgstr "Не удалось создать ограничение: %{msg}"
+
+msgid "Constraint ID \"%{id}\" does not exist"
+msgstr "Ограничение с ИД \"%{id}\" не существует"
+
+msgid "Unable to update constraint: %{msg}"
+msgstr "Не удалось обновить ограничение: %{msg}"
+
+msgid "No group children specified"
+msgstr "Не указаны потомки группы"
+
+msgid "Unable to create group: %{msg}"
+msgstr "Не удалось создать группу: %{msg}"
+
+msgid "Group ID \"%{id}\" does not exist"
+msgstr "Группа с ИД \"%{id}\" не существует"
+
+msgid "Constraint is too complex - it contains nested rules"
+msgstr "Слишком сложное ограничение - содержит вложенные правила"
+
+msgid "No rules specified"
+msgstr "Не указаны правила"
+
+msgid "No resource specified"
+msgstr "Не указаны ресурсы"
+
+msgid "Invalid score \"%{score}\""
+msgstr "Недопустимая оценка: \"%{score}\""
+
+msgid "No expressions specified"
+msgstr "Не указаны выражения"
+
+msgid "Attribute contains both single and double quotes"
+msgstr "Атрибут содержит и одиночные, и двойные кавычки"
+
+msgid "Value contains both single and double quotes"
+msgstr "Значение содержит и одиночные, и двойные кавычки"
+
+msgid "No Master/Slave child specified"
+msgstr "Не указан потомок подчинения"
+
+msgid "Unable to create master/slave: %{msg}"
+msgstr "Не удалось создать подчинение: %{msg}"
+
+msgid "Master/Slave ID \"%{id}\" does not exist"
+msgstr "Подчинение с ИД \"%{id}\" не существует"
+
+msgid ""
+"Can't set parameter %{p}, because the value contains both single and double qu"
+"otes"
+msgstr ""
+"Невозможно задать параметр %{p}, поскольку значение содержит и одиночные, и дв"
+"ойные кавычки"
+
+msgid ""
+"Can't set op %{o} attribute {%a}, because the value contains both single and d"
+"ouble quotes"
+msgstr ""
+"Невозможно задать атрибут {%a} операции %{o}, поскольку значение содержит и од"
+"иночные, и двойные кавычки"
+
+msgid "Unable to create resource: %{msg}"
+msgstr "Не удалось создать ресурс: %{msg}"
+
+msgid "Resource ID \"%{id}\" does not exist"
+msgstr "Ресурс с ИД \"%{id}\" не существует"
+
+#, fuzzy
+msgid "Unable to create: %{msg}"
+msgstr "Не удалось создать роль: %{msg}"
+
+#, fuzzy
+msgid "The ID \"%{id}\" does not exist"
+msgstr "Роль с ИД %{id} не существует"
+
+#, fuzzy
+msgid "Unable to update: %{msg}"
+msgstr "Не удалось обновить роль: %{msg}"
+
+msgid "Role ID is required"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid Role ID"
+msgstr "Неверный ИД билета"
+
+msgid "Username not specified"
+msgstr "Не указано имя пользователя."
+
+msgid "Invalid username"
+msgstr "Недопустимое имя пользователя"
+
+msgid "Password not specified"
+msgstr "Не введен пароль"
+
+msgid "%s is not installed"
+msgstr "%s не установлен"
+
+#, fuzzy
+msgid "%s is not executable"
+msgstr "%s не установлен"
+
+msgid "Invalid username or password"
+msgstr "Недопустимое имя пользователя или пароль"
+
+msgid "Language is required"
+msgstr ""
+
+msgid "Invalid Ticket ID"
+msgstr "Неверный ИД билета"
+
+msgid "No resources specified"
+msgstr "Ресурсы не указаны"
+
+msgid "User ID is required"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid User ID"
+msgstr "Неверный ИД билета"
+
+msgid "Meta Attributes"
+msgstr "Метаатрибуты"
+
+msgid "Add"
+msgstr "Добавить"
+
+msgid "Remove"
+msgstr "Удалить"
+
+msgid "You must enter a value"
+msgstr "Необходимо ввести значение"
+
+msgid "Clone ID"
+msgstr "ИД клона"
+
+msgid "Child Resource"
+msgstr "Дочерний ресурс"
+
+msgid "Revert Changes"
+msgstr "Отменить изменения"
+
+msgid "Back"
+msgstr "Назад"
+
+msgid "Apply Changes"
+msgstr "Применить изменения"
+
+msgid "Link set"
+msgstr "Связь установлена"
+
+msgid "Break set"
+msgstr "Связь разорвана"
+
+msgid "Swap resources"
+msgstr "Обменять ресурсы"
+
+msgid "Add resource to constraint"
+msgstr "Добавить ресурс в ограничение"
+
+msgid "Constraint ID"
+msgstr "ИД ограничения"
+
+msgid "Score"
+msgstr "Оценка"
+
+msgid "Create Constraint"
+msgstr "Создать ограничение"
+
+msgid "Edit Constraint"
+msgstr "Изменить ограничение"
+
+msgid "Delete Constraint"
+msgstr "Удалить ограничение"
+
+msgid "Are you sure you wish to delete %s?"
+msgstr "Вы действительно хотите удалить %s?"
+
+msgid "New Constraint"
+msgstr "Новое ограничение"
+
+msgid "Location"
+msgstr "Расположение"
+
+msgid "Colocation"
+msgstr "Совместное расположение"
+
+msgid "Order"
+msgstr "Порядок"
+
+msgid "Ticket"
+msgstr "Билет"
+
+msgid "(No location constraints defined)"
+msgstr "(Не определены ограничения на расположение)"
+
+msgid "[Constraint is too complex to display]"
+msgstr "[Слишком сложное ограничение для отображения]"
+
+msgid "(No colocation constraints defined)"
+msgstr "(Не определены ограничения на совместное расположение)"
+
+msgid "(No order constraints defined)"
+msgstr "(Не определены ограничения на порядок)"
+
+msgid "(No ticket constraints defined)"
+msgstr "(Ограничения билетов не определены)"
+
+msgid "CRM Configuration"
+msgstr "Конфигурация CRM"
+
+msgid "Resource Defaults"
+msgstr "Восстановить умолчания"
+
+msgid "Operation Defaults"
+msgstr "Умолчания операции"
+
+msgid "No cluster properties set in %{group}"
+msgstr "Не заданы свойства кластера в группе %{group}"
+
+msgid "Edit"
+msgstr "Правка"
+
+msgid "Username:"
+msgstr "Имя пользователя:"
+
+msgid "Password:"
+msgstr "Пароль:"
+
+msgid "Cluster has errors - click for details"
+msgstr "В кластере есть ошибки - щелкните для получения подробной информации"
+
+msgid "Timeout: Please try again"
+msgstr "Тайм-аут: повторите попытку"
+
+msgid "Permission denied. Please log in to %{node}"
+msgstr "В доступе отказано. Войдите в систему на узле %{node}"
+
+#, fuzzy
+msgid "Geo Site %{ip}"
+msgstr "Набор клонов: %{id}"
+
+msgid "Site: %{ip}"
+msgstr ""
+
+msgid "Arbitrator: %{ip}"
+msgstr ""
+
+msgid "Can't contact Hawk on %{node}. Retrying every 5 seconds."
+msgstr ""
+"Не удается связаться с Hawk в узле %{node}. Попытки будут повторяться каждые 5"
+" секунд."
+
+msgid "Cluster Name:"
+msgstr "Имя кластера:"
+
+msgid "Host Name:"
+msgstr "Имя Хоста"
+
+msgid ""
+"(Specify any host name in the cluster.  Other nodes will be found automaticall"
+"y)"
+msgstr ""
+"(Укажите любое имя хоста в кластере. Остальные узлы будут найдены автоматическ"
+"и)"
+
+msgid "Add Cluster"
+msgstr "Добавить кластер"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "A cluster with that name already exists"
+msgstr "Кластер с таким именем уже существует"
+
+msgid "The host %{h} is already present in cluster %{c}"
+msgstr "Хост %{h} уже присутствует в кластере %{c}"
+
+msgid ""
+"Unable to connect to %{host}. Try opening %{url} in your web browser to ensure"
+" Hawk is accessible."
+msgstr ""
+"Не удалось подключиться к хосту %{host}. Попробуйте открыть URL-адрес %{url} в"
+" веб-навигаторе, чтобы убедиться в доступности Hawk."
+
+msgid "Cancel"
+msgstr "Отмена"
+
+#, fuzzy
+msgid "Cluster"
+msgstr "Добавить кластер"
+
+msgid "STONITH Enabled"
+msgstr "Модуль STONITH включен"
+
+msgid "No Quorum Policy"
+msgstr "Нет политики кворума"
+
+msgid "Symmetric Cluster"
+msgstr "Симметричный кластер"
+
+msgid "Resource Stickiness"
+msgstr "Присоединенность ресурса"
+
+msgid "Status"
+msgstr "Состояние"
+
+msgid "No transitions found for the specified time period."
+msgstr "Переходы для указанного периода времени не найдены."
+
+msgid "Time"
+msgstr "Время"
+
+msgid "PE Input"
+msgstr "Ввод ФУ"
+
+msgid "Node"
+msgstr "Узел"
+
+msgid "(full log)"
+msgstr "(полный журнал)"
+
+msgid "Graph"
+msgstr "Граф"
+
+msgid "Diff"
+msgstr "Различие"
+
+msgid "Delete this history archive?"
+msgstr "Удалить этот архив протокола?"
+
+msgid "Start Time:"
+msgstr "Время начала:"
+
+msgid "End Time:"
+msgstr "Время окончания:"
+
+msgid "Exploring %{path}"
+msgstr "Идет обзор %{path}"
+
+msgid "Display"
+msgstr "Дисплей"
+
+msgid "Upload hb_report tarball"
+msgstr "Отправить TAR-файл отчета hb_report"
+
+msgid "Explore"
+msgstr "Обзор"
+
+msgid "Error: Permission denied for user '%s'."
+msgstr "Ошибка. Доступ пользователя \"%s\" запрещен."
+
+msgid "Group ID"
+msgstr "ID группы"
+
+msgid "Group Children"
+msgstr "Потомки группы"
+
+msgid "Available Primitives"
+msgstr "Доступные примитивы"
+
+msgid "Start Time not specified"
+msgstr "Не указано время запуска"
+
+msgid "Generate"
+msgstr "Создать"
+
+msgid "hb_report generation in progress..."
+msgstr "Формируется отчет hb_report..."
+
+msgid "Download hb_report"
+msgstr "Загрузить отчет hb_report"
+
+#, fuzzy
+msgid "Please ensure Javascript is enabled"
+msgstr "Убедитесь, что использование JavaScript разрешено"
+
+msgid "SUSE, LLC"
+msgstr ""
+
+msgid "High Availability Web Konsole"
+msgstr ""
+
+msgid "Role"
+msgstr "Роль"
+
+msgid "Boolean Op"
+msgstr "Логическая операция"
+
+msgid "Expression"
+msgstr "Выражение"
+
+msgid "Add Rule"
+msgstr "Добавить правило"
+
+msgid "Remove Rule"
+msgstr "Удалить правило"
+
+msgid "Show Rule Editor"
+msgstr "Показывать редактор правил"
+
+msgid "Resource"
+msgstr "Ресурс"
+
+msgid "Fence Node"
+msgstr "Исключить узел"
+
+msgid "View Details..."
+msgstr "Просмотр подробностей..."
+
+msgid "View Recent Events..."
+msgstr "Просмотр недавних событий..."
+
+msgid "Start"
+msgstr "Начало"
+
+msgid "Stop"
+msgstr "Стоп"
+
+msgid "Move..."
+msgstr "Переместить..."
+
+msgid "Drop Relocation Rule"
+msgstr "Отменить правило перемещения"
+
+msgid "Promote"
+msgstr "Повысить"
+
+msgid "Demote"
+msgstr "Понизить"
+
+msgid "Clean Up"
+msgstr "Очистка"
+
+msgid "Grant"
+msgstr "Предоставить"
+
+msgid "Revoke"
+msgstr "Отозвать"
+
+msgid "Master/Slave ID"
+msgstr "ИД подчинения"
+
+msgid "Getting recent events (last hour)..."
+msgstr "Получение недавних событий (последний час)..."
+
+msgid "Another \"crm history\" operation is in progress..."
+msgstr "Выполняется другая операция \"crm history\"..."
+
+msgid "No events found in last hour."
+msgstr "События за последний час не найдены."
+
+msgid "Utilization"
+msgstr "Использование"
+
+msgid "No utilization defined"
+msgstr "Использование не определено"
+
+msgid "Attributes"
+msgstr "Атрибуты"
+
+msgid "No attributes defined"
+msgstr "Атрибуты не определены"
+
+msgid "Symmetrical"
+msgstr "Симметричный"
+
+msgid "Close"
+msgstr "Закрыть"
+
+msgid "HTML"
+msgstr ""
+
+msgid "PDF"
+msgstr ""
+
+msgid "There is already a monitor op with this interval."
+msgstr "Уже есть операция мониторинга с этим интервалом."
+
+msgid "Resource ID"
+msgstr "ИД ресурса"
+
+msgid "Template ID"
+msgstr "ИД шаблона"
+
+msgid "Class"
+msgstr "Класс"
+
+msgid "Provider"
+msgstr "Поставщик"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "Use Template"
+msgstr "Использовать шаблон"
+
+msgid "Edit Resource"
+msgstr "Изменить ресурс"
+
+msgid "Delete Resource"
+msgstr "Удалить ресурс"
+
+msgid "New Resource"
+msgstr "Новый ресурс"
+
+msgid "Primitive"
+msgstr "Примитив"
+
+msgid "New Template"
+msgstr "Новое примечание"
+
+msgid "Template"
+msgstr "Шаблон"
+
+msgid "New Group"
+msgstr "Новая группа"
+
+msgid "Group"
+msgstr "Группа"
+
+msgid "New Clone"
+msgstr "Новый клон"
+
+msgid "Clone"
+msgstr "Клонировать"
+
+msgid "New Master/Slave"
+msgstr "Новое подчинение"
+
+msgid "Master/Slave"
+msgstr "Главный/подчиненный"
+
+msgid "(No primitive resources defined)"
+msgstr "(Ресурсы-примитивы не определены)"
+
+msgid "(No templates defined)"
+msgstr "(Шаблоны не определены)"
+
+msgid "(No groups defined)"
+msgstr "(Группы не определены)"
+
+msgid "(No clones defined)"
+msgstr "(Клоны не определены)"
+
+msgid "(No master/slave resources defined)"
+msgstr "(Главные/подчиненные ресурсы не определены)"
+
+msgid "Fail Count"
+msgstr "Счетчик сбоев"
+
+msgid "Last Failure"
+msgstr "Последний сбой"
+
+#, fuzzy
+msgid "Rule"
+msgstr "Роль"
+
+msgid "Add a rule below"
+msgstr ""
+
+#, fuzzy
+msgid "Remove this rule"
+msgstr "Удалить правило"
+
+#, fuzzy
+msgid "Move rule up"
+msgstr "Переместить ресурс %s"
+
+msgid "Move rule down"
+msgstr ""
+
+msgid "Right"
+msgstr "Справа"
+
+msgid "XPath"
+msgstr "XPath"
+
+msgid "Tag"
+msgstr "Метка"
+
+msgid "Ref"
+msgstr "Ссылка"
+
+msgid "Attribute"
+msgstr "Атрибут"
+
+#, fuzzy
+msgid "Delete role"
+msgstr "Удалить ресурс"
+
+#, fuzzy
+msgid "Add role"
+msgstr "Добавить правило"
+
+msgid ""
+"ACL support requires CIB schema version 2.0, available in Pacemaker 1.1.12 and"
+" up. For older versions of Pacemaker, use Hawk version 0.6."
+msgstr ""
+
+#, fuzzy
+msgid "Username"
+msgstr "Имя пользователя:"
+
+#, fuzzy
+msgid "Password"
+msgstr "Пароль:"
+
+#, fuzzy
+msgid "Login"
+msgstr "Войти в систему"
+
+msgid "Loss Policy"
+msgstr "Потерянная политика"
+
+#, fuzzy
+msgid "Delete user"
+msgstr "Удалить ресурс"
+
+#, fuzzy
+msgid "Add user"
+msgstr "Добавить кластер"
+
+msgid "%{workflow}: %{step}"
+msgstr "%{workflow}: %{step}"
+
+msgid "The configuration has been applied."
+msgstr "Конфигурация применена."
+
+msgid "The following configuration will be applied to the cluster:"
+msgstr "К кластеру будет применена следующая конфигурация:"
+
+msgid "Error applying configuration:"
+msgstr "Ошибка применения конфигурации:"
+
+msgid "< Back"
+msgstr "< Назад"
+
+msgid "Next >"
+msgstr "Далее >"
+
+msgid "No workflow descriptions found"
+msgstr "Описания рабочих процессов не найдены"
+
+msgid "Choose Configuration"
+msgstr "Выбор конфигурации"
+
+msgid ""
+"This wizard will guide you through the steps necessary to add one of the follo"
+"wing configurations to the cluster."
+msgstr ""
+"Этот мастер обеспечит поддержку на всех этапах добавления в кластер одной из с"
+"ледующих конфигураций."
+
+msgid "The object/attribute does not exist (cibadmin %{cmd})"
+msgstr "Не существует объект или атрибут (cibadmin %{cmd})"
+
+msgid "Error invoking cibadmin %{cmd}: %{msg}"
+msgstr "Ошибка при вызове команды cibadmin %{cmd}: %{msg}"
+
+msgid "The object/attribute does not exist: %{msg}"
+msgstr "Не существует объект или атрибут: %{msg}"
+
+msgid "Error invoking cibadmin --replace: %{msg}"
+msgstr "Ошибка при вызове команды cibadmin --replace: %{msg}"

@@ -1,0 +1,72 @@
+'\" t
+.\"     Title: meatclient
+.\"    Author: Gregor Binder <gbinder@sysfive.com>
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: December 4, 2009
+.\"    Manual: System administration utilities
+.\"    Source: Cluster Glue 1.0.12
+.\"  Language: English
+.\"
+.TH "MEATCLIENT" "8" "December 4, 2009" "Cluster Glue 1.0.12" "System administration utilitie"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+meatclient \- Manually confirm that a node has been removed from the cluster
+.SH "SYNOPSIS"
+.PP
+\fBmeatclient\fR\fB\-c\fR\fInodename\fR
+.SH "DESCRIPTION"
+.PP
+\fBmeatclient\fR
+confirms that a node has been manually removed from the cluster\&. It instructs the cluster manager, via the meatware STONITH plugin, that it is safe to continue cluster operations\&.
+.SH "OPTIONS"
+.PP
+The following options are supported:
+.PP
+\fB\-c\fR \fInodename\fR
+.RS 4
+\fInodename\fR
+is the name of the cluster node that has been fenced\&.
+.RE
+.SH "SEE ALSO"
+.PP
+\fBheartbeat\fR(8),
+\fBstonith\fR(8)
+.SH "AUTHORS"
+.PP
+\fBGregor Binder\fR <\&gbinder@sysfive\&.com\&>
+.RS 4
+meatclient
+.RE
+.PP
+\fBMichael Mörz\fR <\&mimem@debian\&.org\&>
+.RS 4
+man page
+.RE
+.PP
+\fBSimon Horman\fR <\&horms@vergenet\&.net\&>
+.RS 4
+man page
+.RE
+.PP
+\fBFlorian Haas\fR <\&florian\&.haas@linbit\&.com\&>
+.RS 4
+man page
+.RE

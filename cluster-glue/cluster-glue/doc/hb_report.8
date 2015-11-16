@@ -1,0 +1,663 @@
+'\" t
+.\"     Title: hb_report
+.\"    Author: [see the "AUTHOR" section]
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 11/07/2015
+.\"    Manual: Pacemaker documentation
+.\"    Source: hb_report 1.2
+.\"  Language: English
+.\"
+.TH "HB_REPORT" "8" "11/07/2015" "hb_report 1\&.2" "Pacemaker documentation"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+hb_report \- create report for CRM based clusters (Pacemaker)
+.SH "SYNOPSIS"
+.sp
+\fBhb_report\fR \-f {time|"cts:"testnum} [\-t time] [\-u user] [\-l file] [\-n nodes] [\-E files] [\-p patt] [\-L patt] [\-e prog] [\-MSDCZAQVsvhd] [dest]
+.SH "DESCRIPTION"
+.sp
+The hb_report(1) is a utility to collect all information (logs, configuration files, system information, etc) relevant to Pacemaker (CRM) over the given period of time\&.
+.SH "OPTIONS"
+.PP
+dest
+.RS 4
+The report name\&. It can also contain a path where to put the report tarball\&. If left out, the tarball is created in the current directory named "hb_report\-current_date", for instance hb_report\-Wed\-03\-Mar\-2010\&.
+.RE
+.PP
+\fB\-d\fR
+.RS 4
+Don\(cqt create the compressed tar, but leave the result in a directory\&.
+.RE
+.PP
+\fB\-f\fR { time | "cts:"testnum }
+.RS 4
+The start time from which to collect logs\&. The time is in the format as used by the Date::Parse perl module\&. For cts tests, specify the "cts:" string followed by the test number\&. This option is required\&.
+.RE
+.PP
+\fB\-t\fR time
+.RS 4
+The end time to which to collect logs\&. Defaults to now\&.
+.RE
+.PP
+\fB\-n\fR nodes
+.RS 4
+A list of space separated hostnames (cluster members)\&. hb_report may try to find out the set of nodes by itself, but if it runs on the loghost which, as it is usually the case, does not belong to the cluster, that may be difficult\&. Also, OpenAIS doesn\(cqt contain a list of nodes and if Pacemaker is not running, there is no way to find it out automatically\&. This option is cumulative (i\&.e\&. use \-n "a b" or \-n a \-n b)\&.
+.RE
+.PP
+\fB\-l\fR file
+.RS 4
+Log file location\&. If, for whatever reason, hb_report cannot find the log files, you can specify its absolute path\&.
+.RE
+.PP
+\fB\-E\fR files
+.RS 4
+Extra log files to collect\&. This option is cumulative\&. By default, /var/log/messages are collected along with the cluster logs\&.
+.RE
+.PP
+\fB\-M\fR
+.RS 4
+Don\(cqt collect extra log files, but only the file containing messages from the cluster subsystems\&.
+.RE
+.PP
+\fB\-L\fR patt
+.RS 4
+A list of regular expressions to match in log files for analysis\&. This option is additive (default: "CRIT: ERROR:")\&.
+.RE
+.PP
+\fB\-p\fR patt
+.RS 4
+Additional patterns to match parameter name which contain sensitive information\&. This option is additive (default: "passw\&.*")\&.
+.RE
+.PP
+\fB\-Q\fR
+.RS 4
+Quick run\&. Gathering some system information can be expensive\&. With this option, such operations are skipped and thus information collecting sped up\&. The operations considered I/O or CPU intensive: verifying installed packages content, sanitizing files for sensitive information, and producing dot files from PE inputs\&.
+.RE
+.PP
+\fB\-A\fR
+.RS 4
+This is an OpenAIS cluster\&. hb_report has some heuristics to find the cluster stack, but that is not always reliable\&. By default, hb_report assumes that it is run on a Heartbeat cluster\&.
+.RE
+.PP
+\fB\-u\fR user
+.RS 4
+The ssh user\&. hb_report will try to login to other nodes without specifying a user, then as "root", and finally as "hacluster"\&. If you have another user for administration over ssh, please use this option\&.
+.RE
+.PP
+\fB\-X\fR ssh\-options
+.RS 4
+Extra ssh options\&. These will be added to every ssh invocation\&. Alternatively, use
+$HOME/\&.ssh/config
+to setup desired ssh connection options\&.
+.RE
+.PP
+\fB\-S\fR
+.RS 4
+Single node operation\&. Run hb_report only on this node and don\(cqt try to start slave collectors on other members of the cluster\&. Under normal circumstances this option is not needed\&. Use if ssh(1) does not work to other nodes\&.
+.RE
+.PP
+\fB\-Z\fR
+.RS 4
+If the destination directory exist, remove it instead of exiting (this is default for CTS)\&.
+.RE
+.PP
+\fB\-V\fR
+.RS 4
+Print the version including the last repository changeset\&.
+.RE
+.PP
+\fB\-v\fR
+.RS 4
+Increase verbosity\&. Normally used to debug unexpected behaviour\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Show usage and some examples\&.
+.RE
+.PP
+\fB\-D\fR (obsolete)
+.RS 4
+Don\(cqt invoke editor to fill the description text file\&.
+.RE
+.PP
+\fB\-e\fR prog (obsolete)
+.RS 4
+Your favourite text editor\&. Defaults to $EDITOR, vim, vi, emacs, or nano, whichever is found first\&.
+.RE
+.PP
+\fB\-C\fR (obsolete)
+.RS 4
+Remove the destination directory once the report has been put in a tarball\&.
+.RE
+.SH "EXAMPLES"
+.sp
+Last night during the backup there were several warnings encountered (logserver is the log host):
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+logserver# hb_report \-f 3:00 \-t 4:00 \-n "node1 node2" report
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+collects everything from all nodes from 3am to 4am last night\&. The files are compressed to a tarball report\&.tar\&.bz2\&.
+.sp
+Just found a problem during testing:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+# note the current time
+node1# date
+Fri Sep 11 18:51:40 CEST 2009
+node1# /etc/init\&.d/heartbeat start
+node1# nasty\-command\-that\-breaks\-things
+node1# sleep 120 #wait for the cluster to settle
+node1# hb_report \-f 18:51 hb1
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+# if hb_report can\*(Aqt figure out that this is corosync
+node1# hb_report \-f 18:51 \-A hb1
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+# if hb_report can\*(Aqt figure out the cluster members
+node1# hb_report \-f 18:51 \-n "node1 node2" hb1
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+The files are compressed to a tarball hb1\&.tar\&.bz2\&.
+.SH "INTERPRETING RESULTS"
+.sp
+The compressed tar archive is the final product of hb_report\&. This is one example of its content, for a CTS test case on a three node OpenAIS cluster:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ ls \-RF 001\-Restart
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+001\-Restart:
+analysis\&.txt     events\&.txt  logd\&.cf       s390vm13/  s390vm16/
+description\&.txt  ha\-log\&.txt  openais\&.conf  s390vm14/
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+001\-Restart/s390vm13:
+STOPPED  crm_verify\&.txt  hb_uuid\&.txt  openais\&.conf@   sysinfo\&.txt
+cib\&.txt  dlm_dump\&.txt    logd\&.cf@     pengine/        sysstats\&.txt
+cib\&.xml  events\&.txt      messages     permissions\&.txt
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+001\-Restart/s390vm13/pengine:
+pe\-input\-738\&.bz2  pe\-input\-740\&.bz2  pe\-warn\-450\&.bz2
+pe\-input\-739\&.bz2  pe\-warn\-449\&.bz2   pe\-warn\-451\&.bz2
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+001\-Restart/s390vm14:
+STOPPED  crm_verify\&.txt  hb_uuid\&.txt  openais\&.conf@   sysstats\&.txt
+cib\&.txt  dlm_dump\&.txt    logd\&.cf@     permissions\&.txt
+cib\&.xml  events\&.txt      messages     sysinfo\&.txt
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+001\-Restart/s390vm16:
+STOPPED  crm_verify\&.txt  hb_uuid\&.txt  messages        sysinfo\&.txt
+cib\&.txt  dlm_dump\&.txt    hostcache    openais\&.conf@   sysstats\&.txt
+cib\&.xml  events\&.txt      logd\&.cf@     permissions\&.txt
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+The top directory contains information which pertains to the cluster or event as a whole\&. Files with exactly the same content on all nodes will also be at the top, with per\-node links created (as it is in this example the case with openais\&.conf and logd\&.cf)\&.
+.sp
+The cluster log files are named ha\-log\&.txt regardless of the actual log file name on the system\&. If it is found on the loghost, then it is placed in the top directory\&. If not, the top directory ha\-log\&.txt contains all nodes logs merged and sorted by time\&. Files named messages are excerpts of /var/log/messages from nodes\&.
+.sp
+Most files are copied verbatim or they contain output of a command\&. For instance, cib\&.xml is a copy of the CIB found in /var/lib/heartbeat/crm/cib\&.xml\&. crm_verify\&.txt is output of the crm_verify(8) program\&.
+.sp
+Some files are result of a more involved processing:
+.PP
+\fBanalysis\&.txt\fR
+.RS 4
+A set of log messages matching user defined patterns (may be provided with the \-L option)\&.
+.RE
+.PP
+\fBevents\&.txt\fR
+.RS 4
+A set of log messages matching event patterns\&. It should provide information about major cluster motions without unnecessary details\&. These patterns are devised by the cluster experts\&. Currently, the patterns cover membership and quorum changes, resource starts and stops, fencing (stonith) actions, and cluster starts and stops\&. events\&.txt is always generated for each node\&. In case the central cluster log was found, also combined for all nodes\&.
+.RE
+.PP
+\fBpermissions\&.txt\fR
+.RS 4
+One of the more common problem causes are file and directory permissions\&. hb_report looks for a set of predefined directories and checks their permissions\&. Any issues are reported here\&.
+.RE
+.PP
+\fBbacktraces\&.txt\fR
+.RS 4
+gdb generated backtrace information for cores dumped within the specified period\&.
+.RE
+.PP
+\fBsysinfo\&.txt\fR
+.RS 4
+Various release information about the platform, kernel, operating system, packages, and anything else deemed to be relevant\&. The static part of the system\&.
+.RE
+.PP
+\fBsysstats\&.txt\fR
+.RS 4
+Output of various system commands such as ps(1), uptime(1), netstat(8), and ifconfig(8)\&. The dynamic part of the system\&.
+.RE
+.sp
+description\&.txt should contain a user supplied description of the problem, but since it is very seldom used, it will be dropped from the future releases\&.
+.SH "PREREQUISITES"
+.PP
+ssh
+.RS 4
+It is not strictly required, but you won\(cqt regret having a password\-less ssh\&. It is not too difficult to setup and will save you a lot of time\&. If you can\(cqt have it, for example because your security policy does not allow such a thing, or you just prefer menial work, then you will have to resort to the semi\-manual semi\-automated report generation\&. See below for instructions\&.
+
+If you need to supply a password for your passphrase/login, then always use the
+\-u
+option\&.
+
+For extra ssh(1) options, if you\(cqre too lazy to setup $HOME/\&.ssh/config, use the
+\-X
+option\&. Do not forget to put the options in quotes\&.
+.RE
+.PP
+sudo
+.RS 4
+If the ssh user (as specified with the
+\-u
+option) is other than
+root, then
+hb_report
+uses
+sudo
+to collect the information which is readable only by the
+root
+user\&. In that case it is required to setup the
+sudoers
+file properly\&. The user (or group to which the user belongs) should have the following line:
+
+<user> ALL = NOPASSWD: /usr/sbin/hb_report
+
+See the
+sudoers(5)
+man page for more details\&.
+.RE
+.PP
+Times
+.RS 4
+In order to find files and messages in the given period and to parse the
+\-f
+and
+\-t
+options,
+hb_report
+uses perl and one of the
+Date::Parse
+or
+Date::Manip
+perl modules\&. Note that you need only one of these\&. Furthermore, on nodes which have no logs and where you don\(cqt run
+hb_report
+directly, no date parsing is necessary\&. In other words, if you run this on a loghost then you don\(cqt need these perl modules on the cluster nodes\&.
+
+On rpm based distributions, you can find
+Date::Parse
+in
+perl\-TimeDate
+and on Debian and its derivatives in
+libtimedate\-perl\&.
+.RE
+.PP
+Core dumps
+.RS 4
+To backtrace core dumps gdb is needed and the packages with the debugging info\&. The debug info packages may be installed at the time the report is created\&. Let\(cqs hope that you will need this really seldom\&.
+.RE
+.SH "TIMES"
+.sp
+Specifying times can at times be a nuisance\&. That is why we have chosen to use one of the perl modules\(emthey do allow certain freedom when talking dates\&. You can either read the instructions at the Date::Parse examples page\&. or just rely on common sense and try stuff like:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+3:00          (today at 3am)
+15:00         (today at 3pm)
+2007/9/1 2pm  (September 1st at 2pm)
+Tue Sep 15 20:46:27 CEST 2009 (September 15th etc)
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+hb_report will (probably) complain if it can\(cqt figure out what do you mean\&.
+.sp
+Try to delimit the event as close as possible in order to reduce the size of the report, but still leaving a minute or two around for good measure\&.
+.sp
+\-f is not optional\&. And don\(cqt forget to quote dates when they contain spaces\&.
+.SH "SHOULD I SEND ALL THIS TO THE REST OF INTERNET?"
+.sp
+By default, the sensitive data in CIB and PE files is not mangled by hb_report because that makes PE input files mostly useless\&. If you still have no other option but to send the report to a public mailing list and do not want the sensitive data to be included, use the \-s option\&. Without this option, hb_report will issue a warning if it finds information which should not be exposed\&. By default, parameters matching \fIpassw\&.*\fR are considered sensitive\&. Use the \-p option to specify additional regular expressions to match variable names which may contain information you don\(cqt want to leak\&. For example:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+# hb_report \-f 18:00 \-p "user\&.*" \-p "secret\&.*" /var/tmp/report
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Heartbeat\(cqs ha\&.cf is always sanitized\&. Logs and other files are not filtered\&.
+.SH "LOGS"
+.sp
+It may be tricky to find syslog logs\&. The scheme used is to log a unique message on all nodes and then look it up in the usual syslog locations\&. This procedure is not foolproof, in particular if the syslog files are in a non\-standard directory\&. We look in /var/log /var/logs /var/syslog /var/adm /var/log/ha /var/log/cluster\&. In case we can\(cqt find the logs, please supply their location:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+# hb_report \-f 5pm \-l /var/log/cluster1/ha\-log \-S /tmp/report_node1
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+If you have different log locations on different nodes, well, perhaps you\(cqd like to make them the same and make life easier for everybody\&.
+.sp
+Files starting with "ha\-" are preferred\&. In case syslog sends messages to more than one file, if one of them is named ha\-log or ha\-debug those will be favoured over syslog or messages\&.
+.sp
+hb_report supports also archived logs in case the period specified extends that far in the past\&. The archives must reside in the same directory as the current log and their names must be prefixed with the name of the current log (syslog\-1\&.gz or messages\-20090105\&.bz2)\&.
+.sp
+If there is no separate log for the cluster, possibly unrelated messages from other programs are included\&. We don\(cqt filter logs, but just pick a segment for the period you specified\&.
+.SH "MANUAL REPORT COLLECTION"
+.sp
+So, your ssh doesn\(cqt work\&. In that case, you will have to run this procedure on all nodes\&. Use \-S so that hb_report doesn\(cqt bother with ssh:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+# hb_report \-f 5:20pm \-t 5:30pm \-S /tmp/report_node1
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+If you also have a log host which is not in the cluster, then you\(cqll have to copy the log to one of the nodes and tell us where it is:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+# hb_report \-f 5:20pm \-t 5:30pm \-l /var/tmp/ha\-log \-S /tmp/report_node1
+.fi
+.if n \{\
+.RE
+.\}
+.SH "OPERATION"
+.sp
+hb_report collects files and other information in a fairly straightforward way\&. The most complex tasks are discovering the log file locations (if syslog is used which is the most common case) and coordinating the operation on multiple nodes\&.
+.sp
+The instance of hb_report running on the host where it was invoked is the master instance\&. Instances running on other nodes are slave instances\&. The master instance communicates with slave instances by ssh\&. There are multiple ssh invocations per run, so it is essential that the ssh works without password, i\&.e\&. with the public key authentication and authorized_keys\&.
+.sp
+The operation consists of three phases\&. Each phase must finish on all nodes before the next one can commence\&. The first phase consists of logging unique messages through syslog on all nodes\&. This is the shortest of all phases\&.
+.sp
+The second phase is the most involved\&. During this phase all local information is collected, which includes:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+logs (both current and archived if the start time is far in the past)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+various configuration files (corosync, heartbeat, logd)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+the CIB (both as xml and as represented by the crm shell)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+pengine inputs (if this node was the DC at any point in time over the given period)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+system information and status
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+package information and status
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+dlm lock information
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+backtraces (if there were core dumps)
+.RE
+.sp
+The third phase is collecting information from all nodes and analyzing it\&. The analyzis consists of the following tasks:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+identify files equal on all nodes which may then be moved to the top directory
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+save log messages matching user defined patterns (defaults to ERRORs and CRITical conditions)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+report if there were coredumps and by whom
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+report crm_verify(8) results
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+save log messages matching major events to events\&.txt
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+in case logging is configured without loghost, node logs and events files are combined using a perl utility
+.RE
+.SH "BUGS"
+.sp
+Finding logs may at times be extremely difficult, depending on how weird the syslog configuration\&. It would be nice to ask syslog\-ng developers to provide a way to find out the log destination based on facility and priority\&.
+.sp
+If you think you found a bug, please rerun with the \-v option and attach the output to bugzilla\&.
+.sp
+hb_report can function in a satisfactory way only if ssh works to all nodes using authorized_keys (without password)\&.
+.sp
+There are way too many options\&.
+.SH "AUTHOR"
+.sp
+Written by Dejan Muhamedagic, <dejan@suse\&.de>
+.SH "RESOURCES"
+.sp
+Pacemaker: http://clusterlabs\&.org/
+.sp
+Heartbeat and other Linux HA resources: http://linux\-ha\&.org/wiki
+.sp
+OpenAIS: http://www\&.openais\&.org/
+.sp
+Corosync: http://www\&.corosync\&.org/
+.SH "SEE ALSO"
+.sp
+Date::Parse(3)
+.SH "COPYING"
+.sp
+Copyright (C) 2007\-2009 Dejan Muhamedagic\&. Free use of this software is granted under the terms of the GNU General Public License (GPL)\&.

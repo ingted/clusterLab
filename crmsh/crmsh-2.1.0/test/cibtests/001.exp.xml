@@ -1,0 +1,19 @@
+<cib epoch="2" num_updates="1" admin_epoch="0" validate-with="pacemaker-1.0" cib-last-written="Tue Mar 31 15:06:01 2009">
+  <configuration>
+    <crm_config>
+      <cluster_property_set id="cib-bootstrap-options">
+        <nvpair name="stonith-enabled" value="false" id="cib-bootstrap-options-stonith-enabled"/>
+      </cluster_property_set>
+    </crm_config>
+    <nodes/>
+    <resources>
+      <primitive class="ocf" id="rsc_dummy" provider="heartbeat" type="Dummy">
+        <operations>
+          <op id="rsc_dummy-monitor-30" interval="30" name="monitor"/>
+        </operations>
+      </primitive>
+    </resources>
+    <constraints/>
+  </configuration>
+  <status/>
+</cib>

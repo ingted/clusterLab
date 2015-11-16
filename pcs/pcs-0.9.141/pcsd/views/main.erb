@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<head>
+  <title>Pacemaker/Corosync Configuration</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="/css/overpass.css" />
+  <link rel="stylesheet" type="text/css" href="/css/liberation.css" />
+  <link rel="stylesheet" type="text/css" href="/css/jquery-ui-1.10.1.custom.css" />
+  <script type="text/javascript">
+	ENV = { "RAISE_ON_DEPRECATION": true, "VIEW_PRESERVES_CONTEXT": true,
+	  "CP_DEFAULT_CACHEABLE": true};
+  </script>
+  <script src="/js/jquery-1.9.1.min.js"></script>
+  <script src="/js/jquery-ui-1.10.1.custom.min.js"></script>
+  <script src="/js/handlebars-v1.2.1.js"></script>
+  <script src="/js/ember-1.4.0.js"></script>
+  <script src="/js/pcsd.js"></script>
+  <script type="text/javascript">
+    $(function () { // use jquery html tooltips
+      $.widget("ui.tooltip", $.ui.tooltip, {
+        options: {
+          content: function () {
+            return $(this).prop('title');
+          },
+          track: true
+        }
+      });
+      $(document).tooltip();
+    });
+    var origMainTRHeight = 0;
+    function resizeDialog() {
+      $('#add_resource').dialog('option','position','center');
+    }
+    function resizeTable(refresh) {
+      if (refresh == true) {
+	origMainTRHeight = $('#main > tbody > tr:nth-child(3)').height();
+      }
+      var wheight = $(window).height();
+      var header = $('#header').height();
+      var footer = $('#footer').height();
+      var tr1 = $('#main > tbody > tr:nth-child(1)').height();
+      var tr2 = $('#main > tbody > tr:nth-child(2)').height();
+      var tr3 = $('#main > tbody > tr:nth-child(4)').height();
+      var push = $('#push').height();
+      var newheight = wheight - header - footer - tr1 - tr2 - tr3 - 25;
+      if (origMainTRHeight <= newheight) {
+	$('#main > tbody > tr:nth-child(3)').height(newheight);
+	$('#content').height($('#main').height());
+      }
+    }
+    $(window).resize(function() {
+	resizeTable();
+	});
+    $(window).load(function() {
+	resizeTable(true);
+	$('#add_ra_type').trigger('change');
+	$('#add_stonith_type').trigger('change');
+	$('#new_resource_agent').ajaxStop(function() {
+	  resizeDialog();
+	  });
+	});
+
+  </script>
+</head>
+<html>
+  <body>
+  <script type="text/x-handlebars">
+    <div id="wrapper">
+  <div id="header">
+    <div id="topmenu">
+    <table id="menu_controls">
+	<tr><td rowspan=2 width="170px" style="vertical-align: top;">
+	    <div id="logo">
+	      <img width="170" height="40" src="/images/HAM-logo.png" onclick="if (Pcs) { Pcs.update(); }">
+	    </div>
+	  </td>
+	</tr>
+	<tr><td>
+	    <div id="menu_list">
+	      <table>
+		<tr>
+		  <td colspan=3 style="padding-bottom:8px;">
+		      <% if @clusters != nil %>
+		      <div style="float:left;width:100%">
+			<div class="menuheader">
+			  <div id="dropdownr" class="label"  style="white-space:nowrap" onclick="window.location='/manage'">
+			    <table style="background: #000000">
+			    <tr><td>
+			    <%=@manage ? "Select Cluster" : "Cluster: " + @cluster_name%>
+			    </td>
+			    <td><div style="float:right;" class="downarrow sprites"></div></td>
+			    </tr></table>
+			  </div>
+			  <div style="width:100%;" class="menu">
+			    <% if not @manage %>
+			      <a href="/manage" class="menu-item">Manage&nbsp;Clusters&nbsp;&nbsp;</a>
+			    <% end %>
+			  <% @clusters.each { |c| %>
+			    <a href="<%=c.ui_address%>" class="menu-item"><%=c.name%>&nbsp;&nbsp;</a>
+			  <% } %>
+			  </div>
+			</div>
+		      </div>
+		      <% end %>
+		  </td>
+		  <td colspan=4 style="padding-bottom:8px;">
+		    <% if session[:username] %>
+		      <div style="float:right">
+			<div class="menuheader">
+			<div id="dropdownr" class="label"><%=session[:username]%><div style="float:right;" class="downarrow sprites"></div></div>
+			<div style="width:100%" class="menu">
+			  <a href="/logout" class="menu-item">Logout&nbsp;&nbsp;</a>
+			</div>
+			</div>
+			<!--		      <div id="dropdownr">
+			  <%=session[:username]%><div style="float:right;" class="downarrow sprites"></div>
+			</div> -->
+		      </div>
+		    <% end %>
+		  </td>
+		</tr>
+		<% if !@manage %>
+		<tr>
+		  <td class="menuitem first">{{#link-to "Nodes" }}NODES{{/link-to}}</td>
+		  <td class="menuitem">{{#link-to "Resources" }}RESOURCES{{/link-to}}</td>
+		  <td class="menuitem">{{#link-to "Fence Devices" }}FENCE DEVICES{{/link-to}}</td>
+		  <td class="menuitem">{{#link-to "ACLs" }}ACLS{{/link-to}}</td>
+		  <td class="menuitem">{{#link-to "Configuration" }}CLUSTER PROPERTIES{{/link-to}}</td>
+		  <td class="menuitem"><a href="/manage">MANAGE CLUSTERS</a></td>
+		  <!--<td class="menuitem">{{#link-to "Wizards" }}WIZARDS{{/link-to}}</td>-->
+		</tr>
+	      <% else %>
+		<tr height="37px">
+		  <td colspan=5 width="565px"></td>
+		</tr>
+	      <% end %>
+	      </table>
+	    </div>
+	</td>
+	<td>
+	</td>
+      </tr>
+      </table>
+    </div>
+  </div>
+
+  <div id="content">
+      <%= yield %>
+  </div>
+  <div id="push">
+  </div>
+</div>
+    </script>
+<!--  <div id="footer">
+    <div id="copyright">&copy 2012</div>&nbsp;<a href="http://www.redhat.com">Red Hat, Inc.</a>  <a href="http://access.redhat.com/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Red Hat Customer Portal</a>
+    <div id="help"><a href="#">Help</a></div>
+  </div> -->
+  <div id="loading_screen" style="display:hidden;">
+    <div id="loading_screen_progress_bar"></div>
+  </div>
+<table id="footer" style="display: none;">
+  <tr>
+    <td>&copy 2012&nbsp;<a href="http://www.redhat.com">Red Hat, Inc.</a>&nbsp;&nbsp;<a href="http://access.redhat.com/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Red Hat Customer Portal</td>
+    <td align=right><a href="#">Help</a></td>
+  </tr>
+</table>
+</div>
+</body>
+  <script src="/js/nodes-ember.js"></script>
+  <script type="text/javascript">
+$(function() {
+  disable_checkbox_clicks();
+  setup_resource_class_provider_selection();
+});
+
+  </script>
+<% if @error %>
+  <script type="text/javascript">
+    $(function() {
+      $("#manage_error").dialog({
+	title: "Warning",
+	buttons: {
+	  Ok: function() {
+	    $(this).dialog("close");
+	  }
+	},
+	autoOpen:true
+      });
+    });
+  </script>
+<% end %>
+
+  </html>

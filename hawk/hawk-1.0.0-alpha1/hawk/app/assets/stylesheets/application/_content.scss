@@ -1,0 +1,132 @@
+// Copyright (c) 2009-2015 Tim Serong <tserong@suse.com>
+// See COPYING for license.
+
+#sidebar {
+  background-color: #383c3e;
+  color: #fff;
+
+  padding-left: 0;
+  padding-right: 0;
+
+  ul {
+    & > li {
+      text-transform: uppercase;
+      padding: 0 0 0 20px;
+      color: #00b268;
+    }
+
+    ul {
+      list-style-type: none;
+      line-height: 2.8em;
+      font-weight: lighter;
+      border-bottom: 1px solid #333;
+      padding: 0 0 10px 0;
+      margin: 10px 0 10px 10px;
+
+      li {
+        text-transform: none;
+        padding: 0;
+        margin-left: 20px;
+
+        a {
+          color: #fff;
+          text-decoration: none;
+          display: inline-block;
+          width: 100%;
+        }
+
+        &.active a,
+        a:hover {
+          border-right: 5px solid #80c235;
+        }
+
+        a:hover {
+          color: darken(#fff, 20.0%);
+        }
+      }
+    }
+
+    li:last-of-type {
+      ul {
+        border-bottom: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+#middle {
+  & > .container-fluid {
+    padding: 10px 30px;
+  }
+
+  & > .alert:first-child {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  h1 {
+    margin: 20px 0px 20px 0px;
+    font-size: 2em;
+
+    .fa.page {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+  }
+
+  .panel-default {
+    .panel-heading {
+      @include gradient-vertical(#f4f4f4, #e7e7e7);
+
+      h2 {
+        font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color: rgb(58, 62, 64);
+        -webkit-font-smoothing: antialiased;
+        font-size: 14px;
+        font-weight: bold;
+      }
+    }
+
+    .panel-footer {
+      @include gradient-vertical(#f4f4f4, #e7e7e7);
+    }
+  }
+
+  [data-growl="container"] {
+    min-width: 250px;
+  }
+}
+
+#rightbar {
+  background-color: #EBEBEB;
+
+  padding-left: 0;
+  padding-right: 0;
+
+  & > .container-fluid {
+    padding: 50px;
+
+    &:first-child h2 {
+      margin-top: 0;
+    }
+  }
+}
+
+#modal {
+  h3 {
+    .fa.page {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+  }
+}
+
+form .content.constraints {
+  .well {
+    .form-group:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}

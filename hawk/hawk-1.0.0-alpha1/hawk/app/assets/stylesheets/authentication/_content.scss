@@ -1,0 +1,48 @@
+// Copyright (c) 2009-2015 Tim Serong <tserong@suse.com>
+// See COPYING for license.
+
+#content {
+  width: 300px;
+
+  &.darkbar {
+    background-color: #2b2b2b;
+    border-radius: 0px 0px 8px 8px;
+    border: solid 1px #333;
+  }
+
+  .alert {
+    margin: 20px 10px 0 10px;
+  }
+
+  .logo {
+    text-align: center;
+    margin: 0;
+
+    img {
+      margin: 50px 20px 0 20px;
+      max-width: 150px;
+    }
+  }
+
+  h2 {
+    font-size: 30px;
+    display: block;
+    position: relative;
+    text-align: center;
+    margin: 50px 20px 55px 20px;
+
+    a {
+      color: #00b268;
+      text-decoration: none;
+
+      &:hover {
+        color: #00b268;
+        text-decoration: none;
+      }
+    }
+  }
+
+  form {
+    margin: 15px 10px 30px 10px;
+  }
+}

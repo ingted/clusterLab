@@ -1,0 +1,1452 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>crmsh_hb_report(8)</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>crmsh_hb_report(8)</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_name">NAME</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>crmsh_hb_report - create report for CRM based clusters (Pacemaker)</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><strong>crm report</strong> -f {time|"cts:"testnum} [-t time] [-u user] [-l file]
+       [-n nodes] [-E files] [-p patt] [-L patt] [-e prog] [-MSDCZAVsvhd] [dest]</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The crmsh_hb_report(8) is a utility to collect all information (logs,
+configuration files, system information, etc) relevant to
+Pacemaker (CRM) over the given period of time.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="dlist"><dl>
+<dt class="hdlist1">
+dest
+</dt>
+<dd>
+<p>
+        The report name. It can also contain a path where to put the
+        report tarball. If left out, the tarball is created in the
+        current directory named "hb_report-current_date", for instance
+        hb_report-Wed-03-Mar-2010.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-d</strong>
+</dt>
+<dd>
+<p>
+        Don&#8217;t create the compressed tar, but leave the result in a
+        directory.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-f</strong> { time | "cts:"testnum }
+</dt>
+<dd>
+<p>
+        The start time from which to collect logs. The time is in the
+        format as used by the Date::Parse perl module. For cts tests,
+        specify the "cts:" string followed by the test number. This
+        option is required.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-t</strong> time
+</dt>
+<dd>
+<p>
+        The end time to which to collect logs. Defaults to now.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-n</strong> nodes
+</dt>
+<dd>
+<p>
+        A list of space separated hostnames (cluster members).
+        crm report may try to find out the set of nodes by itself, but
+        if it runs on the loghost which, as it is usually the case,
+        does not belong to the cluster, that may be difficult. Also,
+        OpenAIS doesn&#8217;t contain a list of nodes and if Pacemaker is
+        not running, there is no way to find it out automatically.
+        This option is cumulative (i.e. use -n "a b" or -n a -n b).
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-l</strong> file
+</dt>
+<dd>
+<p>
+        Log file location. If, for whatever reason, crm report cannot
+        find the log files, you can specify its absolute path.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-E</strong> files
+</dt>
+<dd>
+<p>
+        Extra log files to collect. This option is cumulative. By
+        default, /var/log/messages are collected along with the
+        cluster logs.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-M</strong>
+</dt>
+<dd>
+<p>
+        Don&#8217;t collect extra log files, but only the file containing
+        messages from the cluster subsystems.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-L</strong> patt
+</dt>
+<dd>
+<p>
+        A list of regular expressions to match in log files for
+        analysis. This option is additive (default: "CRIT: ERROR:").
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-p</strong> patt
+</dt>
+<dd>
+<p>
+        Additional patterns to match parameter name which contain
+        sensitive information. This option is additive (default: "passw.*").
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-A</strong>
+</dt>
+<dd>
+<p>
+        This is an OpenAIS cluster. <code>crm report</code> has some heuristics to
+        find the cluster stack, but that is not always reliable.
+        By default, <code>crm report</code> assumes that it is run on a Heartbeat
+        cluster.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-u</strong> user
+</dt>
+<dd>
+<p>
+        The ssh user. <code>crm report</code> will try to login to other nodes
+        without specifying a user, then as "root", and finally as
+        "hacluster". If you have another user for administration over
+        ssh, please use this option.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-X</strong> ssh-options
+</dt>
+<dd>
+<p>
+        Extra ssh options. These will be added to every ssh
+        invocation. Alternatively, use <code>$HOME/.ssh/config</code> to setup
+        desired ssh connection options.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-S</strong>
+</dt>
+<dd>
+<p>
+        Single node operation. Run <code>crm report</code> only on this node and
+        don&#8217;t try to start slave collectors on other members of the
+        cluster. Under normal circumstances this option is not
+        needed. Use if ssh(1) does not work to other nodes.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-Z</strong>
+</dt>
+<dd>
+<p>
+        If the destination directory exist, remove it instead of
+        exiting (this is default for CTS).
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-V</strong>
+</dt>
+<dd>
+<p>
+        Print the version including the last repository changeset.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-v</strong>
+</dt>
+<dd>
+<p>
+        Increase verbosity. Normally used to debug unexpected
+        behaviour.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-h</strong>
+</dt>
+<dd>
+<p>
+        Show usage and some examples.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-D</strong> (obsolete)
+</dt>
+<dd>
+<p>
+        Don&#8217;t invoke editor to fill the description text file.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-e</strong> prog (obsolete)
+</dt>
+<dd>
+<p>
+        Your favourite text editor. Defaults to $EDITOR, vim, vi,
+        emacs, or nano, whichever is found first.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-C</strong> (obsolete)
+</dt>
+<dd>
+<p>
+        Remove the destination directory once the report has been put
+        in a tarball.
+</p>
+</dd>
+</dl></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_examples">EXAMPLES</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Last night during the backup there were several warnings
+encountered (logserver is the log host):</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>logserver# crm report -f 3:00 -t 4:00 -n "node1 node2" report</code></pre>
+</div></div>
+<div class="paragraph"><p>collects everything from all nodes from 3am to 4am last night.
+The files are compressed to a tarball report.tar.bz2.</p></div>
+<div class="paragraph"><p>Just found a problem during testing:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code># note the current time
+node1# date
+Fri Sep 11 18:51:40 CEST 2009
+node1# /etc/init.d/heartbeat start
+node1# nasty-command-that-breaks-things
+node1# sleep 120 #wait for the cluster to settle
+node1# crm report -f 18:51 hb1</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code># if crm report can't figure out that this is corosync
+node1# crm report -f 18:51 -A hb1</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code># if crm report can't figure out the cluster members
+node1# crm report -f 18:51 -n "node1 node2" hb1</code></pre>
+</div></div>
+<div class="paragraph"><p>The files are compressed to a tarball hb1.tar.bz2.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_interpreting_results">INTERPRETING RESULTS</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The compressed tar archive is the final product of <code>crm report</code>.
+This is one example of its content, for a CTS test case on a
+three node OpenAIS cluster:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>$ ls -RF 001-Restart</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>001-Restart:
+analysis.txt     events.txt  logd.cf       s390vm13/  s390vm16/
+description.txt  ha-log.txt  openais.conf  s390vm14/</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>001-Restart/s390vm13:
+STOPPED  crm_verify.txt  hb_uuid.txt  openais.conf@   sysinfo.txt
+cib.txt  dlm_dump.txt    logd.cf@     pengine/        sysstats.txt
+cib.xml  events.txt      messages     permissions.txt</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>001-Restart/s390vm13/pengine:
+pe-input-738.bz2  pe-input-740.bz2  pe-warn-450.bz2
+pe-input-739.bz2  pe-warn-449.bz2   pe-warn-451.bz2</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>001-Restart/s390vm14:
+STOPPED  crm_verify.txt  hb_uuid.txt  openais.conf@   sysstats.txt
+cib.txt  dlm_dump.txt    logd.cf@     permissions.txt
+cib.xml  events.txt      messages     sysinfo.txt</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>001-Restart/s390vm16:
+STOPPED  crm_verify.txt  hb_uuid.txt  messages        sysinfo.txt
+cib.txt  dlm_dump.txt    hostcache    openais.conf@   sysstats.txt
+cib.xml  events.txt      logd.cf@     permissions.txt</code></pre>
+</div></div>
+<div class="paragraph"><p>The top directory contains information which pertains to the
+cluster or event as a whole. Files with exactly the same content
+on all nodes will also be at the top, with per-node links created
+(as it is in this example the case with openais.conf and logd.cf).</p></div>
+<div class="paragraph"><p>The cluster log files are named ha-log.txt regardless of the
+actual log file name on the system. If it is found on the
+loghost, then it is placed in the top directory. If not, the top
+directory ha-log.txt contains all nodes logs merged and sorted by
+time. Files named messages are excerpts of /var/log/messages from
+nodes.</p></div>
+<div class="paragraph"><p>Most files are copied verbatim or they contain output of a
+command. For instance, cib.xml is a copy of the CIB found in
+/var/lib/heartbeat/crm/cib.xml. crm_verify.txt is output of the
+crm_verify(8) program.</p></div>
+<div class="paragraph"><p>Some files are result of a more involved processing:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<strong>analysis.txt</strong>
+</dt>
+<dd>
+<p>
+        A set of log messages matching user defined patterns (may be
+        provided with the -L option).
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>events.txt</strong>
+</dt>
+<dd>
+<p>
+        A set of log messages matching event patterns. It should
+        provide information about major cluster motions without
+        unnecessary details.  These patterns are devised by the
+        cluster experts.  Currently, the patterns cover membership
+        and quorum changes, resource starts and stops, fencing
+        (stonith) actions, and cluster starts and stops. events.txt
+        is always generated for each node. In case the central
+        cluster log was found, also combined for all nodes.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>permissions.txt</strong>
+</dt>
+<dd>
+<p>
+        One of the more common problem causes are file and directory
+        permissions. <code>crm report</code> looks for a set of predefined
+        directories and checks their permissions. Any issues are
+        reported here.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>backtraces.txt</strong>
+</dt>
+<dd>
+<p>
+        gdb generated backtrace information for cores dumped
+        within the specified period.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>sysinfo.txt</strong>
+</dt>
+<dd>
+<p>
+        Various release information about the platform, kernel,
+        operating system, packages, and anything else deemed to be
+        relevant. The static part of the system.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>sysstats.txt</strong>
+</dt>
+<dd>
+<p>
+        Output of various system commands such as ps(1), uptime(1),
+        netstat(8), and ip(8). The dynamic part of the system.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>description.txt should contain a user supplied description of the
+problem, but since it is very seldom used, it will be dropped
+from the future releases.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites">PREREQUISITES</h2>
+<div class="sectionbody">
+<div class="dlist"><dl>
+<dt class="hdlist1">
+ssh
+</dt>
+<dd>
+<p>
+        It is not strictly required, but you won&#8217;t regret having a
+        password-less ssh. It is not too difficult to setup and will save
+        you a lot of time. If you can&#8217;t have it, for example because your
+        security policy does not allow such a thing, or you just prefer
+        menial work, then you will have to resort to the semi-manual
+        semi-automated report generation. See below for instructions.
+       <br />
+        If you need to supply a password for your passphrase/login, then
+        always use the <code>-u</code> option.
+       <br />
+        For extra ssh(1) options, if you&#8217;re too lazy to setup
+        $HOME/.ssh/config, use the <code>-X</code> option. Do not forget to put
+        the options in quotes.
+</p>
+</dd>
+<dt class="hdlist1">
+sudo
+</dt>
+<dd>
+<p>
+        If the ssh user (as specified with the <code>-u</code> option) is other
+        than <code>root</code>, then <code>crm report</code> uses <code>sudo</code> to collect the
+        information which is readable only by the <code>root</code> user. In that
+        case it is required to setup the <code>sudoers</code> file properly. The
+        user (or group to which the user belongs) should have the
+        following line:
+       <br />
+        &lt;user&gt; ALL = NOPASSWD: /usr/sbin/crm
+       <br />
+        See the <code>sudoers(5)</code> man page for more details.
+</p>
+</dd>
+<dt class="hdlist1">
+Times
+</dt>
+<dd>
+<p>
+        In order to find files and messages in the given period and to
+        parse the <code>-f</code> and <code>-t</code> options, <code>crm report</code> uses perl and one of the
+        <code>Date::Parse</code> or <code>Date::Manip</code> perl modules. Note that you need
+        only one of these. Furthermore, on nodes which have no logs and
+        where you don&#8217;t run <code>crm report</code> directly, no date parsing is
+        necessary. In other words, if you run this on a loghost then you
+        don&#8217;t need these perl modules on the cluster nodes.
+       <br />
+        On rpm based distributions, you can find <code>Date::Parse</code> in
+        <code>perl-TimeDate</code> and on Debian and its derivatives in
+        <code>libtimedate-perl</code>.
+</p>
+</dd>
+<dt class="hdlist1">
+Core dumps
+</dt>
+<dd>
+<p>
+        To backtrace core dumps gdb is needed and the packages with
+        the debugging info. The debug info packages may be installed
+        at the time the report is created. Let&#8217;s hope that you will
+        need this really seldom.
+</p>
+</dd>
+</dl></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_times">TIMES</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Specifying times can at times be a nuisance. That is why we have
+chosen to use one of the perl modules&#8212;they do allow certain
+freedom when talking dates. You can either read the instructions
+at the
+<a href="http://search.cpan.org/dist/TimeDate/lib/Date/Parse.pm#EXAMPLE_DATES">Date::Parse
+examples page</a>.
+or just rely on common sense and try stuff like:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>3:00          (today at 3am)
+15:00         (today at 3pm)
+2007/9/1 2pm  (September 1st at 2pm)
+Tue Sep 15 20:46:27 CEST 2009 (September 15th etc)</code></pre>
+</div></div>
+<div class="paragraph"><p><code>crm report</code> will (probably) complain if it can&#8217;t figure out what do
+you mean.</p></div>
+<div class="paragraph"><p>Try to delimit the event as close as possible in order to reduce
+the size of the report, but still leaving a minute or two around
+for good measure.</p></div>
+<div class="paragraph"><p><code>-f</code> is not optional. And don&#8217;t forget to quote dates when they
+contain spaces.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_should_i_send_all_this_to_the_rest_of_internet">Should I send all this to the rest of Internet?</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>By default, the sensitive data in CIB and PE files is not mangled
+by <code>crm report</code> because that makes PE input files mostly useless.
+If you still have no other option but to send the report to a
+public mailing list and do not want the sensitive data to be
+included, use the <code>-s</code> option. Without this option, <code>crm report</code>
+will issue a warning if it finds information which should not be
+exposed. By default, parameters matching <em>passw.*</em> are considered
+sensitive.  Use the <code>-p</code> option to specify additional regular
+expressions to match variable names which may contain information
+you don&#8217;t want to leak. For example:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code># crm report -f 18:00 -p "user.*" -p "secret.*" /var/tmp/report</code></pre>
+</div></div>
+<div class="paragraph"><p>Heartbeat&#8217;s ha.cf is always sanitized. Logs and other files are
+not filtered.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_logs">LOGS</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>It may be tricky to find syslog logs. The scheme used is to log a
+unique message on all nodes and then look it up in the usual
+syslog locations. This procedure is not foolproof, in particular
+if the syslog files are in a non-standard directory. We look in
+/var/log /var/logs /var/syslog /var/adm /var/log/ha
+/var/log/cluster. In case we can&#8217;t find the logs, please supply
+their location:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code># crm report -f 5pm -l /var/log/cluster1/ha-log -S /tmp/report_node1</code></pre>
+</div></div>
+<div class="paragraph"><p>If you have different log locations on different nodes, well,
+perhaps you&#8217;d like to make them the same and make life easier for
+everybody.</p></div>
+<div class="paragraph"><p>Files starting with "ha-" are preferred. In case syslog sends
+messages to more than one file, if one of them is named ha-log or
+ha-debug those will be favoured over syslog or messages.</p></div>
+<div class="paragraph"><p><code>crm report</code> supports also archived logs in case the period
+specified extends that far in the past. The archives must reside
+in the same directory as the current log and their names must
+be prefixed with the name of the current log (syslog-1.gz or
+messages-20090105.bz2).</p></div>
+<div class="paragraph"><p>If there is no separate log for the cluster, possibly unrelated
+messages from other programs are included. We don&#8217;t filter logs,
+but just pick a segment for the period you specified.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_manual_report_collection">MANUAL REPORT COLLECTION</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>So, your ssh doesn&#8217;t work. In that case, you will have to run
+this procedure on all nodes. Use <code>-S</code> so that <code>crm report</code> doesn&#8217;t
+bother with ssh:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code># crm report -f 5:20pm -t 5:30pm -S /tmp/report_node1</code></pre>
+</div></div>
+<div class="paragraph"><p>If you also have a log host which is not in the cluster, then
+you&#8217;ll have to copy the log to one of the nodes and tell us where
+it is:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code># crm report -f 5:20pm -t 5:30pm -l /var/tmp/ha-log -S /tmp/report_node1</code></pre>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_operation">OPERATION</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><code>crm report</code> collects files and other information in a fairly
+straightforward way. The most complex tasks are discovering the
+log file locations (if syslog is used which is the most common
+case) and coordinating the operation on multiple nodes.</p></div>
+<div class="paragraph"><p>The instance of <code>crm report</code> running on the host where it was
+invoked is the master instance. Instances running on other nodes
+are slave instances. The master instance communicates with slave
+instances by ssh. There are multiple ssh invocations per run, so
+it is essential that the ssh works without password, i.e. with
+the public key authentication and authorized_keys.</p></div>
+<div class="paragraph"><p>The operation consists of three phases. Each phase must finish
+on all nodes before the next one can commence. The first phase
+consists of logging unique messages through syslog on all nodes.
+This is the shortest of all phases.</p></div>
+<div class="paragraph"><p>The second phase is the most involved. During this phase all
+local information is collected, which includes:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+logs (both current and archived if the start time is far in the past)
+</p>
+</li>
+<li>
+<p>
+various configuration files (corosync, heartbeat, logd)
+</p>
+</li>
+<li>
+<p>
+the CIB (both as xml and as represented by the crm shell)
+</p>
+</li>
+<li>
+<p>
+pengine inputs (if this node was the DC at any point in
+  time over the given period)
+</p>
+</li>
+<li>
+<p>
+system information and status
+</p>
+</li>
+<li>
+<p>
+package information and status
+</p>
+</li>
+<li>
+<p>
+dlm lock information
+</p>
+</li>
+<li>
+<p>
+backtraces (if there were core dumps)
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>The third phase is collecting information from all nodes and
+analyzing it. The analyzis consists of the following tasks:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+identify files equal on all nodes which may then be moved to
+  the top directory
+</p>
+</li>
+<li>
+<p>
+save log messages matching user defined patterns
+  (defaults to ERRORs and CRITical conditions)
+</p>
+</li>
+<li>
+<p>
+report if there were coredumps and by whom
+</p>
+</li>
+<li>
+<p>
+report crm_verify(8) results
+</p>
+</li>
+<li>
+<p>
+save log messages matching major events to events.txt
+</p>
+</li>
+<li>
+<p>
+in case logging is configured without loghost, node logs and
+  events files are combined using a perl utility
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bugs">BUGS</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Finding logs may at times be extremely difficult, depending on
+how weird the syslog configuration. It would be nice to ask
+syslog-ng developers to provide a way to find out the log
+destination based on facility and priority.</p></div>
+<div class="paragraph"><p>If you think you found a bug, please rerun with the -v option and
+attach the output to bugzilla.</p></div>
+<div class="paragraph"><p><code>crm report</code> can function in a satisfactory way only if ssh works to
+all nodes using authorized_keys (without password).</p></div>
+<div class="paragraph"><p>There are way too many options.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_author">AUTHOR</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Written by Dejan Muhamedagic, &lt;<a href="mailto:dejan@suse.de">dejan@suse.de</a>&gt;</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_resources">RESOURCES</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Pacemaker: <a href="http://clusterlabs.org/">http://clusterlabs.org/</a></p></div>
+<div class="paragraph"><p>Heartbeat and other Linux HA resources: <a href="http://linux-ha.org/wiki">http://linux-ha.org/wiki</a></p></div>
+<div class="paragraph"><p>OpenAIS: <a href="http://www.openais.org/">http://www.openais.org/</a></p></div>
+<div class="paragraph"><p>Corosync: <a href="http://www.corosync.org/">http://www.corosync.org/</a></p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">SEE ALSO</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>crm(8), Date::Parse(3)</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copying">COPYING</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Copyright (C) 2007-2009 Dejan Muhamedagic. Free use of this
+software is granted under the terms of the GNU General Public License (GPL).</p></div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2014-06-30 15:15:51 CST
+</div>
+</div>
+</body>
+</html>

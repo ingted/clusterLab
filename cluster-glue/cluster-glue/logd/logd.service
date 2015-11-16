@@ -1,0 +1,13 @@
+[Unit]
+Description=ha_logd logging daemon
+Before=pacemaker.service
+PartOf=pacemaker.service
+
+[Service]
+ExecStart=/usr/lib/heartbeat/ha_logd -c /usr/etc/logd.cf
+ExecStartPre=/bin/rm -f /logd.pid
+ExecStopPost=/bin/rm -f /logd.pid
+PIDFile=/logd.pid
+
+[Install]
+WantedBy=multi-user.target

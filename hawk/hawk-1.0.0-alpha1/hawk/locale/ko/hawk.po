@@ -1,0 +1,1103 @@
+# Copyright (C) 2006-2015 SUSE Linux GmbH, Nuernberg
+# This file is distributed under the same license as the package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hawk\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2014-07-15 11:32\n"
+"Last-Translator: Novell language <language@novell.com>\n"
+"Language-Team: Novell language <language@novell.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Any changes will be lost - do you wish to proceed?"
+msgstr "변경 사항이 유실됩니다. 계속하시겠습니까?"
+
+msgid "Connection to server aborted - will retry every 15 seconds."
+msgstr "중단된 서버에 연결 - 15초마다 다시 시도합니다."
+
+#, fuzzy
+msgid "Connection to server failed - will retry every 15 seconds."
+msgstr "중단된 서버에 연결 - 15초마다 다시 시도합니다."
+
+msgid "Connection to server timed out - will retry every 15 seconds."
+msgstr "시간 초과된 서버에 연결 - 15초마다 다시 시도합니다."
+
+#, fuzzy
+msgid "State"
+msgstr "상태"
+
+msgid "Name"
+msgstr ""
+
+msgid "Maintenance"
+msgstr "유지보수"
+
+msgid "Yes"
+msgstr "예"
+
+msgid "No"
+msgstr "아니오"
+
+msgid "Standby"
+msgstr "대기"
+
+msgid "Operations"
+msgstr "작업"
+
+msgid "Online"
+msgstr "온라인"
+
+msgid "Ready"
+msgstr "준비"
+
+msgid "Fence"
+msgstr ""
+
+msgid "Details"
+msgstr "자세히"
+
+msgid "Events"
+msgstr ""
+
+msgid "Role ID"
+msgstr "역할 ID"
+
+msgid "User ID"
+msgstr "사용자 ID"
+
+msgid "Unable to create shadow CIB"
+msgstr "섀도 CIB를 생성할 수 없습니다."
+
+msgid "1 node configured"
+msgid_plural "%{num} nodes configured"
+msgstr[0] "1개 노드가 구성되었습니다."
+
+msgid "1 resource configured"
+msgid_plural "%{num} resources configured"
+msgstr[0] "1개 리소스가 구성되었습니다."
+
+msgid "Edit Clone"
+msgstr "복제 편집"
+
+msgid "Create Clone"
+msgstr "복제 생성"
+
+msgid "Clone created successfully"
+msgstr "복제가 성공적으로 생성되었습니다."
+
+msgid "Clone updated successfully"
+msgstr "복제를 성공적으로 업데이트했습니다."
+
+msgid "Edit Colocation Constraint"
+msgstr "코로케이션 제약 조건 편집"
+
+msgid "Create Colocation Constraint"
+msgstr "코로케이션 제약 조건 생성"
+
+msgid "Constraint created successfully"
+msgstr "제약 조건이 성공적으로 생성되었습니다."
+
+msgid "Constraint updated successfully"
+msgstr "제약 조건이 성공적으로 업데이트되었습니다."
+
+msgid "Constraints"
+msgstr "제약 조건"
+
+msgid "Cluster Configuration"
+msgstr "클러스터 구성"
+
+msgid "Your changes have been saved"
+msgstr "변경 사항이 저장되었습니다."
+
+msgid "Unable to apply changes: %{msg}"
+msgstr "변경 사항을 적용할 수 없음: %{msg}"
+
+msgid ""
+"Can't set property %{p}, because the value contains both single and double quo"
+"tes"
+msgstr "값이 작은따옴표와 큰따옴표를 모두 포함하므로, %{p} 속성을 설정할 수 없습니다."
+
+msgid "Cluster Dashboard"
+msgstr "클러스터 대시보드"
+
+msgid "Dashboard"
+msgstr "대시보드"
+
+msgid "History Explorer"
+msgstr "이력 탐색기"
+
+msgid "PE Input created by different Pacemaker version (%{version})"
+msgstr "다른 Pacemaker 버전(%{version})으로 만든 PE Input"
+
+msgid "Pacemaker version not present in PE Input"
+msgstr "Pacemaker 버전이 PE Input에 없습니다."
+
+msgid "Required parameters \"basename\" and \"node\" not specified"
+msgstr "필수 파라미터 \"basename\" 및 \"node\"가 지정되지 않았습니다."
+
+msgid "No details available"
+msgstr "사용할 수 있는 세부 사항 없음"
+
+msgid "Error:"
+msgstr "에러:"
+
+msgid "Required parameters \"left\" and \"right\" not specified"
+msgstr "필요한 파라미터 \"left\" 및 \"right\"가 지정되지 않았습니다."
+
+msgid "Edit Group"
+msgstr "그룹 편집"
+
+msgid "Create Group"
+msgstr "그룹 생성"
+
+msgid "Group created successfully"
+msgstr "그룹이 성공적으로 생성되었습니다."
+
+msgid "Group updated successfully"
+msgstr "그룹이 성공적으로 업데이트되었습니다."
+
+msgid "Edit Location Constraint"
+msgstr "위치 제약 조건 편집"
+
+msgid "Create Location Constraint"
+msgstr "위치 제약 조건 생성"
+
+msgid "%{cmd} failed (status: %{status})"
+msgstr "%{cmd} 실패됨(상태: %{status})"
+
+msgid "Cluster Status"
+msgstr "클러스터 상태"
+
+msgid "Required parameter \"node\" not specified"
+msgstr "필수 파라미터 \"노드\"가 지정되지 않았습니다."
+
+msgid "Required parameter \"resource\" not specified"
+msgstr "필수 파라미터 \"리소스\"가 지정되지 않았습니다."
+
+msgid "Required parameters \"resource\" and \"node\" not specified"
+msgstr "필수 파라미터 \"리소스\" 및 \"노드\"가 지정되지 않았습니다."
+
+msgid "Error deleting resource"
+msgstr "리소스를 삭제하는 중 오류가 발생했습니다."
+
+msgid "Required parameters \"ticket\" and \"site\" not specified"
+msgstr "필요한 파라미터 \"ticket\" 및 \"site\"가 지정되지 않았습니다."
+
+msgid "Required parameter \"ticket\" not specified"
+msgstr "필요한 파라미터 \"ticket\"이 지정되지 않았습니다."
+
+msgid "Error invoking %{cmd}: %{msg}"
+msgstr "%{cmd} 호출 중 오류 발생: %{msg}"
+
+msgid "Edit Master/Slave"
+msgstr "마스터/슬레이브 편집"
+
+msgid "Create Master/Slave"
+msgstr "마스터/슬레이브 생성"
+
+msgid "Master/Slave created successfully"
+msgstr "마스터/슬레이브가 성공적으로 생성되었습니다."
+
+msgid "Master/Slave updated successfully"
+msgstr "마스터/슬레이브가 성공적으로 업데이트되었습니다."
+
+#, fuzzy
+msgid "Nodes"
+msgstr "노드"
+
+msgid "Edit Order Constraint"
+msgstr "순서 제약 조건 편집"
+
+msgid "Create Order Constraint"
+msgstr "순서 제약 조건 생성"
+
+msgid "Welcome"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "Create Resource"
+msgstr "리소스 생성"
+
+msgid "Resource created successfully"
+msgstr "리소스가 성공적으로 생성되었습니다."
+
+msgid "Resource updated successfully"
+msgstr "리소스가 성공적으로 업데이트되었습니다."
+
+#, fuzzy
+msgid "Primitives"
+msgstr "기본"
+
+msgid "Resources"
+msgstr "리소스"
+
+msgid "Create Role"
+msgstr "역할 생성"
+
+msgid "Role created successfully"
+msgstr "역할이 성공적으로 생성되었습니다."
+
+msgid "Edit Role"
+msgstr "역할 편집"
+
+msgid "Role updated successfully"
+msgstr "역할을 성공적으로 업데이트했습니다."
+
+#, fuzzy
+msgid "Role deleted successfully"
+msgstr "역할이 성공적으로 생성되었습니다."
+
+#, fuzzy
+msgid "Error deleting %s"
+msgstr "리소스를 삭제하는 중 오류가 발생했습니다."
+
+msgid "Roles"
+msgstr "역할"
+
+msgid "The role does not exist"
+msgstr ""
+
+msgid "To enable ACLs, set 'enable-acl' in the CRM Configuration"
+msgstr "ACL을 활성화하려면 CRM 구성에서 'enable-acl'을 설정하십시오."
+
+msgid "Permission denied for user %{user}"
+msgstr "%{user} 사용자에 대한 권한이 거부됨"
+
+msgid "You have been logged out"
+msgstr "로그아웃되었습니다."
+
+msgid "Log In"
+msgstr "로그인"
+
+#, fuzzy
+msgid "Preferences updated successfully"
+msgstr "리소스가 성공적으로 업데이트되었습니다."
+
+msgid "Preferences"
+msgstr "기본 설정"
+
+msgid "Edit Template"
+msgstr "템플릿 편집"
+
+msgid "Create Template"
+msgstr "템플릿 생성"
+
+msgid "Template created successfully"
+msgstr "템플릿이 생성되었습니다."
+
+msgid "Template updated successfully"
+msgstr "템플릿이 업데이트되었습니다."
+
+msgid "Edit Ticket Constraint"
+msgstr "티켓 제약 조건 편집"
+
+msgid "Create Ticket Constraint"
+msgstr "티켓 제약 조건 생성"
+
+msgid "Create User"
+msgstr "사용자 생성"
+
+msgid "User created successfully"
+msgstr "사용자가 성공적으로 생성되었습니다."
+
+msgid "Edit User"
+msgstr "사용자 편집"
+
+msgid "User updated successfully"
+msgstr "사용자를 성공적으로 업데이트했습니다."
+
+#, fuzzy
+msgid "User deleted successfully"
+msgstr "사용자가 성공적으로 생성되었습니다."
+
+#, fuzzy
+msgid "Users"
+msgstr "사용자"
+
+msgid "The user does not exist"
+msgstr ""
+
+msgid "Cluster Setup Wizard"
+msgstr "마스터 설치 마법사"
+
+msgid "Invalid password"
+msgstr "잘못된 비밀번호"
+
+msgid "Root Password"
+msgstr "루트 비밀번호"
+
+msgid ""
+"The root password is required in order for this wizard template to make config"
+"uration changes."
+msgstr "이 마법사 템플릿에서 구성을 변경할 수 있으려면 루트 비밀번호가 필요합니다."
+
+msgid "The root password for this system"
+msgstr "이 시스템의 루트 비밀번호"
+
+msgid "\"Error: #{result}\""
+msgstr "\"오류: #{result}\""
+
+msgid "Parameters"
+msgstr "매개변수"
+
+msgid "Confirm"
+msgstr "확인"
+
+msgid "Done"
+msgstr "완료"
+
+msgid "Required parameter \"%{param}\" not specified"
+msgstr "필수 파라미터 \"%{param}\"이(가) 지정되지 않았습니다."
+
+msgid "Permission denied - you do not have write access to the CIB."
+msgstr "사용 권한 거부 - CIB에 대한 쓰기 권한이 없습니다."
+
+msgid "Wizard templates and/or workflows are missing"
+msgstr "마법사 템플릿 및/또는 워크플로가 누락되었습니다."
+
+msgid "Workflow \"%s\" not found"
+msgstr "\"%s\" 워크플로를 찾을 수 없습니다."
+
+msgid "Error parsing template \"%s\""
+msgstr "\"%s\" 템플릿을 구문 분석하는 중 오류가 발생했습니다."
+
+msgid "Error parsing workflow \"%s\""
+msgstr "\"%s\" 워크플로를 구문 분석하는 중 오류가 발생했습니다."
+
+msgid "Data collection in progress (%{from_time} to %{to_time})..."
+msgstr "데이터 모음 진행 중(%{from_time} - %{to_time})..."
+
+#, fuzzy
+msgid "Revert"
+msgstr "재설정"
+
+msgid "Apply"
+msgstr ""
+
+#, fuzzy
+msgid "Create"
+msgstr "역할 생성"
+
+#, fuzzy
+msgid "Read"
+msgstr "준비"
+
+msgid "Write"
+msgstr ""
+
+msgid "Deny"
+msgstr ""
+
+msgid "CIB file \"%{path}\" not found"
+msgstr "CIB 파일 \"%{path}\"을(를) 찾을 수 없음"
+
+msgid "Unable to parse CIB file \"%{path}\""
+msgstr "CIB 파일 \"%{path}\"을(를) 구문 분석할 수 없습니다."
+
+msgid "Pacemaker does not appear to be installed (%{cmd} not found)"
+msgstr "페이스메이커가 설치된 것 같지 않습니다(%{cmd} 없음)."
+
+msgid "Unable to execute %{cmd}"
+msgstr "%{cmd}을(를) 실행할 수 없습니다."
+
+msgid "Error invoking %{cmd}"
+msgstr "%{cmd} 호출 중 오류 발생"
+
+msgid "Unknown"
+msgstr "알 수 없음"
+
+msgid ""
+"Failed op: node=%{node}, resource=%{resource}, call-id=%{call_id}, operation=%"
+"{op}, rc-code=%{rc_code}, exit-reason=%{exit_reason}"
+msgstr ""
+
+msgid "Invalid Resource ID \"%{id}\""
+msgstr "리소스 ID \"%{id}\"이(가) 잘못되었습니다."
+
+msgid "Unable to parse cibadmin output"
+msgstr "cibadmin 출력을 구문 분석할 수 없습니다."
+
+msgid "No clone child specified"
+msgstr "지정된 복제 하위가 없습니다."
+
+msgid ""
+"Can't set meta attribute %{p}, because the value contains both single and doub"
+"le quotes"
+msgstr "값에 작은따옴표와 큰따옴표가 모두 포함되어 있으므로, 메타 특성 %{p}을(를) 설정할 수 없습니다."
+
+msgid "The ID \"%{id}\" is already in use"
+msgstr "ID \"%{id}\"이(가) 이미 사용 중입니다."
+
+msgid "Unable to create clone: %{msg}"
+msgstr "복제를 생성할 수 없음: %{msg}"
+
+msgid "Clone ID \"%{id}\" does not exist"
+msgstr "복제 ID \"%{id}\"이(가) 없습니다."
+
+msgid "Invalid score"
+msgstr "잘못된 점수"
+
+msgid "Constraint must consist of at least two separate resources"
+msgstr "제약 조건은 2개 이상의 개별 리소스로 구성되어야 합니다."
+
+msgid "Unable to create constraint: %{msg}"
+msgstr "제약 조건을 생성할 수 없음: %{msg}"
+
+msgid "Constraint ID \"%{id}\" does not exist"
+msgstr "제약 조건 ID \"%{id}\"이(가) 없습니다."
+
+msgid "Unable to update constraint: %{msg}"
+msgstr "제약 조건을 업데이트할 수 없음: %{msg}"
+
+msgid "No group children specified"
+msgstr "지정된 그룹 하위가 없습니다."
+
+msgid "Unable to create group: %{msg}"
+msgstr "그룹을 생성할 수 없음: %{msg}"
+
+msgid "Group ID \"%{id}\" does not exist"
+msgstr "그룹 ID \"%{id}\"이(가) 존재하지 않습니다."
+
+msgid "Constraint is too complex - it contains nested rules"
+msgstr "제약 조건이 너무 복잡합니다. 중첩 규칙을 포함합니다."
+
+msgid "No rules specified"
+msgstr "지정된 규칙이 없습니다."
+
+msgid "No resource specified"
+msgstr "지정된 리소스가 없습니다."
+
+msgid "Invalid score \"%{score}\""
+msgstr "점수 \"%{score}\"이(가) 잘못되었습니다."
+
+msgid "No expressions specified"
+msgstr "지정된 식이 없습니다."
+
+msgid "Attribute contains both single and double quotes"
+msgstr "특성에 작은따옴표와 큰따옴표가 모두 포함되어 있습니다."
+
+msgid "Value contains both single and double quotes"
+msgstr "값에 작은따옴표와 큰따옴표가 모두 포함되어 있습니다."
+
+msgid "No Master/Slave child specified"
+msgstr "지정된 마스터/슬레이브 하위가 없습니다."
+
+msgid "Unable to create master/slave: %{msg}"
+msgstr "마스터/슬레이브를 생성할 수 없음: %{msg}"
+
+msgid "Master/Slave ID \"%{id}\" does not exist"
+msgstr "마스터/슬레이브 ID \"%{id}\"이(가) 없습니다."
+
+msgid ""
+"Can't set parameter %{p}, because the value contains both single and double qu"
+"otes"
+msgstr "값에 작은따옴표와 큰따옴표가 모두 포함되어 있으므로, 파라미터 %{p}을(를) 설정할 수 없습니다."
+
+msgid ""
+"Can't set op %{o} attribute {%a}, because the value contains both single and d"
+"ouble quotes"
+msgstr "값에 작은따옴표와 큰따옴표가 모두 포함되어 있으므로, op %{o} 특성 {%a}을(를) 설정할 수 없습니다."
+
+msgid "Unable to create resource: %{msg}"
+msgstr "리소스를 생성할 수 없음: %{msg}"
+
+msgid "Resource ID \"%{id}\" does not exist"
+msgstr "리소스 ID \"%{id}\"이(가) 없습니다."
+
+#, fuzzy
+msgid "Unable to create: %{msg}"
+msgstr "역할을 생성할 수 없음: %{msg}"
+
+#, fuzzy
+msgid "The ID \"%{id}\" does not exist"
+msgstr "역할 ID \"%{id}\"이(가) 없습니다."
+
+#, fuzzy
+msgid "Unable to update: %{msg}"
+msgstr "역할을 업데이트할 수 없음: %{msg}"
+
+msgid "Role ID is required"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid Role ID"
+msgstr "잘못된 티켓 ID"
+
+msgid "Username not specified"
+msgstr "사용자 이름이 지정되지 않았습니다."
+
+msgid "Invalid username"
+msgstr "사용자 이름이 잘못되었습니다."
+
+msgid "Password not specified"
+msgstr "비밀번호가 지정되지 않았습니다."
+
+msgid "%s is not installed"
+msgstr "%s이(가) 설치되지 않았습니다."
+
+#, fuzzy
+msgid "%s is not executable"
+msgstr "%s이(가) 설치되지 않았습니다."
+
+msgid "Invalid username or password"
+msgstr "사용자 이름 또는 비밀번호가 잘못되었습니다."
+
+msgid "Language is required"
+msgstr ""
+
+msgid "Invalid Ticket ID"
+msgstr "잘못된 티켓 ID"
+
+msgid "No resources specified"
+msgstr "지정된 리소스가 없습니다."
+
+msgid "User ID is required"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid User ID"
+msgstr "잘못된 티켓 ID"
+
+msgid "Meta Attributes"
+msgstr "메타 특성"
+
+msgid "Add"
+msgstr "추가"
+
+msgid "Remove"
+msgstr "제거"
+
+msgid "You must enter a value"
+msgstr "값을 입력해야 합니다."
+
+msgid "Clone ID"
+msgstr "복제 ID"
+
+msgid "Child Resource"
+msgstr "하위 리소스"
+
+msgid "Revert Changes"
+msgstr "변경 사항 되돌리기"
+
+msgid "Back"
+msgstr "뒤로"
+
+msgid "Apply Changes"
+msgstr "변경 사항 적용"
+
+msgid "Link set"
+msgstr "링크 설정"
+
+msgid "Break set"
+msgstr "분할 설정"
+
+msgid "Swap resources"
+msgstr "스왑 리소스"
+
+msgid "Add resource to constraint"
+msgstr "리소스를 제약 조건에 추가"
+
+msgid "Constraint ID"
+msgstr "제약 조건 ID"
+
+msgid "Score"
+msgstr "점수"
+
+msgid "Create Constraint"
+msgstr "제약 조건 생성"
+
+msgid "Edit Constraint"
+msgstr "제약 조건 편집"
+
+msgid "Delete Constraint"
+msgstr "제약 조건 삭제"
+
+msgid "Are you sure you wish to delete %s?"
+msgstr "%s을(를) 삭제하시겠습니까?"
+
+msgid "New Constraint"
+msgstr "새 제약 조건"
+
+msgid "Location"
+msgstr "위치"
+
+msgid "Colocation"
+msgstr "코로케이션"
+
+msgid "Order"
+msgstr "순서"
+
+msgid "Ticket"
+msgstr "티켓"
+
+msgid "(No location constraints defined)"
+msgstr "(정의된 위치 제약 조건이 없습니다.)"
+
+msgid "[Constraint is too complex to display]"
+msgstr "[제약 조건이 너무 복잡해서 표시할 수 없습니다.]"
+
+msgid "(No colocation constraints defined)"
+msgstr "(정의된 코로케이션 제약 조건이 없습니다.)"
+
+msgid "(No order constraints defined)"
+msgstr "(정의된 순서 제약 조건이 없습니다.)"
+
+msgid "(No ticket constraints defined)"
+msgstr "(티켓 제약 조건이 정의되지 않음)"
+
+msgid "CRM Configuration"
+msgstr "CRM 구성"
+
+msgid "Resource Defaults"
+msgstr "리소스 기본값"
+
+msgid "Operation Defaults"
+msgstr "작업 기본값"
+
+msgid "No cluster properties set in %{group}"
+msgstr "%{group}에 클러스터 특성 집합이 없습니다."
+
+msgid "Edit"
+msgstr "편집"
+
+msgid "Username:"
+msgstr "사용자 이름:"
+
+msgid "Password:"
+msgstr "비밀번호:"
+
+msgid "Cluster has errors - click for details"
+msgstr "클러스터 오류 발생 - 자세한 내용을 보려면 클릭하십시오."
+
+msgid "Timeout: Please try again"
+msgstr "시간 초과: 다시 시도하십시오."
+
+msgid "Permission denied. Please log in to %{node}"
+msgstr "권한이 거부됨. %{node}에 로그인하십시오."
+
+#, fuzzy
+msgid "Geo Site %{ip}"
+msgstr "복제 집합: %{id}"
+
+msgid "Site: %{ip}"
+msgstr ""
+
+msgid "Arbitrator: %{ip}"
+msgstr ""
+
+msgid "Can't contact Hawk on %{node}. Retrying every 5 seconds."
+msgstr "%{node}의 Hawk에 연결할 수 없습니다. 5초마다 다시 시도합니다."
+
+msgid "Cluster Name:"
+msgstr "클러스터 이름:"
+
+msgid "Host Name:"
+msgstr "호스트 이름:"
+
+msgid ""
+"(Specify any host name in the cluster.  Other nodes will be found automaticall"
+"y)"
+msgstr "(클러스터에서 호스트 이름을 지정하십시오. 다른 노드가 자동으로 검색됩니다.)"
+
+msgid "Add Cluster"
+msgstr "클러스터 추가"
+
+msgid "OK"
+msgstr "확인"
+
+msgid "A cluster with that name already exists"
+msgstr "해당 이름의 클러스터가 이미 있습니다."
+
+msgid "The host %{h} is already present in cluster %{c}"
+msgstr "%{h} 호스트가 이미 %{c} 클러스터에 있습니다."
+
+msgid ""
+"Unable to connect to %{host}. Try opening %{url} in your web browser to ensure"
+" Hawk is accessible."
+msgstr "%{host}에 연결할 수 없습니다. Hawk에 액세스하려면 웹 브라우저에서 %{url}을 여십시오."
+
+msgid "Cancel"
+msgstr "취소"
+
+#, fuzzy
+msgid "Cluster"
+msgstr "클러스터 추가"
+
+msgid "STONITH Enabled"
+msgstr "STONITH 활성화됨"
+
+msgid "No Quorum Policy"
+msgstr "쿼럼 정책 없음"
+
+msgid "Symmetric Cluster"
+msgstr "대칭 클러스터"
+
+msgid "Resource Stickiness"
+msgstr "리소스 고착성"
+
+msgid "Status"
+msgstr "상태"
+
+msgid "No transitions found for the specified time period."
+msgstr "지정된 기간 중에 전환을 찾을 수 없습니다."
+
+msgid "Time"
+msgstr "시간"
+
+msgid "PE Input"
+msgstr "PE 입력"
+
+msgid "Node"
+msgstr "노드"
+
+msgid "(full log)"
+msgstr "(전체 로그)"
+
+msgid "Graph"
+msgstr "그래프"
+
+msgid "Diff"
+msgstr "차이"
+
+msgid "Delete this history archive?"
+msgstr "이 이력 아카이브를 삭제하시겠습니까?"
+
+msgid "Start Time:"
+msgstr "시작 시간:"
+
+msgid "End Time:"
+msgstr "종료 시간:"
+
+msgid "Exploring %{path}"
+msgstr "%{path} 탐색 중"
+
+msgid "Display"
+msgstr "표시"
+
+msgid "Upload hb_report tarball"
+msgstr "hb_report tarball 업로드"
+
+msgid "Explore"
+msgstr "탐색"
+
+msgid "Error: Permission denied for user '%s'."
+msgstr "오류: '%s' 사용자에 대해 권한이 거부됨"
+
+msgid "Group ID"
+msgstr "그룹 ID"
+
+msgid "Group Children"
+msgstr "그룹 하위"
+
+msgid "Available Primitives"
+msgstr "사용 가능한 원본"
+
+msgid "Start Time not specified"
+msgstr "시작 시간이 지정되지 않았습니다."
+
+msgid "Generate"
+msgstr "생성"
+
+msgid "hb_report generation in progress..."
+msgstr "hb_report 생성이 진행 중..."
+
+msgid "Download hb_report"
+msgstr "hb_report 다운로드"
+
+#, fuzzy
+msgid "Please ensure Javascript is enabled"
+msgstr "JavaScript를 활성화하십시오."
+
+msgid "SUSE, LLC"
+msgstr ""
+
+msgid "High Availability Web Konsole"
+msgstr ""
+
+msgid "Role"
+msgstr "역할"
+
+msgid "Boolean Op"
+msgstr "부울 연산자"
+
+msgid "Expression"
+msgstr "식"
+
+msgid "Add Rule"
+msgstr "규칙 추가"
+
+msgid "Remove Rule"
+msgstr "규칙 제거"
+
+msgid "Show Rule Editor"
+msgstr "규칙 편집기 표시"
+
+msgid "Resource"
+msgstr "자원"
+
+msgid "Fence Node"
+msgstr "펜스 노드"
+
+msgid "View Details..."
+msgstr "자세히 보기..."
+
+msgid "View Recent Events..."
+msgstr "최근 이벤트 보기..."
+
+msgid "Start"
+msgstr "시작"
+
+msgid "Stop"
+msgstr "중지"
+
+msgid "Move..."
+msgstr "이동..."
+
+msgid "Drop Relocation Rule"
+msgstr "재배치 규칙 삭제"
+
+msgid "Promote"
+msgstr "승격"
+
+msgid "Demote"
+msgstr "강등"
+
+msgid "Clean Up"
+msgstr "정리"
+
+msgid "Grant"
+msgstr "부여"
+
+msgid "Revoke"
+msgstr "해지"
+
+msgid "Master/Slave ID"
+msgstr "마스터/슬레이브 ID"
+
+msgid "Getting recent events (last hour)..."
+msgstr "최근 이벤트(마지막 시간)를 가져오는 중..."
+
+msgid "Another \"crm history\" operation is in progress..."
+msgstr "다른 \"crm history\" 작업이 진행 중..."
+
+msgid "No events found in last hour."
+msgstr "마지막 시간에 검색된 이벤트가 없습니다."
+
+msgid "Utilization"
+msgstr "사용량"
+
+msgid "No utilization defined"
+msgstr "정의된 사용률이 없습니다."
+
+msgid "Attributes"
+msgstr "특성"
+
+msgid "No attributes defined"
+msgstr "정의된 특성이 없습니다."
+
+msgid "Symmetrical"
+msgstr "대칭적"
+
+msgid "Close"
+msgstr "닫기"
+
+msgid "HTML"
+msgstr ""
+
+msgid "PDF"
+msgstr ""
+
+msgid "There is already a monitor op with this interval."
+msgstr "이 간격을 사용하는 모니터 작업이 이미 있습니다."
+
+msgid "Resource ID"
+msgstr "리소스 ID"
+
+msgid "Template ID"
+msgstr "템플릿 ID"
+
+msgid "Class"
+msgstr "클래스"
+
+msgid "Provider"
+msgstr "공급자"
+
+msgid "Type"
+msgstr "유형"
+
+msgid "Use Template"
+msgstr "템플릿 사용"
+
+msgid "Edit Resource"
+msgstr "리소스 편집"
+
+msgid "Delete Resource"
+msgstr "리소스 삭제"
+
+msgid "New Resource"
+msgstr "새 리소스"
+
+msgid "Primitive"
+msgstr "기본"
+
+msgid "New Template"
+msgstr "새 템플릿"
+
+msgid "Template"
+msgstr "템플릿"
+
+msgid "New Group"
+msgstr "새 그룹"
+
+msgid "Group"
+msgstr "그룹"
+
+msgid "New Clone"
+msgstr "새 복제"
+
+msgid "Clone"
+msgstr "복제"
+
+msgid "New Master/Slave"
+msgstr "새 마스터/슬레이브"
+
+msgid "Master/Slave"
+msgstr "마스터/슬레이브"
+
+msgid "(No primitive resources defined)"
+msgstr "(기본 리소스가 정의되지 않음)"
+
+msgid "(No templates defined)"
+msgstr "(템플릿이 정의되지 않음)"
+
+msgid "(No groups defined)"
+msgstr "(그룹이 정의되지 않음)"
+
+msgid "(No clones defined)"
+msgstr "(복제가 정의되지 않음)"
+
+msgid "(No master/slave resources defined)"
+msgstr "(마스터/슬레이브 리소스가 정의되지 않음)"
+
+msgid "Fail Count"
+msgstr "실패 횟수"
+
+msgid "Last Failure"
+msgstr "마지막 실패"
+
+#, fuzzy
+msgid "Rule"
+msgstr "역할"
+
+msgid "Add a rule below"
+msgstr ""
+
+#, fuzzy
+msgid "Remove this rule"
+msgstr "규칙 제거"
+
+#, fuzzy
+msgid "Move rule up"
+msgstr "리소스 %s 이동"
+
+msgid "Move rule down"
+msgstr ""
+
+msgid "Right"
+msgstr "오른쪽"
+
+msgid "XPath"
+msgstr "XPath"
+
+msgid "Tag"
+msgstr "태그"
+
+msgid "Ref"
+msgstr "참조"
+
+msgid "Attribute"
+msgstr "속성"
+
+#, fuzzy
+msgid "Delete role"
+msgstr "리소스 삭제"
+
+#, fuzzy
+msgid "Add role"
+msgstr "규칙 추가"
+
+msgid ""
+"ACL support requires CIB schema version 2.0, available in Pacemaker 1.1.12 and"
+" up. For older versions of Pacemaker, use Hawk version 0.6."
+msgstr ""
+
+#, fuzzy
+msgid "Username"
+msgstr "사용자 이름:"
+
+#, fuzzy
+msgid "Password"
+msgstr "비밀번호:"
+
+#, fuzzy
+msgid "Login"
+msgstr "로그인"
+
+msgid "Loss Policy"
+msgstr "손실 정책"
+
+#, fuzzy
+msgid "Delete user"
+msgstr "리소스 삭제"
+
+#, fuzzy
+msgid "Add user"
+msgstr "클러스터 추가"
+
+msgid "%{workflow}: %{step}"
+msgstr "%{workflow}: %{step}"
+
+msgid "The configuration has been applied."
+msgstr "구성이 적용되었습니다."
+
+msgid "The following configuration will be applied to the cluster:"
+msgstr "다음 구성이 클러스터에 적용됩니다."
+
+msgid "Error applying configuration:"
+msgstr "구성 적용 중 오류 발생:"
+
+msgid "< Back"
+msgstr "< 뒤로"
+
+msgid "Next >"
+msgstr "다음 >"
+
+msgid "No workflow descriptions found"
+msgstr "검색된 워크플로 설명이 없습니다."
+
+msgid "Choose Configuration"
+msgstr "구성 선택"
+
+msgid ""
+"This wizard will guide you through the steps necessary to add one of the follo"
+"wing configurations to the cluster."
+msgstr "이 마법사는 클러스터에 다음 구성 중 하나를 추가하는 데 필요한 단계로 안내합니다."
+
+msgid "The object/attribute does not exist (cibadmin %{cmd})"
+msgstr "객체/특성이 없습니다(cibadmin %{cmd})."
+
+msgid "Error invoking cibadmin %{cmd}: %{msg}"
+msgstr "cibadmin %{cmd} 호출 중 오류 발생: %{msg}"
+
+msgid "The object/attribute does not exist: %{msg}"
+msgstr "객체/특성이 없습니다: %{msg}"
+
+msgid "Error invoking cibadmin --replace: %{msg}"
+msgstr "cibadmin --replace 호출 중 오류 발생: %{msg}"

@@ -1,0 +1,30 @@
+// Copyright (c) 2009-2015 Tim Serong <tserong@suse.com>
+// See COPYING for license.
+
+.simple-hidden {
+  display: none;
+}
+
+.margin-bottom {
+  margin-bottom: 20px;
+}
+
+.toggleable,
+.clickable {
+  cursor: pointer;
+}
+
+.softhide {
+  display: none;
+}
+
+.btn {
+  &.btn-circle {
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    padding: 6px 0;
+    line-height: 1.428571429;
+    border-radius: 20px;
+  }
+}

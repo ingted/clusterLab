@@ -1,0 +1,95 @@
+// Copyright (c) 2009-2015 Tim Serong <tserong@suse.com>
+// See COPYING for license.
+
+.panel {
+  & > .panel-steps {
+    margin: 20px 0;
+    text-align: center;
+    position: relative;
+
+    &:before {
+      top: 15px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      position: absolute;
+      content: " ";
+      width: 100%;
+      height: 2px;
+      background-color: #ccc;
+      z-order: 0;
+    }
+
+    .nav {
+      margin: 0 auto;
+
+      & > li {
+        display: inline-block;
+        float: none;
+        margin: 0 10px;
+
+        & > a {
+          display: inline-block;
+          cursor: default;
+        }
+      }
+    }
+  }
+
+  &.with-nav-tabs {
+    .panel-heading{
+      padding: 5px 5px 0 5px;
+    }
+
+    .nav-tabs {
+      border-bottom: none;
+    }
+
+    .nav-justified {
+      margin-bottom: -1px;
+    }
+
+    &.panel-default {
+      .nav-tabs > li > a,
+      .nav-tabs > li > a:hover,
+      .nav-tabs > li > a:focus {
+          color: #777;
+      }
+
+      .nav-tabs > .open > a,
+      .nav-tabs > .open > a:hover,
+      .nav-tabs > .open > a:focus,
+      .nav-tabs > li > a:hover,
+      .nav-tabs > li > a:focus {
+        color: #777;
+        background-color: #ddd;
+        border-color: transparent;
+      }
+      .nav-tabs > li.active > a,
+      .nav-tabs > li.active > a:hover,
+      .nav-tabs > li.active > a:focus {
+        color: #555;
+        background-color: #fff;
+        border-color: #ddd;
+        border-bottom-color: transparent;
+      }
+      .nav-tabs > li.dropdown .dropdown-menu {
+        background-color: #f5f5f5;
+        border-color: #ddd;
+      }
+      .nav-tabs > li.dropdown .dropdown-menu > li > a {
+        color: #777;
+      }
+      .nav-tabs > li.dropdown .dropdown-menu > li > a:hover,
+      .nav-tabs > li.dropdown .dropdown-menu > li > a:focus {
+        background-color: #ddd;
+      }
+      .nav-tabs > li.dropdown .dropdown-menu > .active > a,
+      .nav-tabs > li.dropdown .dropdown-menu > .active > a:hover,
+      .nav-tabs > li.dropdown .dropdown-menu > .active > a:focus {
+        color: #fff;
+        background-color: #555;
+      }
+    }
+  }
+}

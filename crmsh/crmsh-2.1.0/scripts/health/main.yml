@@ -1,0 +1,12 @@
+---
+- name: Check the health of the cluster
+  description: >
+    Runs various checks to verify the health of the cluster nodes
+  parameters: []
+  steps:
+    - name: Collect cluster information
+      collect: collect.py
+    - name: Run HA health check
+      apply_local: hahealth.py
+    - name: Report cluster state
+      report: report.py

@@ -1,0 +1,89 @@
+Random Notes
+============
+
+== Components / Commit Messages ==
+
+As seen in commit messages, there's four broad classifications:
+
+* GUI: generally anything you can actually see in the web browser.
+* Build: build infrastructure etc.
+* Doc: documentation, generally internal/developer (so far).
+* Misc: anything else.  This includes changes to models where no
+  GUI visible changes are made.
+
+Within that, we generally narrow it down a bit, e.g.:
+
+* GUI: explorer: (not "history", despite a handful of commit messages
+  to the contrary)
+* GUI: simulator: 
+* GUI: wizard:
+* GUI: summary_view:
+* GUI: ui.location:
+* etc.
+
+This categorization is somewhat arbitrary, but tends to be either
+functional area for larger changes or component/file name for
+smaller changes.
+
+== Crazed Ruby i18n Problems ==
+
+gettext:mo:update totally wigs out, notably on the French translation,
+if the pot file isn't up to date, like, if any line numbers drift, or
+something.  This breaks the build with:
+
+---------------------------------------------------------------------
+[   68s] rake aborted!
+[   68s] undefined method `match' for nil:NilClass
+[   68s] 
+[   68s] Tasks: TOP => gettext:mo:update => gettext:mo:fr:update
+[   68s] (See full trace by running task with --trace)
+[   69s] Makefile:67: recipe for target 'all' failed
+[   69s] make: *** [all] Error 1
+[   69s] error: Bad exit status from /var/tmp/rpm-tmp.zrbECK (%build)
+---------------------------------------------------------------------
+
+If you hit this, run `make pot`.  Or, better yet, figure out how to
+fix it properly :-/
+
+== Tagging Releases ==
+
+Use annotated tags, e.g.:
+
+---------------------------------------------------
+# git tag -a hawk-X.Y.Z -m 'Tag Hawk version X.Y.Z'
+---------------------------------------------------
+
+== Hacking ==
+
+=== @attributes in CibObject subclasses ===
+
+See e.g.: clone.rb.  Set @attributes in your subclass to the list
+of attributes you want users to be able to edit.  Anything in that
+list is subject to mass assignment via CibObject::set_attributes.
+Nothing outside that list will be set by mass assignment.
+
+=== New MVC (e.g.: for Constraints) ===
+
+----------------------------------------
+# script/generate controller Constraints
+# vim app/models/constraint.rb
+# vim test/unit/constraint_test.rb
+----------------------------------------
+
+== Known Issues ==
+
+If a host is accessible via both shortname and FQDN (e.g.: as on a local
+network) and you're using Internet Explorer, and connect via
+https://shortname:7630/, you may see a Security Warning something like:
+
+____
+This webpage contains content that will not be delivered using a 
+secure HTTPS connection, which could compromise the security of the
+entire webpage.
+____
+
+This seems to be beacuse IE thinks Hawk's AJAX requests are some sort
+of XSS exploit (see answer to http://stackoverflow.com/questions/6290149/how-to-overcome-this-security-issue).
+
+Workaround: always access Hawk via https://FQDN:7630/
+

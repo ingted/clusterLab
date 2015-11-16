@@ -1,0 +1,34 @@
+---
+- name: Add a new node to an already existing cluster
+  description: >
+    Installs missing packages and copies corosync.conf
+    from one of the existing cluster nodes.
+
+    This script is somewhat special: The nodes parameter
+    must contain at least one node already in the cluster 
+    as well as the new node to add.
+
+    A more user-friendly interface to this script is 
+    provided via the cluster add command.
+  parameters:
+    - name: node
+      description: Node to add to the cluster
+  steps:
+    - name: Check cluster
+      collect: add.py collect
+
+    - name: Validate parameters
+      validate: add.py validate
+
+    - name: Install required packages
+      apply: add.py install
+
+    - name: Copy configuration files
+      apply_local: add.py copy
+
+    - name: Configure firewall
+      apply: add.py firewall
+
+    - name: Start cluster on new node
+      apply: add.py start
+

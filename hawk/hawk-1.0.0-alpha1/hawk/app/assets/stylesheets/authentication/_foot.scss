@@ -1,0 +1,19 @@
+// Copyright (c) 2009-2015 Tim Serong <tserong@suse.com>
+// See COPYING for license.
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 20px 10px;
+  border-top: 1px solid #999;
+  z-index: 950;
+
+  .container-fluid {
+    p {
+      margin-bottom: 0;
+      display: inline-block;
+    }
+  }
+}

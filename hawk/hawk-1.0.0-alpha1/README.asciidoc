@@ -1,0 +1,233 @@
+HA Web Konsole (Hawk)
+=====================
+See AUTHORS
+
+image:https://travis-ci.org/ClusterLabs/hawk.svg?branch=master["Build Status", link="https://travis-ci.org/ClusterLabs/hawk"]
+
+== Overview ==
+
+Hawk is a web-based GUI for managing and monitoring Pacemaker HA
+clusters.  It is generally intended to be run on every node in the
+cluster, so that you can just point your web browser at any node
+to access it, e.g.:
+
+https://your-server:7630/
+
+Hawk requires users to log in prior to providing access to the
+cluster.  The same rules apply as for pacemaker itself; you need to
+log in as a user in the +haclient+ group.  The easiest thing to do
+is assign a password to the +hacluster+ user, then log in using
+that account.  Note that you will need to configure this user
+account on every node you want to use Hawk on.
+
+Once logged in, you will see a screen showing the current state of
+the cluster.  Three views are possible (summary, tree and table),
+selectable with the buttons on the top right of the screen.  The
+navigation bar down the left hand side provides access to the history
+explorer, setup wizard, cluster properties, resource and constraints
+configuration.  The little tools menu next to the logout link gives
+you the simulator, cluster diagram and hb_report generation.
+
+Management operations (start, stop, online, standby, etc.) can be
+performed by clicking the little menu icon to the right of any
+node or resource on the status screen.
+
+More detailed usage documentation is available in the
+http://www.suse.com/documentation/sle_ha/book_sleha/?page=/documentation/sle_ha/book_sleha/data/cha_ha_configuration_hawk.html[SUSE Linux Enterprise High Availability Extension documentation]
+
+
+== Screenshot
+
+image:http://i.imgur.com/7WjjIu6.png["New UI", link="https://github.com/ClusterLabs/hawk/wiki"]
+
+== Installation ==
+
+Hawk is a Ruby on Rails app which runs using the Puma web server
+(http://puma.io/).
+
+There is a special build mode which vendors all the rubygems used by
+Hawk, to create a package which bundles all of the gems. See the
+included RPM spec file in +rpm/hawk.spec+ for details.
+
+For details on the rubygems used by hawk, see the gemfile in
++hawk/Gemfile+.
+
+== Build Dependencies ==
+
+The exact versions specified here may not be accurate. Also, note that
+Hawk also requires the rubygems listed in +hawk/Gemfile+.
+
+* ruby version 1.9.3 or higher
+* libpacemaker-devel
+* pacemaker-libs-devel
+* glib2-devel
+* libxml2-devel >= 2.6.21
+* libxslt-devel
+* openssl-devel
+* pam-devel
+
+
+=== Dependencies ===
+
+The exact versions specified here may not be accurate. Also, note that
+Hawk also requires the rubygems listed in +hawk/Gemfile+.
+
+* crmsh
+* graphviz
+* graphviz-gd
+* dejavu
+* pacemaker >= 1.1.8
+* iproute2
+
+
+Some dependencies may differ depending on the distribution:
+
+* rubypick (Fedora)
+
+=== Installing The Easy Way ===
+
+Hawk is included with SLE HA 11 SP1, openSUSE 11.4, and later
+SUSE releases. Recent versions are also available
+http://software.opensuse.org/download?project=network:ha-clustering:Stable&package=hawk[for download from OBS].
+
+Just install the RPM, then run:
+
+--------------------------------------
+# chkconfig hawk on
+--------------------------------------
+--------------------------------------
+# service hawk start
+--------------------------------------
+
+=== Installing The Other Easy Way ===
+
+If you have a SUSE- or Fedora-based system, you can build
+an RPM easily from the source tree.  Just clone this git repo,
+and run "make rpm".
+
+Once built, install the RPM on your cluster nodes and:
+
+--------------------------------------
+# chkconfig hawk on
+--------------------------------------
+--------------------------------------
+# service hawk start
+--------------------------------------
+
+=== Installing The Hard Way ===
+
+If the above RPM build doesn't work for you, you can build and install
+straight from the source tree, but _read the Makefile first_ to ensure
+you'll be happy with the outcome!
+
+--------------------------------------
+# make
+--------------------------------------
+--------------------------------------
+# sudo make install
+--------------------------------------
+
+The above will install in +/srv/www/hawk+. To install somewhere else
+(e.g.: +/var/www/hawk+) and/or to use a Red Hat-style init script,
+try:
+
+--------------------------------------
+# make WWW_BASE=/var/www INIT_STYLE=redhat
+--------------------------------------
+--------------------------------------
+# sudo make WWW_BASE=/var/www INIT_STYLE=redhat install
+--------------------------------------
+
+=== Installing The Other Hard Way ===
+
+Grab the SRPM from OBS, for example try the one in
+http://download.opensuse.org/repositories/network:/ha-clustering:/Stable/Fedora_19/src/
+if you're using Fedora 19, and build that.
+
+
+== A Note on SSL Certificates ==
+
+The Hawk init script will automatically generate a self-signed SSL
+certificate, in +/etc/hawk/hawk.pem+.  If you want
+to use your own certificate, replace +hawk.key+ and +hawk.pem+ with
+your certificate.
+
+
+== Hacking Hawk ==
+
+To hack on Hawk we recommend to use the vagrant setup. There is a
+Vagrantfile attached, maybe you need to change some values to get access
+to the correct files as the current locations are restricted to SUSE
+emplyees.
+
+To be prepared for getting our vagrant setup running you need to follow
+some steps.
+
+* Install the vagrant package from http://www.vagrantup.com/downloads.html,
+  the minimal version requirement is +>= 1.7.0+ in order to work properly
+  with openSUSE/SLED workstation setups.
+
+* Install +virtualbox+, we assume you know how to do that on your OS. If
+  you prefer +libvirt+ you can use that as well. In either case you have to
+  install the bindfs plugin for vagrant with the following command if you
+  want to have write access to the shared source folder within the virtual
+  machine:
+
+--------------------------------------
+  # vagrant plugin install vagrant-bindfs
+--------------------------------------
+
+This is all you need to prepare initally to set up the vagrant environment,
+now you can simply start the virtual machine with +vagrant up+ and start
+an ssh session with +vagrant ssh webui+ based on +virtualbox+. To start the
+virtual machines on +libvirt+ you have to append +--provider=libvirt+ to the
+above commands, e.g. +vagrant up --provider=libvirt+. If you want to access
+the source within the virtual machine you have to switch to the +/vagrant+
+directory.
+
+You can access the Hawk web interface based on the git source through
++http://localhost:3000+ now. If you want to access the version installed
+through packages you can reach it through +https://localhost:7630+.
+
+If you need to change something on +hawk_chkpwd+, +hawk_invoke+ or
++hawk_monitor+ you need to provision the machine again with the command
++vagrant provision+ to get this scripts compiled and copied to the correct
+places, setuid-root and group to haclient in /usr/bin again. You should
+end up with something like:
+
+--------------------------------------
+# ls /usr/sbin/hawk_* -l+ +
+-rwsr-x--- 1 root haclient 9884 2011-04-14 22:56 /usr/sbin/hawk_chkpwd+
+-rwsr-x--- 1 root haclient 9928 2011-04-14 22:56 /usr/sbin/hawk_invoke+
+-rwxr-xr-x 1 root root     9992 2011-04-14 22:56 /usr/sbin/hawk_monitor+
+--------------------------------------
+
++hawk_chkpwd+ is almost identical to +unix2_chkpwd+, except it restricts
+acccess to users in the +haclient+ group, and doesn't inject any delay
+when invoked by the +hacluster+ user (which is the user Hawk's lighttpd
+instance runs as).
+
++hawk_invoke+ allows the +hacluster+ user to run a small assortment
+of Pacemaker CLI tools as another user in order to support Pacemaker's
+ACL feature.  It is used by Hawk when performing various management
+tasks.
+
++hawk_monitor+ is not installed setuid-root.  It exists to be polled
+by the web browser, to facilitate near-realtime updates of the cluster
+status display.  It is not used when running Hawk via WEBrick.
+
+
+If the development hawk instance isn't running, it can be started using this command:
+
+--------------------------------------
+webui:/vagrant/hawk # sudo -u vagrant script/rails s
+--------------------------------------
+
+
+== Questions, Feedback, etc. ==
+
+Hawk is developed at github, please file any issues or submit patches
+via the github interface at https://github.com/ClusterLabs/hawk/issues .
+
+Please direct comments, feedback, questions etc. to the Pacemaker
+mailing list at http://clusterlabs.org/mailman/listinfo/users .
