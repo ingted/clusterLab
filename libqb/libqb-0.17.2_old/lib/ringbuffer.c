@@ -118,7 +118,7 @@ qb_ringbuffer_t *
 qb_rb_open(const char *name, size_t size, uint32_t flags,
 	   size_t shared_user_data_size)
 {
-	printf("xxx 55000: lib/ringbuffer.c qb_rb_open name (%s)\n", name);
+	qb_util_perror(LOG_DEBUG,"xxx 55000: lib/ringbuffer.c qb_rb_open name (%s)\n", name);
 	return qb_rb_open_2(name, size, flags, shared_user_data_size, NULL);
 }
 

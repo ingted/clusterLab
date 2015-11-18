@@ -62,14 +62,14 @@ qb_ipcc_connect(const char *name, size_t max_msg_size)
 				       sizeof(struct qb_ipc_connection_response));
 	char newname[NAME_MAX];
 	//original (void)strlcpy(c->name, name, NAME_MAX);
-	printf("xxx 49000: fragmentation issue test!\n");	
-	printf("xxx 49000-1: NAME_MAX (%d)\n", NAME_MAX);	
+	qb_util_perror(LOG_DEBUG, "xxx 49000: fragmentation issue test!\n");	
+	qb_util_perror(LOG_DEBUG, "xxx 49000-1: NAME_MAX (%d)\n", NAME_MAX);	
 	sprintf(newname, "%s2", replace(name, '2', ""));
 	(void)strncpy(c->name, newname, NAME_MAX);
-	printf("xxx 35050: lib/ipcc.c qb_ipcc_connect name (%s) replace to (%s)\n", name, c->name);
+	qb_util_perror(LOG_DEBUG, "xxx 35050: lib/ipcc.c qb_ipcc_connect name (%s) replace to (%s)\n", name, c->name);
 	res = qb_ipcc_us_setup_connect(c, &response);
 	if (res < 0) {
-		printf("xxx 35060: lib/ipcc.c qb_ipcc_connect res < 0 goto disconnect_and_cleanup\n");
+		qb_util_perror(LOG_DEBUG, "xxx 35060: lib/ipcc.c qb_ipcc_connect res < 0 goto disconnect_and_cleanup\n");
 		goto disconnect_and_cleanup;
 	}
 	c->response.type = response.connection_type;

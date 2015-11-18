@@ -382,7 +382,7 @@ def get_configs(params)
     return JSON.generate({'status' => 'not_in_cluster'})
   end
   if params[:cluster_name] != $cluster_name
-    return JSON.generate({'status' => 'wrong_cluster_name'})
+    return JSON.generate({'status' => 'wrong_cluster_name 3'})
   end
   out = {
     'status' => 'ok',
@@ -407,7 +407,7 @@ def set_configs(params)
   end
   has_cluster = !($cluster_name == nil or $cluster_name.empty?)
   if has_cluster and $cluster_name != configs_json['cluster_name']
-    return JSON.generate({'status' => 'wrong_cluster_name'})
+    return JSON.generate({'status' => 'wrong_cluster_name 4'})
   end
 
   $semaphore_cfgsync.synchronize {

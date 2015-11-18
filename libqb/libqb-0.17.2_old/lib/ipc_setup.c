@@ -304,7 +304,7 @@ qb_ipcc_stream_sock_connect(const char *socket_name, int32_t * sock_pt)
 
         sprintf(newname, "%s2", replace2(socket_name, '2', ""));
 
-	printf("xxx 44500: lib/ipc_setup.c qb_ipcc_stream_sock_connect socket_name (%s) replace to (%s)\n", socket_name, newname);
+	qb_util_perror(LOG_DEBUG, "xxx 44500: lib/ipc_setup.c qb_ipcc_stream_sock_connect socket_name (%s) replace to (%s)\n", socket_name, newname);
 
 	memset(&address, 0, sizeof(struct sockaddr_un));
 	address.sun_family = AF_UNIX;
@@ -322,7 +322,7 @@ qb_ipcc_stream_sock_connect(const char *socket_name, int32_t * sock_pt)
 	if (connect(request_fd, (struct sockaddr *)&address,
 		    QB_SUN_LEN(&address)) == -1) {
 		res = -errno;
-		printf("xxx 44501: qb_ipcc_stream_sock_connect failed.\n");
+		qb_util_perror(LOG_DEBUG, "xxx 44501: qb_ipcc_stream_sock_connect failed.\n");
 		goto error_connect;
 	}
 
@@ -360,12 +360,12 @@ qb_ipcc_us_setup_connect(struct qb_ipcc_connection *c,
         //not need (void)strlcpy(c->name, newname, NAME_MAX);
 
 
-        printf("xxx 45000: lib/ipc_setup.c qb_ipcc_us_setup_connect name (%s) replace to (%s)\n", c->name, newname);
+        qb_util_perror(LOG_DEBUG, "xxx 45000: lib/ipc_setup.c qb_ipcc_us_setup_connect name (%s) replace to (%s)\n", c->name, newname);
 	//res = qb_ipcc_stream_sock_connect(c->name, &c->setup.u.us.sock);
 	res = qb_ipcc_stream_sock_connect(newname, &c->setup.u.us.sock);
 
 	if (res != 0) {
-		printf("xxx 45001: qb_ipcc_us_setup_connect failed.\n");
+		qb_util_perror(LOG_DEBUG, "xxx 45001: qb_ipcc_us_setup_connect failed.\n");
 		return res;
 	}
 #ifdef QB_LINUX
