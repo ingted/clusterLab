@@ -58,7 +58,7 @@ static int32_t
 open_mmap_file(char *path, uint32_t file_flags)
 {
 	if (strstr(path, "XXXXXX") != NULL) {
-		qb_util_perror(LOG_ERR, "xxx 5000: if01");
+		//qb_util_perror(LOG_ERR, "xxx 5000: if01");
 		mode_t old_mode = umask(077);
 		int32_t temp_fd = mkstemp(path);
 		(void)umask(old_mode);
@@ -69,12 +69,12 @@ open_mmap_file(char *path, uint32_t file_flags)
 
 	//fprintf(path,"%s#",path);
 
-	qb_util_perror(LOG_ERR, "xxx 5001: if02");
+	//qb_util_perror(LOG_ERR, "xxx 5001: if02");
 	int ret = open(path, file_flags, 0600);
 	
-	qb_util_perror(LOG_ERR, "strerr: %s", strerror(errno));
+	//qb_util_perror(LOG_ERR, "strerr: %s", strerror(errno));
 
-	qb_util_perror(LOG_ERR, "xxx 5001: if02 end");
+	//qb_util_perror(LOG_ERR, "xxx 5001: if02 end");
 	//if(ret == -1){
 		//fprintf(stderr, "%s", strerror(errno));		
 	//	qb_util_perror(LOG_ERR, "perror");
@@ -94,14 +94,14 @@ qb_sys_mmap_file_open(char *path, const char *file, size_t bytes,
 	ssize_t written;
 	char *buffer = NULL;
 		
-	qb_util_perror(LOG_ERR, "xxx 3004: unix.c before if");
+	//qb_util_perror(LOG_DEBUG, "xxx 3004: unix.c before if");
 	char *is_absolute = strchr(file, '/');
-	qb_util_perror(LOG_ERR, "xxx 3005: unix.c before if");
+	//qb_util_perror(LOG_DEBUG, "xxx 3005: unix.c before if");
 	if (is_absolute) {
-		qb_util_perror(LOG_ERR, "xxx 3110: unix.c absolute");
+		//qb_util_perror(LOG_DEBUG, "xxx 3110: unix.c absolute");
 		(void)strlcpy(path, file, PATH_MAX);
 	} else {
-		qb_util_perror(LOG_ERR, "xxx 3115: unix.c not absolute");
+		//qb_util_perror(LOG_DEBUG, "xxx 3115: unix.c not absolute");
 #if defined(QB_LINUX) || defined(QB_CYGWIN)
 		snprintf(path, PATH_MAX, "/dev/shm/%s", file);
 #else
@@ -109,7 +109,7 @@ qb_sys_mmap_file_open(char *path, const char *file, size_t bytes,
 		is_absolute = path;
 #endif
 	}
- 	qb_util_perror(LOG_ERR, "xxx 3130: unix.c open_mmap_file path (%s)", path);
+	//qb_util_perror(LOG_DEBUG, "xxx 3130: unix.c open_mmap_file path (%s)", path);
         
 	fd = open_mmap_file(path, file_flags);
 	if (fd < 0 && !is_absolute) {

@@ -161,7 +161,7 @@ qb_rb_open_2(const char *name, size_t size, uint32_t flags,
 
 	rb = calloc(1, sizeof(struct qb_ringbuffer_s));
 	if (rb == NULL) {
-	 	qb_util_log(LOG_ERR, "xxx 4190: ringbuffer.c calloc(1, sizeof(struct qb_ringbuffer_s)) NULL return");
+	 	qb_util_log(LOG_DEBUG, "xxx 4190: ringbuffer.c calloc(1, sizeof(struct qb_ringbuffer_s)) NULL return");
 		return NULL;
 	}
 
@@ -169,13 +169,13 @@ qb_rb_open_2(const char *name, size_t size, uint32_t flags,
 	 * Create a shared_hdr memory segment for the header.
 	 */
 
-	qb_util_log(LOG_ERR, "xxx 4200: ringbuffer.c name        (%s) for mmap", name);
-	qb_util_log(LOG_ERR, "xxx 4201: ringbuffer.c shared_size (%d) for mmap", shared_size);
-	qb_util_log(LOG_ERR, "xxx 4202: ringbuffer.c path        (%s) for mmap", path);
+	qb_util_log(LOG_DEBUG, "xxx 4200: ringbuffer.c name        (%s) for mmap", name);
+	qb_util_log(LOG_DEBUG, "xxx 4201: ringbuffer.c shared_size (%d) for mmap", shared_size);
+	qb_util_log(LOG_DEBUG, "xxx 4202: ringbuffer.c path        (%s) for mmap", path);
 
 	snprintf(filename, PATH_MAX, "qb-%s-header", name);
 
-	qb_util_log(LOG_ERR, "xxx 4202-1: ringbuffer.c ");
+	qb_util_log(LOG_DEBUG, "xxx 4202-1: ringbuffer.c ");
 
 	open(filename, O_RDWR | O_CREAT, S_IRUSR | S_IRGRP | S_IROTH);
 
